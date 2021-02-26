@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace HotelLinenManagement.ApplicationServices.API.Handlers
 {
-    class GetHotelLinensHandler : IRequestHandler<GetHotelLinenRequest, GetHotelLinenResponse>
+    class GetHotelLinensHandler : IRequestHandler<GetAllHotelLinensRequest, GetAllHotelLinensResponse>
     {
         private readonly IRepository<HotelLinen> hotelLinenRepository;
 
@@ -19,7 +19,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
             this.hotelLinenRepository = hotelLinenRepository;
         }
 
-        public Task<GetHotelLinenResponse> Handle(GetHotelLinenRequest request, CancellationToken cancellationToken)
+        public Task<GetAllHotelLinensResponse> Handle(GetAllHotelLinensRequest request, CancellationToken cancellationToken)
         {
             var hotleLinens = this.hotelLinenRepository.GetAll();
             var domainHotelLinens = hotleLinens.Select(x => new Domain.Models.HotelLinen()
@@ -31,7 +31,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
                 LinienWeight = x.LinienWeight
             });
 
-            var response = new GetHotelLinenResponse()
+            var response = new GetAllHotelLinensResponse()
             {
                 Data = domainHotelLinens.ToList()
             };

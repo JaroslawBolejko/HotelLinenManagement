@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace HotelLinenManagement.ApplicationServices.API.Domain.Models
+﻿namespace HotelLinenManagement.ApplicationServices.API.Domain.Models
 {
-   public class HotelLinen
+    public class HotelLinen
     {
         public int Id { get; set; }
         public string LinenName { get; set; }

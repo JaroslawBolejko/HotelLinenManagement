@@ -8,17 +8,17 @@ namespace HotelLinenManagement.Controllers
     [ApiController]
     [Route("[controller]")]
 
-    public class HotelLinensController : ControllerBase
+    public class InvoicesController : ControllerBase
     {
         private readonly IMediator mediator;
 
-        public HotelLinensController(IMediator mediator)
+        public InvoicesController(IMediator mediator)
         {
             this.mediator = mediator;
         }
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetAllHotelLinnens([FromQuery] GetAllHotelLinensRequest request)
+        public async Task<IActionResult> GetAllInvoices([FromQuery] GetAllInvoicesRequest request)
         {
             var response = await this.mediator.Send(request);
             return this.Ok(response);
