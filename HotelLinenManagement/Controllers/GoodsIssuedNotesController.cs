@@ -1,4 +1,4 @@
-﻿using HotelLinenManagement.ApplicationServices.API.Domain.Requests;
+﻿using HotelLinenManagement.ApplicationServices.API.Domain.Requests.GoodsIssuedNotes;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -8,17 +8,17 @@ namespace HotelLinenManagement.Controllers
     [ApiController]
     [Route("[controller]")]
 
-    public class StoreroomsController : ControllerBase
+    public class GoodsIssuedNotesController : ControllerBase
     {
         private readonly IMediator mediator;
 
-        public StoreroomsController(IMediator mediator)
+        public GoodsIssuedNotesController(IMediator mediator)
         {
             this.mediator = mediator;
         }
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetAllStorerooms([FromQuery] GetAllStoreroomsRequest request)
+        public async Task<IActionResult> GetAllGoodsIssuedNotes([FromQuery] GetAllGoodsIssuedNotesRequest request)
         {
             var response = await this.mediator.Send(request);
             return this.Ok(response);
