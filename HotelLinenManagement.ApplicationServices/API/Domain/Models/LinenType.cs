@@ -2,6 +2,7 @@
 {
     public class LinenType
     {
+        public string Id { get; set; }
         public string LinienTypeName { get; set; }
     }
 }

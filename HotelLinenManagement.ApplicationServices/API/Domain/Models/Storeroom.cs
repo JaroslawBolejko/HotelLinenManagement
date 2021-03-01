@@ -5,6 +5,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Domain.Models
 {
     public class Storeroom
     {
+        public string Id { get; set; }
         public int RoomNumber { get; set; }
         public string StoreRoomName { get; set; }
         public DateTime ReciptDate { get; set; }
