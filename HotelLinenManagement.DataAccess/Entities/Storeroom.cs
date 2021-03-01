@@ -8,7 +8,12 @@ namespace HotelLinenManagement.DataAccess.Entities
     {
         public List<HotelLinen> HotelLinens { get; set; }
         public Hotel Hotel { get; set; }
-        
+        public List<Invoice> Invices { get; set; }
+        public List<LinienType> LinienTypes { get; set; }
+        public List<GoodsReceivedNote> GoodsReceivedNotes { get; set; }
+        public List<GoodsIssuedNote> GoodsIssuedNotes { get; set; }
+        public List<LiquidationDocument> LiquidationDocuments { get; set; }
+        public List<User> Users { get; set; }
 
         [Required]
         public int RoomNumber { get; set; }

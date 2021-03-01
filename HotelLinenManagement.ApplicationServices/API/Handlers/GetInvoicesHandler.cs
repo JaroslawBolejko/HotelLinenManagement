@@ -24,8 +24,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
             var invoice = this.invoiceRepository.GetAll();
             var domainInvoices = invoice.Select(x => new Domain.Models.Invoice()
             {
-                InvoiceNumber = x.InvoiceNumber,
-                InviceDate = x.InviceDate,
+              
                 PaymentDate = x.PaymentDate,
                 Description = x.Description,
                 InvoiceTotal = x.InvoiceTotal

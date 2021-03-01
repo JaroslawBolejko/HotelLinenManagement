@@ -14,5 +14,9 @@ namespace HotelLinenManagement.DataAccess
         public DbSet<Invoice> Invices { get; set; }
         public DbSet<Storeroom> Storerooms { get; set; }
         public DbSet<LinienType> LinienTypes { get; set; }
+        public DbSet<GoodsReceivedNote> GoodsReceivedNotes { get; set; }
+        public DbSet<GoodsIssuedNote> GoodsIssuedNotes { get; set; }
+        public DbSet<LiquidationDocument> LiquidationDocuments { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

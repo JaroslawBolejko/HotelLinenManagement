@@ -4,13 +4,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HotelLinenManagement.DataAccess.Entities
 {
-    public class Invoice : EntityBase
+    public class Invoice : DocumentBase
     {
-        public HotelLinen HotelLinen{get;set;}
-        [Required]
-        public int InvoiceNumber { get; set; }
-        [Required]
-        public DateTime InviceDate { get; set; }
+                 
         [Required]
         public DateTime PaymentDate { get; set; }
         [Required]

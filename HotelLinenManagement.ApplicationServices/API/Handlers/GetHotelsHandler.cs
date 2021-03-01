@@ -26,6 +26,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
             {
                 Id = x.Id,
                 HotelName = x.HotelName,
+        
                 //Storerooms = x.Storerooms.Select(y => new Domain.Models.Storeroom()
                 //{
                 //    StoreRoomName = y.StoreRoomName
