@@ -14,7 +14,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
             migrationBuilder.AddColumn<int>(
                 name: "StoreroomId",
-                table: "LinienTypes",
+                table: "LinenTypes",
                 type: "int",
                 nullable: true);
 
@@ -43,7 +43,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_LinienTypes_StoreroomId",
-                table: "LinienTypes",
+                table: "LinenTypes",
                 column: "StoreroomId");
 
             migrationBuilder.CreateIndex(
@@ -87,7 +87,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
             migrationBuilder.AddForeignKey(
                 name: "FK_LinienTypes_Storerooms_StoreroomId",
-                table: "LinienTypes",
+                table: "LinenTypes",
                 column: "StoreroomId",
                 principalTable: "Storerooms",
                 principalColumn: "Id",
@@ -118,7 +118,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
             migrationBuilder.DropForeignKey(
                 name: "FK_LinienTypes_Storerooms_StoreroomId",
-                table: "LinienTypes");
+                table: "LinenTypes");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_LiquidationDocuments_Storerooms_StoreroomId",
@@ -130,7 +130,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
             migrationBuilder.DropIndex(
                 name: "IX_LinienTypes_StoreroomId",
-                table: "LinienTypes");
+                table: "LinenTypes");
 
             migrationBuilder.DropIndex(
                 name: "IX_Invices_StoreroomId",
@@ -150,7 +150,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
             migrationBuilder.DropColumn(
                 name: "StoreroomId",
-                table: "LinienTypes");
+                table: "LinenTypes");
 
             migrationBuilder.DropColumn(
                 name: "StoreroomId",

@@ -118,7 +118,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
                     b.ToTable("Invices");
                 });
 
-            modelBuilder.Entity("HotelLinenManagement.DataAccess.Entities.LinienType", b =>
+            modelBuilder.Entity("HotelLinenManagement.DataAccess.Entities.LinenType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -128,7 +128,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
                     b.Property<int?>("HotelLinenId")
                         .HasColumnType("int");
 
-                    b.Property<string>("LinienTypeName")
+                    b.Property<string>("LinenTypeName")
                         .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
@@ -137,7 +137,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
                     b.HasIndex("HotelLinenId");
 
-                    b.ToTable("LinienTypes");
+                    b.ToTable("LinenTypes");
                 });
 
             modelBuilder.Entity("HotelLinenManagement.DataAccess.Entities.Storeroom", b =>
@@ -160,7 +160,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
                     b.Property<int>("RoomNumber")
                         .HasColumnType("int");
 
-                    b.Property<string>("StoreRoomName")
+                    b.Property<string>("StoreroomName")
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
@@ -193,10 +193,10 @@ namespace HotelLinenManagement.DataAccess.Migrations
                         .HasForeignKey("StoreroomId");
                 });
 
-            modelBuilder.Entity("HotelLinenManagement.DataAccess.Entities.LinienType", b =>
+            modelBuilder.Entity("HotelLinenManagement.DataAccess.Entities.LinenType", b =>
                 {
                     b.HasOne("HotelLinenManagement.DataAccess.Entities.HotelLinen", "HotelLinen")
-                        .WithMany("LinienTypes")
+                        .WithMany("LinenTypes")
                         .HasForeignKey("HotelLinenId");
 
                     b.Navigation("HotelLinen");
@@ -218,7 +218,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
             modelBuilder.Entity("HotelLinenManagement.DataAccess.Entities.HotelLinen", b =>
                 {
-                    b.Navigation("LinienTypes");
+                    b.Navigation("LinenTypes");
                 });
 
             modelBuilder.Entity("HotelLinenManagement.DataAccess.Entities.Storeroom", b =>

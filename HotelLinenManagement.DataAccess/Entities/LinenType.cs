@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace HotelLinenManagement.DataAccess.Entities
 {
-    public class LinienType : EntityBase
+    public class LinenType : EntityBase
     {
         public HotelLinen HotelLinen { get; set; }
 
         [Required]
         [MaxLength(250)]
-        public string LinienTypeName { get; set; }
+        public string LinenTypeName { get; set; }
     }
 }

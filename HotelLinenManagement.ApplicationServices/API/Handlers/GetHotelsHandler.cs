@@ -30,7 +30,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
         
                 //Storerooms = x.Storerooms.Select(y => new Domain.Models.Storeroom()
                 //{
-                //    StoreRoomName = y.StoreRoomName
+                //    StoreroomName = y.StoreroomName
 
                 //}).ToList()
                

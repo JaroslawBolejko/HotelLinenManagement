@@ -10,7 +10,7 @@ namespace HotelLinenManagement.DataAccess.Entities
 
         public Hotel Hotel {get;set;}
         public List<Invoice> Invices { get; set; }
-        public List<LinienType> LinienTypes { get; set; }
+        public List<LinenType> LinienTypes { get; set; }
         public List<GoodsReceivedNote> GoodsReceivedNotes { get; set; }
         public List<GoodsIssuedNote> GoodsIssuedNotes { get; set; }
         public List<LiquidationDocument> LiquidationDocuments { get; set; }
@@ -18,10 +18,15 @@ namespace HotelLinenManagement.DataAccess.Entities
         [Required]
         [MaxLength(250)]
         public string LinenName { get; set; }
+        
         [Required]
-        [MaxLength(250)]
-        public string LinenType { get; set; }
         public int LinenAmount { get; set; }
+        [MaxLength(250)]
+        public string Size { get; set; }
+        [MaxLength(250)]
+        public string Color { get; set; }
+        [MaxLength(250)]
+        public string Description { get; set; }
         public double LinienWeight { get; set; }
 
     }

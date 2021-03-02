@@ -25,7 +25,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
             var domainStorerooms = storerooms.Select(x => new Domain.Models.Storeroom()
             {
                 RoomNumber = x.RoomNumber,
-                StoreRoomName = x.StoreRoomName,
+                StoreroomName = x.StoreroomName,
                 ReciptDate = x.ReciptDate,
                 IssueDate = x.IssueDate
             });

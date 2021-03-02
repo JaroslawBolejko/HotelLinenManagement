@@ -7,7 +7,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "LinienTypes",
+                name: "LinenTypes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -28,14 +28,14 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_LinienTypes_HotelLinenId",
-                table: "LinienTypes",
+                table: "LinenTypes",
                 column: "HotelLinenId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "LinienTypes");
+                name: "LinenTypes");
         }
     }
 }

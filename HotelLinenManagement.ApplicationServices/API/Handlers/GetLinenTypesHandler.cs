@@ -12,9 +12,9 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
 {
     class GetLinenTypesHandler : IRequestHandler<GetAllLinenTypesRequest, GetAllLinenTypesResponse>
     {
-        private readonly IRepository<LinienType> linenTypesRepository;
+        private readonly IRepository<LinenType> linenTypesRepository;
 
-        public GetLinenTypesHandler(IRepository<DataAccess.Entities.LinienType> linenTypesRepository)
+        public GetLinenTypesHandler(IRepository<DataAccess.Entities.LinenType> linenTypesRepository)
         {
             this.linenTypesRepository = linenTypesRepository;
         }
@@ -25,7 +25,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
             var domainLinenTypes = linenTypes.Select(x => new Domain.Models.LinenType()
             {
 
-                LinienTypeName = x.LinienTypeName
+                LinenTypeName = x.LinenTypeName
                 
 
             });

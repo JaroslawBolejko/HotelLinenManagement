@@ -136,7 +136,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
                     b.Property<int>("RoomNumber")
                         .HasColumnType("int");
 
-                    b.Property<string>("StoreRoomName")
+                    b.Property<string>("StoreroomName")
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 

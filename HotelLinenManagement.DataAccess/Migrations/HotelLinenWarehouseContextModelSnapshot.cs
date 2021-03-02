@@ -127,6 +127,14 @@ namespace HotelLinenManagement.DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Color")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
                     b.Property<int?>("HotelId")
                         .HasColumnType("int");
 
@@ -145,6 +153,10 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
                     b.Property<double>("LinienWeight")
                         .HasColumnType("float");
+
+                    b.Property<string>("Size")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<int?>("StoreroomId")
                         .HasColumnType("int");
@@ -210,7 +222,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
                     b.ToTable("Invices");
                 });
 
-            modelBuilder.Entity("HotelLinenManagement.DataAccess.Entities.LinienType", b =>
+            modelBuilder.Entity("HotelLinenManagement.DataAccess.Entities.LinenType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -220,7 +232,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
                     b.Property<int?>("HotelLinenId")
                         .HasColumnType("int");
 
-                    b.Property<string>("LinienTypeName")
+                    b.Property<string>("LinenTypeName")
                         .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
@@ -234,7 +246,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
                     b.HasIndex("StoreroomId");
 
-                    b.ToTable("LinienTypes");
+                    b.ToTable("LinenTypes");
                 });
 
             modelBuilder.Entity("HotelLinenManagement.DataAccess.Entities.LiquidationDocument", b =>
@@ -299,7 +311,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
                     b.Property<int>("RoomNumber")
                         .HasColumnType("int");
 
-                    b.Property<string>("StoreRoomName")
+                    b.Property<string>("StoreroomName")
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
@@ -440,14 +452,14 @@ namespace HotelLinenManagement.DataAccess.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("HotelLinenManagement.DataAccess.Entities.LinienType", b =>
+            modelBuilder.Entity("HotelLinenManagement.DataAccess.Entities.LinenType", b =>
                 {
                     b.HasOne("HotelLinenManagement.DataAccess.Entities.HotelLinen", "HotelLinen")
-                        .WithMany("LinienTypes")
+                        .WithMany("LinenTypes")
                         .HasForeignKey("HotelLinenId");
 
                     b.HasOne("HotelLinenManagement.DataAccess.Entities.Storeroom", null)
-                        .WithMany("LinienTypes")
+                        .WithMany("LinenTypes")
                         .HasForeignKey("StoreroomId");
 
                     b.Navigation("HotelLinen");
@@ -525,7 +537,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
                     b.Navigation("Invices");
 
-                    b.Navigation("LinienTypes");
+                    b.Navigation("LinenTypes");
 
                     b.Navigation("LiquidationDocuments");
                 });
@@ -540,7 +552,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
                     b.Navigation("Invices");
 
-                    b.Navigation("LinienTypes");
+                    b.Navigation("LinenTypes");
 
                     b.Navigation("LiquidationDocuments");
                 });

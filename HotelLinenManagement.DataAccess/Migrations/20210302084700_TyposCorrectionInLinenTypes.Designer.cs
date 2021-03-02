@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelLinenManagement.DataAccess.Migrations
 {
     [DbContext(typeof(HotelLinenWarehouseContext))]
-    [Migration("20210301212849_AddUser")]
-    partial class AddUser
+    [Migration("20210302084700_TyposCorrectionInLinenTypes")]
+    partial class TyposCorrectionInLinenTypes
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -129,6 +129,14 @@ namespace HotelLinenManagement.DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Color")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
                     b.Property<int?>("HotelId")
                         .HasColumnType("int");
 
@@ -147,6 +155,10 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
                     b.Property<double>("LinienWeight")
                         .HasColumnType("float");
+
+                    b.Property<string>("Size")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<int?>("StoreroomId")
                         .HasColumnType("int");
