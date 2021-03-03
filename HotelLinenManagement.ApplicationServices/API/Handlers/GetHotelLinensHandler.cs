@@ -24,9 +24,9 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
             this.mapper = mapper;
         }
 
-        public Task<GetAllHotelLinensResponse> Handle(GetAllHotelLinensRequest request, CancellationToken cancellationToken)
+        public async Task<GetAllHotelLinensResponse> Handle(GetAllHotelLinensRequest request, CancellationToken cancellationToken)
         {
-            var hotelLinens = this.hotelLinenRepository.GetAll();
+            var hotelLinens = await this.hotelLinenRepository.GetAll();
             var mappedHotelLinen = this.mapper.Map<List<Domain.Models.HotelLinen>>(hotelLinens);
            
 
@@ -34,7 +34,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
             {
                 Data = mappedHotelLinen
             };
-            return Task.FromResult(response);
+            return response;
         }
     }
 }

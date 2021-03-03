@@ -23,16 +23,16 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
             this.mapper = mapper;
         }
 
-        public Task<GetAllStoreroomsResponse> Handle(GetAllStoreroomsRequest request, CancellationToken cancellationToken)
+        public async Task<GetAllStoreroomsResponse> Handle(GetAllStoreroomsRequest request, CancellationToken cancellationToken)
         {
-            var storerooms = this.storeroomRepository.GetAll();
+            var storerooms = await this.storeroomRepository.GetAll();
             var mappedStoreroom = this.mapper.Map<List<Domain.Models.Storeroom>>(storerooms);
 
         var response = new GetAllStoreroomsResponse()
             {
                 Data = mappedStoreroom
             };
-            return Task.FromResult(response);
+            return response;
         }
     }
 }

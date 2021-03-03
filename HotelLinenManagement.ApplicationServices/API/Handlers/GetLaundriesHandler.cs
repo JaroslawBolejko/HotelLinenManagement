@@ -22,9 +22,9 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
             this.mapper = mapper;
         }
 
-        public Task<GetAllLaundriesResponse> Handle(GetAllLaundriesRequest request, CancellationToken cancellationToken)
+        public async Task<GetAllLaundriesResponse> Handle(GetAllLaundriesRequest request, CancellationToken cancellationToken)
         {
-            var laundries = this.laundryRepository.GetAll();
+            var laundries = await this.laundryRepository.GetAll();
             var mappedLaundry = this.mapper.Map<List<Domain.Models.Laundry>>(laundries);
 
 
@@ -32,7 +32,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
             {
                 Data = mappedLaundry
             };
-            return Task.FromResult(response);
+            return response;
         }
     }
 }

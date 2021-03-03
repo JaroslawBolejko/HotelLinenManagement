@@ -23,16 +23,16 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
             this.mapper = mapper;
         }
 
-        public Task<GetAllLinenTypesResponse> Handle(GetAllLinenTypesRequest request, CancellationToken cancellationToken)
+        public async Task<GetAllLinenTypesResponse> Handle(GetAllLinenTypesRequest request, CancellationToken cancellationToken)
         {
-            var linenTypes = this.linenTypesRepository.GetAll();
+            var linenTypes = await this.linenTypesRepository.GetAll();
             var mappedLinenType = this.mapper.Map<List<Domain.Models.LinenType>>(linenTypes);
 
             var response = new GetAllLinenTypesResponse()
             {
                 Data = mappedLinenType
             };
-            return Task.FromResult(response);
+            return response;
         }
     }
 }

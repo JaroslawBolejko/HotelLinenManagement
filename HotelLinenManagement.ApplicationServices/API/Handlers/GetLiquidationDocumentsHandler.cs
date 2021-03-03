@@ -22,16 +22,16 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
             this.mapper = mapper;
         }
 
-        public Task<GetAllLiquidationDocumentsResponse> Handle(GetAllLiquidationsDocumentsRequest request, CancellationToken cancellationToken)
+        public async Task<GetAllLiquidationDocumentsResponse> Handle(GetAllLiquidationsDocumentsRequest request, CancellationToken cancellationToken)
         {
-            var liquidationDocument = this.liquidationDocumentRepository.GetAll();
+            var liquidationDocument = await this.liquidationDocumentRepository.GetAll();
             var mappedliquidationDocument = this.mapper.Map<List<Domain.Models.LiquidationDocument>>(liquidationDocument);
 
             var response = new GetAllLiquidationDocumentsResponse()
             {
                 Data = mappedliquidationDocument
             };
-            return Task.FromResult(response);
+            return response;
         }
     }
 }
