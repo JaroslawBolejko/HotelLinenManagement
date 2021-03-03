@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace HotelLinenManagement.ApplicationServices.API.Domain.Responses
 {
-    class GetAllLinenTypesResponse : ResponseBase<List<LinenType>>
+   public  class GetAllLinenTypesResponse : ResponseBase<List<LinenType>>
     {
     }
 }

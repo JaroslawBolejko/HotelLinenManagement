@@ -7,11 +7,11 @@ namespace HotelLinenManagement.Controllers
 {
     [ApiController]
 [Route("[controller]")]
-public class GoodsRecivedNotesController : ControllerBase
+public class GoodsReceivedNotesController : ControllerBase
 {
     private readonly IMediator mediator;
 
-    public GoodsRecivedNotesController(IMediator mediator)
+    public GoodsReceivedNotesController(IMediator mediator)
     {
         this.mediator = mediator;
     }

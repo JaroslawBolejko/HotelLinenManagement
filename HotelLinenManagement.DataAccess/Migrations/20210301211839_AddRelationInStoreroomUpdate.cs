@@ -20,7 +20,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
             migrationBuilder.AddColumn<int>(
                 name: "StoreroomId",
-                table: "Invices",
+                table: "Invoices",
                 type: "int",
                 nullable: true);
 
@@ -48,7 +48,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_Invices_StoreroomId",
-                table: "Invices",
+                table: "Invoices",
                 column: "StoreroomId");
 
             migrationBuilder.CreateIndex(
@@ -79,7 +79,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Invices_Storerooms_StoreroomId",
-                table: "Invices",
+                table: "Invoices",
                 column: "StoreroomId",
                 principalTable: "Storerooms",
                 principalColumn: "Id",
@@ -114,7 +114,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
             migrationBuilder.DropForeignKey(
                 name: "FK_Invices_Storerooms_StoreroomId",
-                table: "Invices");
+                table: "Invoices");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_LinienTypes_Storerooms_StoreroomId",
@@ -134,7 +134,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
             migrationBuilder.DropIndex(
                 name: "IX_Invices_StoreroomId",
-                table: "Invices");
+                table: "Invoices");
 
             migrationBuilder.DropIndex(
                 name: "IX_GoodsReceivedNotes_StoreroomId",
@@ -154,7 +154,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
             migrationBuilder.DropColumn(
                 name: "StoreroomId",
-                table: "Invices");
+                table: "Invoices");
 
             migrationBuilder.DropColumn(
                 name: "StoreroomId",

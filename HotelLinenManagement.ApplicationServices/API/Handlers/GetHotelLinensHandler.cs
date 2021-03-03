@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace HotelLinenManagement.ApplicationServices.API.Handlers
 {
-    class GetHotelLinensHandler : IRequestHandler<GetAllHotelLinensRequest, GetAllHotelLinensResponse>
+   public class GetHotelLinensHandler : IRequestHandler<GetAllHotelLinensRequest, GetAllHotelLinensResponse>
     {
         private readonly IRepository<HotelLinen> hotelLinenRepository;
         private readonly IMapper mapper;

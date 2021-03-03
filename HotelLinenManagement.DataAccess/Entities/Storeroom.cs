@@ -14,6 +14,7 @@ namespace HotelLinenManagement.DataAccess.Entities
         public List<GoodsIssuedNote> GoodsIssuedNotes { get; set; }
         public List<LiquidationDocument> LiquidationDocuments { get; set; }
         public List<User> Users { get; set; }
+        
 
         [Required]
         public int RoomNumber { get; set; }

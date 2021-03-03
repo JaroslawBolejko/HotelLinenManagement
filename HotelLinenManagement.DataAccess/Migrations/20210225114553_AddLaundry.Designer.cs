@@ -118,7 +118,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Invices");
+                    b.ToTable("Invoices");
                 });
 
             modelBuilder.Entity("HotelLinenManagement.DataAccess.Entities.Laundry", b =>

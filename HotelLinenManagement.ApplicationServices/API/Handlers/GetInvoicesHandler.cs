@@ -1,39 +1,35 @@
-﻿using HotelLinenManagement.ApplicationServices.API.Domain.Requests;
+﻿using AutoMapper;
+using HotelLinenManagement.ApplicationServices.API.Domain.Requests;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses;
 using HotelLinenManagement.DataAccess;
 using HotelLinenManagement.DataAccess.Entities;
 using MediatR;
-using System.Linq;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
 
 namespace HotelLinenManagement.ApplicationServices.API.Handlers
 {
-    class GetInvoicesHandler : IRequestHandler<GetAllInvoicesRequest, GetAllInvoicesResponse>
+     public class GetInvoicesHandler : IRequestHandler<GetAllInvoicesRequest, GetAllInvoicesResponse>
     {
         private readonly IRepository<Invoice> invoiceRepository;
+        private readonly IMapper mapper;
 
-        public GetInvoicesHandler(IRepository<DataAccess.Entities.Invoice> invoiceRepository)
+        public GetInvoicesHandler(IRepository<DataAccess.Entities.Invoice> invoiceRepository,IMapper mapper)
         {
             this.invoiceRepository = invoiceRepository;
+            this.mapper = mapper;
         }
 
         public Task<GetAllInvoicesResponse> Handle(GetAllInvoicesRequest request, CancellationToken cancellationToken)
         {
             var invoice = this.invoiceRepository.GetAll();
-            var domainInvoices = invoice.Select(x => new Domain.Models.Invoice()
-            {
-              
-                PaymentDate = x.PaymentDate,
-                Description = x.Description,
-                InvoiceTotal = x.InvoiceTotal
-
-            });
+            var mappedInvoice = this.mapper.Map<List<Domain.Models.Invoice>>(invoice);
 
             var response = new GetAllInvoicesResponse()
             {
-                Data = domainInvoices.ToList()
+                Data = mappedInvoice
             };
             return Task.FromResult(response);
         }

@@ -194,7 +194,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
                     b.HasIndex("StoreroomId");
 
-                    b.ToTable("Invices");
+                    b.ToTable("Invoices");
                 });
 
             modelBuilder.Entity("HotelLinenManagement.DataAccess.Entities.LinenType", b =>
@@ -354,11 +354,11 @@ namespace HotelLinenManagement.DataAccess.Migrations
                         .HasForeignKey("HotelId");
 
                     b.HasOne("HotelLinenManagement.DataAccess.Entities.HotelLinen", "HotelLinen")
-                        .WithMany("Invices")
+                        .WithMany("Invoices")
                         .HasForeignKey("HotelLinenId");
 
                     b.HasOne("HotelLinenManagement.DataAccess.Entities.Storeroom", "Storeroom")
-                        .WithMany("Invices")
+                        .WithMany("Invoices")
                         .HasForeignKey("StoreroomId");
 
                     b.Navigation("Hotel");
@@ -430,7 +430,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
                     b.Navigation("GoodsReceivedNotes");
 
-                    b.Navigation("Invices");
+                    b.Navigation("Invoices");
 
                     b.Navigation("LinenTypes");
 
@@ -445,7 +445,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
                     b.Navigation("HotelLinens");
 
-                    b.Navigation("Invices");
+                    b.Navigation("Invoices");
 
                     b.Navigation("LinenTypes");
 

@@ -14,7 +14,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
             migrationBuilder.AddColumn<int>(
                 name: "UserId",
-                table: "Invices",
+                table: "Invoices",
                 type: "int",
                 nullable: true);
 
@@ -76,7 +76,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_Invices_UserId",
-                table: "Invices",
+                table: "Invoices",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -112,7 +112,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Invices_Users_UserId",
-                table: "Invices",
+                table: "Invoices",
                 column: "UserId",
                 principalTable: "Users",
                 principalColumn: "Id",
@@ -139,7 +139,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
             migrationBuilder.DropForeignKey(
                 name: "FK_Invices_Users_UserId",
-                table: "Invices");
+                table: "Invoices");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_LiquidationDocuments_Users_UserId",
@@ -157,7 +157,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
             migrationBuilder.DropIndex(
                 name: "IX_Invices_UserId",
-                table: "Invices");
+                table: "Invoices");
 
             migrationBuilder.DropIndex(
                 name: "IX_GoodsReceivedNotes_UserId",
@@ -173,7 +173,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
             migrationBuilder.DropColumn(
                 name: "UserId",
-                table: "Invices");
+                table: "Invoices");
 
             migrationBuilder.DropColumn(
                 name: "UserId",

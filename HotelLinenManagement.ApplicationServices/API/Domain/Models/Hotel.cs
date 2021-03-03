@@ -8,5 +8,6 @@ namespace HotelLinenManagement.ApplicationServices.API.Domain.Models
         public string HotelName { get; set; }
      
         public List<Storeroom> Storerooms { get; set; }
+        public List<HotelLinen> HotelLinens { get; set; }
     }
 }

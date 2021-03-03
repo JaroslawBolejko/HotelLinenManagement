@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace HotelLinenManagement.ApplicationServices.API.Domain.Responses
 {
-    class GetAllHotelsResponse : ResponseBase<List<Hotel>>
+    public class GetAllHotelsResponse : ResponseBase<List<Hotel>>
     {
     }
 }

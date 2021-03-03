@@ -25,7 +25,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
                 column: "Id");
 
             migrationBuilder.CreateTable(
-                name: "Invices",
+                name: "Invoices",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -60,7 +60,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
                     table.ForeignKey(
                         name: "FK_HotelLinenInvoice_Invices_InvicesId",
                         column: x => x.InvicesId,
-                        principalTable: "Invices",
+                        principalTable: "Invoices",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -89,7 +89,7 @@ namespace HotelLinenManagement.DataAccess.Migrations
                 name: "HotelLinenInvoice");
 
             migrationBuilder.DropTable(
-                name: "Invices");
+                name: "Invoices");
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_Hotels",
