@@ -23,6 +23,8 @@ namespace HotelLinenManagement.DataAccess.Entities
         [Required]
         public int LinenAmount { get; set; }
         [MaxLength(250)]
+        public string LinenTypeName { get; set; }
+        [MaxLength(250)]
         public string Size { get; set; }
         [MaxLength(250)]
         public string Color { get; set; }
