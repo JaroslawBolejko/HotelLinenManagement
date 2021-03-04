@@ -1,13 +1,9 @@
 ﻿using HotelLinenManagement.DataAccess.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace HotelLinenManagement.DataAccess.CQRS.Commands
+namespace HotelLinenManagement.DataAccess.CQRS.Commands.Storerooms
 {
-   public class AddStoreroomCommand : CommandBase<Storeroom, Storeroom>
+    public class AddStoreroomCommand : CommandBase<Storeroom, Storeroom>
     {
         public override async Task<Storeroom> Execute(HotelLinenWarehouseContext context)
         {

@@ -3,6 +3,7 @@ using HotelLinenManagement.ApplicationServices.API.Domain.Requests;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses;
 using HotelLinenManagement.DataAccess.CQRS;
 using HotelLinenManagement.DataAccess.CQRS.Queries;
+using HotelLinenManagement.DataAccess.CQRS.Queries.HotelLinens;
 using MediatR;
 using System.Collections.Generic;
 using System.Threading;
@@ -25,7 +26,10 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
 
         public async Task<GetAllHotelLinensResponse> Handle(GetAllHotelLinensRequest request, CancellationToken cancellationToken)
         {
-            var query = new GetHotelLinensQuery();
+            var query = new GetHotelLinensQuery()
+            {
+                LinenName=request.LinenName
+            };
             var hotelLinens = await this.queryExecutor.Execute(query);
             var mappedHotelLinen = this.mapper.Map<List<Domain.Models.HotelLinen>>(hotelLinens);
            

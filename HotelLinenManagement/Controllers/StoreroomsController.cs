@@ -1,4 +1,5 @@
 ﻿using HotelLinenManagement.ApplicationServices.API.Domain.Requests;
+using HotelLinenManagement.ApplicationServices.API.Domain.Requests.Storerooms;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -24,5 +25,12 @@ namespace HotelLinenManagement.Controllers
             return this.Ok(response);
         }
 
+        [HttpPost]
+        [Route("")]
+        public async Task<IActionResult> AddStoreroom([FromBody]AddStoreroomRequest request)
+        {
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
     }
 }

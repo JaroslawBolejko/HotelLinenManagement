@@ -5,5 +5,6 @@ namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests
 {
     public class GetAllHotelLinensRequest: IRequest<GetAllHotelLinensResponse>
     {
+        public string LinenName { get; set; }
     }
 }
