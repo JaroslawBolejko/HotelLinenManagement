@@ -1,32 +1,32 @@
 ﻿using AutoMapper;
 using HotelLinenManagement.ApplicationServices.API.Domain.Requests;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses;
-using HotelLinenManagement.DataAccess;
-using HotelLinenManagement.DataAccess.Entities;
+using HotelLinenManagement.DataAccess.CQRS;
+using HotelLinenManagement.DataAccess.CQRS.Queries;
 using MediatR;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
 
 namespace HotelLinenManagement.ApplicationServices.API.Handlers
 {
-   public class GetHotelLinensHandler : IRequestHandler<GetAllHotelLinensRequest, GetAllHotelLinensResponse>
+    public class GetHotelLinensHandler : IRequestHandler<GetAllHotelLinensRequest, GetAllHotelLinensResponse>
     {
-        private readonly IRepository<HotelLinen> hotelLinenRepository;
         private readonly IMapper mapper;
+        private readonly IQueryExecutor queryExecutor;
 
-        public GetHotelLinensHandler(IRepository<DataAccess.Entities.HotelLinen> hotelLinenRepository, IMapper mapper)
+        public GetHotelLinensHandler(IMapper mapper,IQueryExecutor queryExecutor)
         {
-            this.hotelLinenRepository = hotelLinenRepository;
+          
             this.mapper = mapper;
+            this.queryExecutor = queryExecutor;
         }
 
         public async Task<GetAllHotelLinensResponse> Handle(GetAllHotelLinensRequest request, CancellationToken cancellationToken)
         {
-            var hotelLinens = await this.hotelLinenRepository.GetAll();
+            var query = new GetHotelLinensQuery();
+            var hotelLinens = await this.queryExecutor.Execute(query);
             var mappedHotelLinen = this.mapper.Map<List<Domain.Models.HotelLinen>>(hotelLinens);
            
 

@@ -1,6 +1,7 @@
 using HotelLinenManagement.ApplicationServices.API.Domain;
 using HotelLinenManagement.ApplicationServices.API.Mappings;
 using HotelLinenManagement.DataAccess;
+using HotelLinenManagement.DataAccess.CQRS;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -24,6 +25,8 @@ namespace HotelLinenManagement
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<ICommandExecutor, CommandExecutor>();
+            services.AddTransient<IQueryExecutor, QueryExecutor>();
             services.AddAutoMapper(typeof(HotelLinensProfile).Assembly);
             services.AddMediatR(typeof(ResponseBase<>));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
