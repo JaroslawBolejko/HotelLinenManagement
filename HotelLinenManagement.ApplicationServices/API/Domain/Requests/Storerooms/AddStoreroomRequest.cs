@@ -1,4 +1,4 @@
-﻿using HotelLinenManagement.ApplicationServices.API.Domain.Responses;
+﻿using HotelLinenManagement.ApplicationServices.API.Domain.Responses.Storerooms;
 using MediatR;
 
 namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.Storerooms

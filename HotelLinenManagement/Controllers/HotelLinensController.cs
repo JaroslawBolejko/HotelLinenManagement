@@ -39,9 +39,13 @@ namespace HotelLinenManagement.Controllers
             return this.Ok(response);
 
         }
-        //[HttpPost]
-        //[Route("")]
-        //public async Task<IActionResult> AddHotelLinen([FromQuery] )
+        [HttpPost]
+        [Route("")]
+        public async Task<IActionResult> AddHotelLinen([FromQuery] AddHotelLinenRequest request)
+        {
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
 
 
     }

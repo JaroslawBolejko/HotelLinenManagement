@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using HotelLinenManagement.ApplicationServices.API.Domain.Requests.Storerooms;
-using HotelLinenManagement.ApplicationServices.API.Domain.Responses;
+using HotelLinenManagement.ApplicationServices.API.Domain.Responses.Storerooms;
 using HotelLinenManagement.DataAccess.CQRS;
 using HotelLinenManagement.DataAccess.CQRS.Commands.Storerooms;
 using HotelLinenManagement.DataAccess.Entities;

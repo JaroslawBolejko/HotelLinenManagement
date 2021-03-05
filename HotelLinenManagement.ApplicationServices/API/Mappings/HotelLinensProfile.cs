@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using HotelLinenManagement.ApplicationServices.API.Domain.Models;
+using HotelLinenManagement.ApplicationServices.API.Domain.Requests.HotelLinens;
 
 namespace HotelLinenManagement.ApplicationServices.API.Mappings
 {
@@ -7,6 +8,9 @@ namespace HotelLinenManagement.ApplicationServices.API.Mappings
     {
         public HotelLinensProfile()
         {
+            this.CreateMap<AddHotelLinenRequest, DataAccess.Entities.HotelLinen>()
+                .ForMember(x => x.LinenName, y => y.MapFrom(z => z.LinenName));
+
             this.CreateMap<DataAccess.Entities.HotelLinen, HotelLinen>()
                 .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
                 .ForMember(x => x.LinenName, y => y.MapFrom(z => z.LinenName))
