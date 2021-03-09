@@ -12,3 +12,4 @@ C:\Users\user\Documents\GitHub\HotelLinenManagement\HotelLinenManagement.DataAcc
 C:\Users\user\Documents\GitHub\HotelLinenManagement\HotelLinenManagement.DataAccess\bin\Debug\net5.0\HotelLinenManagement.DataAccess.runtimeconfig.json
 C:\Users\user\Documents\GitHub\HotelLinenManagement\HotelLinenManagement.DataAccess\bin\Debug\net5.0\HotelLinenManagement.DataAccess.runtimeconfig.dev.json
 C:\Users\user\Documents\GitHub\HotelLinenManagement\HotelLinenManagement.DataAccess\obj\Debug\net5.0\HotelLinenManagement.DataAccess.genruntimeconfig.cache
+C:\Users\user\Documents\GitHub\HotelLinenManagement\HotelLinenManagement.DataAccess\obj\Debug\net5.0\HotelLinenManagement.DataAccess.csprojAssemblyReference.cache

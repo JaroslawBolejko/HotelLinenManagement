@@ -28,7 +28,8 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
         {
             var query = new GetHotelLinensQuery()
             {
-                LinenName=request.LinenName
+                LinenName = request.LinenName,
+                StoreroomId = request.StoreroomId
             };
             var hotelLinens = await this.queryExecutor.Execute(query);
             var mappedHotelLinen = this.mapper.Map<List<Domain.Models.HotelLinen>>(hotelLinens);

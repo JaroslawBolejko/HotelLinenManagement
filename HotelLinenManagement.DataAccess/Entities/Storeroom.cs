@@ -6,6 +6,7 @@ namespace HotelLinenManagement.DataAccess.Entities
 {
     public class Storeroom : EntityBase
     {
+        
         public List<HotelLinen> HotelLinens { get; set; }
         public Hotel Hotel { get; set; }
         public List<Invoice> Invices { get; set; }

@@ -4,14 +4,16 @@ using HotelLinenManagement.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HotelLinenManagement.DataAccess.Migrations
 {
     [DbContext(typeof(HotelLinenWarehouseContext))]
-    partial class HotelLinenWarehouseContextModelSnapshot : ModelSnapshot
+    [Migration("20210305100853_AddAtributeStoreroomIdInHotelLinen")]
+    partial class AddAtributeStoreroomIdInHotelLinen
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
