@@ -3,9 +3,8 @@ using MediatR;
 
 namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.Storerooms
 {
-    public class AddStoreroomRequest : IRequest<AddStoreroomResponse>
+    public  class GetStoreroomByIdRequest : IRequest<GetStoreroomByIdResponse>
     {
-        public string StoreroomName{ get; set; }
-        public int RoomNumber { get; set; }
+        public int StoreroomId { get; set; }
     }
 }

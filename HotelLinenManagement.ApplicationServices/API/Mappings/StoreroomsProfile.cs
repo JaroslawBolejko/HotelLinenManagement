@@ -18,6 +18,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Mappings
 
             this.CreateMap<AddStoreroomRequest, DataAccess.Entities.Storeroom>()
                 .ForMember(x => x.StoreroomName, y => y.MapFrom(z => z.StoreroomName));
+           
 
             this.CreateMap<DataAccess.Entities.Storeroom, Storeroom>()
                 .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))

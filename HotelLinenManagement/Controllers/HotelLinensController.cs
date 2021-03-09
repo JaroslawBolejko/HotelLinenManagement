@@ -47,6 +47,7 @@ namespace HotelLinenManagement.Controllers
             var response = await this.mediator.Send(request);
             return this.Ok(response);
         }
+
         [HttpPut]
         [Route("")]
         public async Task<IActionResult>PutHotelLinenById([FromQuery] PutHotelLinensByIdRequest request)
@@ -54,9 +55,10 @@ namespace HotelLinenManagement.Controllers
             var response = await this.mediator.Send(request);
             return this.Ok(response);
         }
+
         [HttpDelete]
         [Route("hotelLinenId")]
-        public async Task<IActionResult> DeleteHotelLinenById([FromQuery] int hotelLinenId)
+        public async Task<IActionResult> DeleteHotelLinenById([FromRoute] int hotelLinenId)
         {
             var request = new DeleteHotelLinenByIdRequest
             {
