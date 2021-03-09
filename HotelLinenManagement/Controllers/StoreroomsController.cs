@@ -32,5 +32,21 @@ namespace HotelLinenManagement.Controllers
             var response = await this.mediator.Send(request);
             return this.Ok(response);
         }
+        [HttpPut]
+        [Route("")]
+        public async Task<IActionResult> PutHotelLinenById([FromQuery] PutStoreroomsByIdRequest request)
+        {
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
+
+        [HttpDelete]
+        [Route("")]
+        public async Task<IActionResult> DeleteHotelLinenById([FromQuery] DeleteStoreroomsByIdRequest request)
+        {
+            
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
     }
 }

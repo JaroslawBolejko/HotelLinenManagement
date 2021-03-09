@@ -3,11 +3,11 @@ using System.Threading.Tasks;
 
 namespace HotelLinenManagement.DataAccess.CQRS.Commands.HotelLinens
 {
-    public class PutHotelLinensCommand : CommandBase<HotelLinen, HotelLinen>
+    public class PutStoreroomsByIdCommand : CommandBase<Storeroom, Storeroom>
     {
-        public override async Task<HotelLinen> Execute(HotelLinenWarehouseContext context)
+        public override async Task<Storeroom> Execute(HotelLinenWarehouseContext context)
         {
-            context.HotelLinens.Update(this.Parameter);
+            context.Storerooms.Update(this.Parameter);
             await context.SaveChangesAsync();
             return this.Parameter;
         }
