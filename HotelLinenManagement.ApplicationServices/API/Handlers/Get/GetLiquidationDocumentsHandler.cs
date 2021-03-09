@@ -1,38 +1,42 @@
 ﻿using AutoMapper;
 using HotelLinenManagement.ApplicationServices.API.Domain.Requests.LiquidationDocuments;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses.LiquidationDocuments;
-using HotelLinenManagement.DataAccess;
-using HotelLinenManagement.DataAccess.Entities;
+using HotelLinenManagement.DataAccess.CQRS;
+using HotelLinenManagement.DataAccess.CQRS.Queries.LiquidationDocuments;
 using MediatR;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-
-namespace HotelLinenManagement.ApplicationServices.API.Handlers
+namespace HotelLinenManagement.ApplicationServices.API.Handlers.Get
 {
     public class GetLiquidationDocumentsHandler : IRequestHandler<GetAllLiquidationsDocumentsRequest, GetAllLiquidationDocumentsResponse>
     {
-        private readonly IRepository<LiquidationDocument> liquidationDocumentRepository;
         private readonly IMapper mapper;
+        private readonly IQueryExecutor queryExecutor;
 
-        public GetLiquidationDocumentsHandler(IRepository<DataAccess.Entities.LiquidationDocument> liquidationDocumentRepository, IMapper mapper)
+        public GetLiquidationDocumentsHandler(IMapper mapper, IQueryExecutor queryExecutor)
         {
-            this.liquidationDocumentRepository = liquidationDocumentRepository;
             this.mapper = mapper;
+            this.queryExecutor = queryExecutor;
         }
 
         public async Task<GetAllLiquidationDocumentsResponse> Handle(GetAllLiquidationsDocumentsRequest request, CancellationToken cancellationToken)
         {
-            var liquidationDocument = await this.liquidationDocumentRepository.GetAll();
-            var mappedliquidationDocument = this.mapper.Map<List<Domain.Models.LiquidationDocument>>(liquidationDocument);
-
-            var response = new GetAllLiquidationDocumentsResponse()
+            var query = new GetLiquidationDocumentsQuery()
             {
-                Data = mappedliquidationDocument
+                LiquidationDocNumber = request.LiquidationDocNumber
+            };
+
+            var liquidationDoc = await this.queryExecutor.Execute(query);
+            var mapppedLiquidationDoc = this.mapper.Map<List<Domain.Models.LiquidationDocument>>(liquidationDoc);
+
+            var response = new GetAllLiquidationDocumentsResponse
+            {
+                Data = mapppedLiquidationDoc
             };
             return response;
+
         }
     }
 }
-

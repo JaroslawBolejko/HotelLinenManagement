@@ -5,5 +5,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.Liquidati
 {
     public class GetAllLiquidationsDocumentsRequest : IRequest<GetAllLiquidationDocumentsResponse>
     {
+        public int? LiquidationDocNumber { get; set; }
+
     }
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HotelLinenManagement.DataAccess.CQRS.Queries.HotelLinens
+namespace HotelLinenManagement.DataAccess.CQRS.Queries.Storerooms
 {
     public class GetStoreroomsQuery : QueryBase<List<Storeroom>>
     {

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
-namespace HotelLinenManagement.DataAccess.CQRS.Queries.HotelLinens
+namespace HotelLinenManagement.DataAccess.CQRS.Queries.Storerooms
 {
     public class GetStoreroomQuery : QueryBase<Storeroom>
     {
