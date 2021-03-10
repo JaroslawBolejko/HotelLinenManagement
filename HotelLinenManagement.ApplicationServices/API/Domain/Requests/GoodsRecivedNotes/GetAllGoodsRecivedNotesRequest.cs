@@ -5,5 +5,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.GoodsReci
 {
     public class GetAllGoodsRecivedNotesRequest : IRequest<GetAllGoodsRecivedNotesResponse>
     {
+        public int? GoodsReceivedNoteNumber { get; set; }
+
     }
 }

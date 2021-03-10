@@ -12,9 +12,12 @@ namespace HotelLinenManagement.ApplicationServices.API.Mappings
                 .ForMember(x => x.PaymentDate, y => y.MapFrom(z => z.PaymentDate))
                 .ForMember(x => x.Description, y => y.MapFrom(z => z.Description))
                 .ForMember(x => x.InvoiceTotal, y => y.MapFrom(z => z.InvoiceTotal))
-                .ForMember(x => x.Hotel, y => y.MapFrom(z => z.Hotel))
-                .ForMember(x => x.Laundry, y => y.MapFrom(z => z.Laundry));
+               //.ForMember(x => x.HotelId, y => y.MapFrom(z => z.HotelId))
+                .ForMember(x => x.LaundryId, y => y.MapFrom(z => z.LaundryId));
+               // Tu z tymi migracjami jest coś nie tak                           
+        // .ForMember(x => x.Hotel, y => y.MapFrom(z => z.Hotel))
+        //  .ForMember(x => x.Laundry, y => y.MapFrom(z => z.Laundry));
 
-        }
+    }
     }
 }

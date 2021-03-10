@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using HotelLinenManagement.ApplicationServices.API.Domain.Requests.GoodsRecivedNotes;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses.GoodsRecivedNotes;
-using HotelLinenManagement.DataAccess;
-using HotelLinenManagement.DataAccess.Entities;
+using HotelLinenManagement.DataAccess.CQRS;
+using HotelLinenManagement.DataAccess.CQRS.Queries.GoodsReceivedNotes;
 using MediatR;
 using System.Collections.Generic;
 using System.Threading;
@@ -11,20 +11,25 @@ using System.Threading.Tasks;
 
 namespace HotelLinenManagement.ApplicationServices.API.Handlers
 {
-   public class GetGoodsReceivedNotesHandler : IRequestHandler<GetAllGoodsRecivedNotesRequest, GetAllGoodsRecivedNotesResponse>
+    public class GetGoodsReceivedNotesHandler : IRequestHandler<GetAllGoodsRecivedNotesRequest, GetAllGoodsRecivedNotesResponse>
     {
-        private readonly IRepository<GoodsReceivedNote> goodsRecivedNotesRepository;
         private readonly IMapper mapper;
+        private readonly IQueryExecutor queryExecutor;
 
-        public GetGoodsReceivedNotesHandler(IRepository<DataAccess.Entities.GoodsReceivedNote> goodsRecivedNotesRepository, IMapper mapper)
+        public GetGoodsReceivedNotesHandler(IMapper mapper, IQueryExecutor queryExecutor)
         {
-            this.goodsRecivedNotesRepository = goodsRecivedNotesRepository;
+            
             this.mapper = mapper;
+            this.queryExecutor = queryExecutor;
         }
 
         public async Task<GetAllGoodsRecivedNotesResponse> Handle(GetAllGoodsRecivedNotesRequest request, CancellationToken cancellationToken)
         {
-            var goodsReceivedNote = await this.goodsRecivedNotesRepository.GetAll();
+            var query = new GetGoodsReceivedNotesQuery()
+            {
+                GoodsReceivedNoteNumber=request.GoodsReceivedNoteNumber
+            };
+            var goodsReceivedNote = await this.queryExecutor.Execute(query);
             var mappedGoodsReceivedNote = this.mapper.Map<List<Domain.Models.GoodsReceivedNote>>(goodsReceivedNote);
 
             var response = new GetAllGoodsRecivedNotesResponse()

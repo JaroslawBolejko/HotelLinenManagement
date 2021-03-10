@@ -5,6 +5,8 @@ namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.Laundries
 {
     public class GetAllLaundriesRequest : IRequest<GetAllLaundriesResponse>
     {
+        public string TaxNumber { get; set; }
+
     }
 }
 

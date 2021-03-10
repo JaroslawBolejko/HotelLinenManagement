@@ -18,7 +18,6 @@ namespace HotelLinenManagement.DataAccess.CQRS.Queries.HotelLinens
             {
                 return await context.HotelLinens.Where(x => x.LinenName.Contains(this.LinenName)).ToListAsync();
             }
-            //Adam podaje FirstOrDefault ,który w przypadku braku id zwróci null co by sie tu może lepiej sprawdziło
 
             else if (StoreroomId != null)
             {

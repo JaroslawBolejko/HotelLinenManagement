@@ -1,7 +1,7 @@
 ﻿using HotelLinenManagement.DataAccess.Entities;
 using System.Threading.Tasks;
 
-namespace HotelLinenManagement.DataAccess.CQRS.Commands.HotelLinens
+namespace HotelLinenManagement.DataAccess.CQRS.Commands.Storerooms
 {
     public class PutStoreroomsByIdCommand : CommandBase<Storeroom, Storeroom>
     {

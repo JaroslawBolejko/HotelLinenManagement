@@ -1,7 +1,7 @@
 ﻿using HotelLinenManagement.DataAccess.Entities;
 using System.Threading.Tasks;
 
-namespace HotelLinenManagement.DataAccess.CQRS.Commands.Storerooms
+namespace HotelLinenManagement.DataAccess.CQRS.Commands.Users
 {
     public class DeleteUserByIdCommand : CommandBase<User, User>
     {

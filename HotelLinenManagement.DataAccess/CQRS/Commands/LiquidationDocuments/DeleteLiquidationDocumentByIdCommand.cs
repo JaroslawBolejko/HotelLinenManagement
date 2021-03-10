@@ -1,7 +1,7 @@
 ﻿using HotelLinenManagement.DataAccess.Entities;
 using System.Threading.Tasks;
 
-namespace HotelLinenManagement.DataAccess.CQRS.Commands.Storerooms
+namespace HotelLinenManagement.DataAccess.CQRS.Commands.LiquidationDocuments
 {
     public class DeleteLiquidationDocumentByIdCommand : CommandBase<LiquidationDocument, LiquidationDocument>
     {

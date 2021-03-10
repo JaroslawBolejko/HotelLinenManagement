@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using HotelLinenManagement.ApplicationServices.API.Domain.Requests;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses;
-using HotelLinenManagement.DataAccess;
-using HotelLinenManagement.DataAccess.Entities;
+using HotelLinenManagement.DataAccess.CQRS;
+using HotelLinenManagement.DataAccess.CQRS.Queries.Invoices;
 using MediatR;
 using System.Collections.Generic;
 using System.Threading;
@@ -11,20 +11,26 @@ using System.Threading.Tasks;
 
 namespace HotelLinenManagement.ApplicationServices.API.Handlers
 {
-     public class GetInvoicesHandler : IRequestHandler<GetAllInvoicesRequest, GetAllInvoicesResponse>
+    public class GetInvoicesHandler : IRequestHandler<GetAllInvoicesRequest, GetAllInvoicesResponse>
     {
-        private readonly IRepository<Invoice> invoiceRepository;
         private readonly IMapper mapper;
+        private readonly IQueryExecutor queryExecutor;
 
-        public GetInvoicesHandler(IRepository<DataAccess.Entities.Invoice> invoiceRepository,IMapper mapper)
+        public GetInvoicesHandler(IMapper mapper, IQueryExecutor queryExecutor)
         {
-            this.invoiceRepository = invoiceRepository;
             this.mapper = mapper;
+            this.queryExecutor = queryExecutor;
         }
 
         public async Task<GetAllInvoicesResponse> Handle(GetAllInvoicesRequest request, CancellationToken cancellationToken)
         {
-            var invoice = await this.invoiceRepository.GetAll();
+            var query = new GetInvoicesQuery()
+            {
+               // HotelId = request.HotelId,
+                LaundryId = request.LaundryId
+            };
+
+            var invoice = await this.queryExecutor.Execute(query);
             var mappedInvoice = this.mapper.Map<List<Domain.Models.Invoice>>(invoice);
 
             var response = new GetAllInvoicesResponse()

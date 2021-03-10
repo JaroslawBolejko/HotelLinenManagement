@@ -8,8 +8,10 @@ namespace HotelLinenManagement.ApplicationServices.API.Domain.Models
         public DateTime PaymentDate { get; set; }
         public string Description { get; set; }
         public decimal InvoiceTotal { get; set; }
-        public Hotel Hotel { get; set; }
-        public Laundry Laundry { get; set; }
+       // public int HotelId { get; set; }
+        public int LaundryId { get; set; }
+       // public Hotel Hotel { get; set; }
+      //  public Laundry Laundry { get; set; }
 
     }
 }

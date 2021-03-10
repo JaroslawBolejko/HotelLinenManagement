@@ -12,11 +12,11 @@ namespace HotelLinenManagement.ApplicationServices.API.Mappings
                 .ForMember(x => x.Name, y => y.MapFrom(z => z.Name))
                 .ForMember(x => x.TaxNumber, y => y.MapFrom(z => z.TaxNumber))
                 .ForMember(x => x.ReciptDate, y => y.MapFrom(z => z.ReciptDate))
-                .ForMember(x => x.IssueDate, y => y.MapFrom(z => z.IssueDate))
-                .ForMember(x => x.Invoices, y => y.MapFrom(z => z.Invoices))
-                .ForMember(x => x.HotelLinens, y => y.MapFrom(z => z.HotelLinens))
-                .ForMember(x => x.GoodsReceivedNotes, y => y.MapFrom(z => z.GoodsReceivedNotes))
-                .ForMember(x => x.GoodsIssuedNotes, y => y.MapFrom(z => z.GoodsIssuedNotes));
+                .ForMember(x => x.IssueDate, y => y.MapFrom(z => z.IssueDate));
+                //.ForMember(x => x.Invoices, y => y.MapFrom(z => z.Invoices))
+                //.ForMember(x => x.HotelLinens, y => y.MapFrom(z => z.HotelLinens))
+                //.ForMember(x => x.GoodsReceivedNotes, y => y.MapFrom(z => z.GoodsReceivedNotes))
+               // .ForMember(x => x.GoodsIssuedNotes, y => y.MapFrom(z => z.GoodsIssuedNotes));
         }
     }
 }

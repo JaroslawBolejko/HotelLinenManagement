@@ -10,9 +10,9 @@ namespace HotelLinenManagement.ApplicationServices.API.Domain.Models
         public int GoodsReceivedNoteNumber { get; set; }
 
         public DateTime GoodsReceivedNoteDate { get; set; }
-        public HotelLinen HotelLinen { get; set; }
-        public User User { get; set; }
-        public Hotel Hotel { get; set; }
+       // public HotelLinen HotelLinen { get; set; }
+      //  public User User { get; set; }
+     //   public Hotel Hotel { get; set; }
 
     }
 }

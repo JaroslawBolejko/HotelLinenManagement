@@ -13,5 +13,7 @@ namespace HotelLinenManagement.DataAccess.Entities
         public string Description { get; set; }
         [Required]
         public decimal InvoiceTotal { get; set; }
+        //public int HotelId { get; set; }
+        public int LaundryId { get; set; }
     }
 }

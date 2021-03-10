@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using HotelLinenManagement.ApplicationServices.API.Domain.Requests.Laundries;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses.Laundries;
-using HotelLinenManagement.DataAccess;
-using HotelLinenManagement.DataAccess.Entities;
+using HotelLinenManagement.DataAccess.CQRS;
+using HotelLinenManagement.DataAccess.CQRS.Queries.Laundries;
 using MediatR;
 using System.Collections.Generic;
 using System.Threading;
@@ -11,20 +11,24 @@ using System.Threading.Tasks;
 
 namespace HotelLinenManagement.ApplicationServices.API.Handlers
 {
-   public class GetLaundriesHandler : IRequestHandler<GetAllLaundriesRequest, GetAllLaundriesResponse>
+    public class GetLaundriesHandler : IRequestHandler<GetAllLaundriesRequest, GetAllLaundriesResponse>
     {
-        private readonly IRepository<Laundry> laundryRepository;
         private readonly IMapper mapper;
+        private readonly IQueryExecutor queryExecutor;
 
-        public GetLaundriesHandler(IRepository<DataAccess.Entities.Laundry> laundryRepository, IMapper mapper)
+        public GetLaundriesHandler(IMapper mapper, IQueryExecutor queryExecutor)
         {
-            this.laundryRepository = laundryRepository;
             this.mapper = mapper;
+            this.queryExecutor = queryExecutor;
         }
 
         public async Task<GetAllLaundriesResponse> Handle(GetAllLaundriesRequest request, CancellationToken cancellationToken)
         {
-            var laundries = await this.laundryRepository.GetAll();
+            var query = new GetLaundriesQuery()
+            {
+                TaxNumber = request.TaxNumber
+            };
+            var laundries = await this.queryExecutor.Execute(query);
             var mappedLaundry = this.mapper.Map<List<Domain.Models.Laundry>>(laundries);
 
 

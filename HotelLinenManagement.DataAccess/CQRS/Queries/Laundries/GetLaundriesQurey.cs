@@ -1,21 +1,24 @@
-﻿//using HotelLinenManagement.DataAccess.Entities;
-//using Microsoft.EntityFrameworkCore;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Threading.Tasks;
+﻿using HotelLinenManagement.DataAccess.Entities;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-//namespace HotelLinenManagement.DataAccess.CQRS.Queries.LinenTypes
-//{
-//    public class GetLaundriesQuery : QueryBase<List<Laundry>>
-//    {
-//        //public string TaxNumber { get; set; }
+namespace HotelLinenManagement.DataAccess.CQRS.Queries.Laundries
+{
+    public class GetLaundriesQuery : QueryBase<List<Laundry>>
+    {
+        public string TaxNumber { get; set; }
 
-//        //public override async Task<List<Laundry>> Execute(HotelLinenWarehouseContext context)
-//        //{
+        public override async Task<List<Laundry>> Execute(HotelLinenWarehouseContext context)
+        {
 
-//        //    //var laundry = await context.Laundries.FirstOrDefaultAsync(x => x.TaxNumber == this.TaxNumber);
-//        //    //return laundry;
-//        //}
-//    }
-//}
-//}
+            if (!string.IsNullOrEmpty(this.TaxNumber))
+            {
+                return await context.Laundries.Where(x => x.TaxNumber.Contains(this.TaxNumber)).ToListAsync();
+            }
+
+            return await context.Laundries.ToListAsync();
+        }
+    }
+}

@@ -2,7 +2,7 @@
 using HotelLinenManagement.ApplicationServices.API.Domain.Requests.Storerooms;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses.Storerooms;
 using HotelLinenManagement.DataAccess.CQRS;
-using HotelLinenManagement.DataAccess.CQRS.Commands.HotelLinens;
+using HotelLinenManagement.DataAccess.CQRS.Commands.Storerooms;
 using HotelLinenManagement.DataAccess.Entities;
 using MediatR;
 using System.Threading;

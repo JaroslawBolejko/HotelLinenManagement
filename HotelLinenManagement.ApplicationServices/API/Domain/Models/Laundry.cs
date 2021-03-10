@@ -11,10 +11,10 @@ namespace HotelLinenManagement.ApplicationServices.API.Domain.Models
         public DateTime ReciptDate { get; set; }
         public DateTime IssueDate { get; set; }
 
-        public List<DataAccess.Entities.Invoice> Invoices { get; set; }
-        public List<DataAccess.Entities.HotelLinen> HotelLinens { get; set; }
-        public List<DataAccess.Entities.GoodsReceivedNote> GoodsReceivedNotes { get; set; }
-        public List<DataAccess.Entities.GoodsIssuedNote> GoodsIssuedNotes { get; set; }
+        //public List<DataAccess.Entities.Invoice> Invoices { get; set; }
+        //public List<DataAccess.Entities.HotelLinen> HotelLinens { get; set; }
+        //public List<DataAccess.Entities.GoodsReceivedNote> GoodsReceivedNotes { get; set; }
+        //public List<DataAccess.Entities.GoodsIssuedNote> GoodsIssuedNotes { get; set; }
     }
 }
 
