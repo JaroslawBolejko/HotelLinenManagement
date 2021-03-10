@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using HotelLinenManagement.DataAccess.Entities;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
 namespace HotelLinenManagement.DataAccess.CQRS.Queries.Laundries
 {
-    class GetLaundryQurey
+    public class GetLaundryQuery : QueryBase<Laundry>
     {
+        public int Id { get; set; }
+        public override async Task<Laundry> Execute(HotelLinenWarehouseContext context)
+        {
+            return await context.Laundries.FirstOrDefaultAsync(x => x.Id == this.Id);
+           
+        }
     }
 }
