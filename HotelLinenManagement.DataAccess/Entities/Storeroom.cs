@@ -9,7 +9,6 @@ namespace HotelLinenManagement.DataAccess.Entities
         
         public List<HotelLinen> HotelLinens { get; set; }
         public Hotel Hotel { get; set; }
-        public List<Invoice> Invices { get; set; }
         public List<LinenType> LinenTypes { get; set; }
         public List<GoodsReceivedNote> GoodsReceivedNotes { get; set; }
         public List<GoodsIssuedNote> GoodsIssuedNotes { get; set; }

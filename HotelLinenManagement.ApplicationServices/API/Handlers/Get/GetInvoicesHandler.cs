@@ -26,7 +26,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
         {
             var query = new GetInvoicesQuery()
             {
-               // HotelId = request.HotelId,
+                HotelId = request.HotelId,
                 LaundryId = request.LaundryId
             };
 

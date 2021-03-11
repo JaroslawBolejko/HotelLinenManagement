@@ -6,10 +6,11 @@ namespace HotelLinenManagement.DataAccess.Entities
 {
     public class Laundry : EntityBase
     {
-        public List<Invoice> Invoices { get; set; }
         public List<HotelLinen> HotelLinens { get; set; }
         public List<GoodsReceivedNote> GoodsReceivedNotes { get; set; }
         public List<GoodsIssuedNote> GoodsIssuedNotes { get; set; }
+        public List<Invoice> Invoices { get; set; }
+
         [Required]
         [MaxLength(250)]
         public string Name { get; set; }

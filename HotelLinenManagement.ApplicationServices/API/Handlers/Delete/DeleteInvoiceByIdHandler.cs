@@ -1,11 +1,8 @@
 ﻿using AutoMapper;
 using HotelLinenManagement.ApplicationServices.API.Domain.Requests.Invoices;
-using HotelLinenManagement.ApplicationServices.API.Domain.Requests.Laundries;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses.Invoices;
-using HotelLinenManagement.ApplicationServices.API.Domain.Responses.Laundries;
 using HotelLinenManagement.DataAccess.CQRS;
 using HotelLinenManagement.DataAccess.CQRS.Commands.Invoices;
-using HotelLinenManagement.DataAccess.CQRS.Commands.Laundries;
 using HotelLinenManagement.DataAccess.Entities;
 using MediatR;
 using System.Threading;

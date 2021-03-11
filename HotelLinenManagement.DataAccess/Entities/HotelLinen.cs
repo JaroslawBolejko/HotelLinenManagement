@@ -11,7 +11,6 @@ namespace HotelLinenManagement.DataAccess.Entities
         public int StoreroomId{get;set;}
         public Storeroom Storeroom { get; set; }
        
-        public List<Invoice> Invoices { get; set; }
         public List<LinenType> LinienTypes { get; set; }
         public List<GoodsReceivedNote> GoodsReceivedNotes { get; set; }
         public List<GoodsIssuedNote> GoodsIssuedNotes { get; set; }

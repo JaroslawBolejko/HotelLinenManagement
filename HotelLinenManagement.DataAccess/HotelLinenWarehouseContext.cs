@@ -19,6 +19,7 @@ namespace HotelLinenManagement.DataAccess
         public DbSet<LiquidationDocument> LiquidationDocuments { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Laundry> Laundries { get; set; }
+        public DbSet<Alert>Alerts { get; set; }
      
     }
 }

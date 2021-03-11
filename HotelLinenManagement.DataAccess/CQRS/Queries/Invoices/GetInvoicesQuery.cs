@@ -8,7 +8,7 @@ namespace HotelLinenManagement.DataAccess.CQRS.Queries.Invoices
 {
     public class GetInvoicesQuery : QueryBase<List<Invoice>>
     {
-       // public int? HotelId { get; set; }
+        public int? HotelId { get; set; }
         public int? LaundryId { get; set; }
 
         public override async Task<List<Invoice>> Execute(HotelLinenWarehouseContext context)
@@ -18,10 +18,10 @@ namespace HotelLinenManagement.DataAccess.CQRS.Queries.Invoices
                 return await context.Invoices.Where(x => x.LaundryId == this.LaundryId).ToListAsync();
             }
 
-            //else if (HotelId != null)
-            //{
-            //    return await context.Invoices.Where(x => x.HotelId == this.HotelId).ToListAsync();
-            //}
+            else if (HotelId != null)
+            {
+                return await context.Invoices.Where(x => x.HotelId == this.HotelId).ToListAsync();
+            }
 
             return await context.Invoices.ToListAsync();
 

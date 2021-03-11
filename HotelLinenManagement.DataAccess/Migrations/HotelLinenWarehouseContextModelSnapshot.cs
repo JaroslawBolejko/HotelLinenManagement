@@ -34,6 +34,21 @@ namespace HotelLinenManagement.DataAccess.Migrations
                     b.ToTable("HotelLinenLaundry");
                 });
 
+            modelBuilder.Entity("HotelLinenManagement.DataAccess.Entities.Alert", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AlertName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Alerts");
+                });
+
             modelBuilder.Entity("HotelLinenManagement.DataAccess.Entities.GoodsIssuedNote", b =>
                 {
                     b.Property<int>("Id")
@@ -210,43 +225,29 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
                     b.Property<string>("DocumentName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<int>("DocumentNumber")
                         .HasColumnType("int");
 
-                    b.Property<int?>("HotelId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("HotelLinenId")
+                    b.Property<int>("HotelId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("InvoiceTotal")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int?>("LaundryId")
+                    b.Property<int>("LaundryId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("PaymentDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("StoreroomId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("HotelId");
 
-                    b.HasIndex("HotelLinenId");
-
                     b.HasIndex("LaundryId");
-
-                    b.HasIndex("StoreroomId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Invoices");
                 });
@@ -397,7 +398,9 @@ namespace HotelLinenManagement.DataAccess.Migrations
                         .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("Position")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("Workplace")
                         .IsRequired()
@@ -522,33 +525,19 @@ namespace HotelLinenManagement.DataAccess.Migrations
                 {
                     b.HasOne("HotelLinenManagement.DataAccess.Entities.Hotel", "Hotel")
                         .WithMany("Invoices")
-                        .HasForeignKey("HotelId");
-
-                    b.HasOne("HotelLinenManagement.DataAccess.Entities.HotelLinen", "HotelLinen")
-                        .WithMany("Invoices")
-                        .HasForeignKey("HotelLinenId");
+                        .HasForeignKey("HotelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("HotelLinenManagement.DataAccess.Entities.Laundry", "Laundry")
                         .WithMany("Invoices")
-                        .HasForeignKey("LaundryId");
-
-                    b.HasOne("HotelLinenManagement.DataAccess.Entities.Storeroom", "Storeroom")
-                        .WithMany("Invices")
-                        .HasForeignKey("StoreroomId");
-
-                    b.HasOne("HotelLinenManagement.DataAccess.Entities.User", "User")
-                        .WithMany("Invoices")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("LaundryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Hotel");
 
-                    b.Navigation("HotelLinen");
-
                     b.Navigation("Laundry");
-
-                    b.Navigation("Storeroom");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("HotelLinenManagement.DataAccess.Entities.LinenType", b =>
@@ -636,8 +625,6 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
                     b.Navigation("GoodsReceivedNotes");
 
-                    b.Navigation("Invoices");
-
                     b.Navigation("LinienTypes");
 
                     b.Navigation("LiquidationDocuments");
@@ -660,8 +647,6 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
                     b.Navigation("HotelLinens");
 
-                    b.Navigation("Invices");
-
                     b.Navigation("LinenTypes");
 
                     b.Navigation("LiquidationDocuments");
@@ -672,8 +657,6 @@ namespace HotelLinenManagement.DataAccess.Migrations
                     b.Navigation("GoodsIssuedNotes");
 
                     b.Navigation("GoodsReceivedNotes");
-
-                    b.Navigation("Invoices");
 
                     b.Navigation("LiquidationDocuments");
                 });

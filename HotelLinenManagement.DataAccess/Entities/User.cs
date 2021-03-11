@@ -7,7 +7,6 @@ namespace HotelLinenManagement.DataAccess.Entities
     {
       
         public List <Storeroom> Storerooms { get; set; }
-        public List<Invoice> Invoices { get; set; }
         public List<GoodsReceivedNote> GoodsReceivedNotes { get; set; }
         public List<GoodsIssuedNote> GoodsIssuedNotes { get; set; }
         public List<LiquidationDocument> LiquidationDocuments { get; set; }
@@ -17,6 +16,8 @@ namespace HotelLinenManagement.DataAccess.Entities
         [Required]
         [MaxLength(250)]
         public string LastName { get; set; }
+        [Required]
+        [MaxLength(250)]
         public string Position { get; set; }
         [Required]
         [MaxLength(250)]
