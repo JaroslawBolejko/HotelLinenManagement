@@ -5,16 +5,14 @@ namespace HotelLinenManagement.DataAccess.Entities
 {
     public class HotelLinen : EntityBase
     {
-
+        public int HotelId { get; set; }
         public Hotel Hotel { get; set; }
         [Required]
         public int StoreroomId{get;set;}
         public Storeroom Storeroom { get; set; }
        
         public List<LinenType> LinienTypes { get; set; }
-        public List<GoodsReceivedNote> GoodsReceivedNotes { get; set; }
-        public List<GoodsIssuedNote> GoodsIssuedNotes { get; set; }
-        public List<LiquidationDocument> LiquidationDocuments { get; set; }
+       
         public List<Laundry> Laundries { get; set; }
 
         [Required]
