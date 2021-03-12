@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using HotelLinenManagement.ApplicationServices.API.Domain;
 using HotelLinenManagement.ApplicationServices.API.Mappings;
 using HotelLinenManagement.DataAccess;
@@ -10,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using HotelLinenManagement.ApplicationServices.API.Validators;
+using Microsoft.AspNetCore.Mvc;
 
 namespace HotelLinenManagement
 {
@@ -25,10 +28,21 @@ namespace HotelLinenManagement
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvcCore()
+                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<AddStoreroomRequestValidtor>());
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
+
             services.AddTransient<IQueryExecutor, QueryExecutor>();
+
             services.AddTransient<ICommandExecutor, CommandExecutor>();
+
             services.AddAutoMapper(typeof(HotelLinensProfile).Assembly);
+
             services.AddMediatR(typeof(ResponseBase<>));
+
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddDbContext<HotelLinenWarehouseContext>(
                 opt =>

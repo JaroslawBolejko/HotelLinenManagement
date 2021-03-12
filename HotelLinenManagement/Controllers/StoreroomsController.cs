@@ -44,6 +44,11 @@ namespace HotelLinenManagement.Controllers
         [Route("")]
         public async Task<IActionResult> AddStoreroom([FromQuery] AddStoreroomRequest request)
         {
+            //Miejsce w którym dowiadujemy sie czy reqest jest prawidłowy czy nie i mozemy tu rózne akcje podejmowac
+            if (!this.ModelState.IsValid)
+            {
+                return this.BadRequest("BAD_REQUEST_Jeb się Psie");
+            }
             var response = await this.mediator.Send(request);
             return this.Ok(response);
         }

@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "UQvBArqmB1tTmNp3BBLTBYyg1EVEU2dPXNfgVEdJRasgHHh1ZN7tH37v4e7G7qMn4h/7vG9q23LM/DDKqpSisg==",
+  "dgSpecHash": "SxwIWEPft51Q3wJoIrWM/PjZHVMQsoQJt2OV+2CL4zaEPC+lTwVFnaXOlZxEK1Mpf3iC83j1YXLihPMezZ8lBA==",
   "success": true,
   "projectFilePath": "C:\\Users\\user\\Documents\\GitHub\\HotelLinenManagement\\HotelLinenManagement.ApplicationServices\\HotelLinenManagement.ApplicationServices.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\fluentvalidation\\9.5.2\\fluentvalidation.9.5.2.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\fluentvalidation.aspnetcore\\9.5.2\\fluentvalidation.aspnetcore.9.5.2.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\9.5.2\\fluentvalidation.dependencyinjectionextensions.9.5.2.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\9.0.0\\mediatr.extensions.microsoft.dependencyinjection.9.0.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
