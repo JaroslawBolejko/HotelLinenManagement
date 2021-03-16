@@ -15,7 +15,7 @@ namespace HotelLinenManagement.DataAccess.CQRS.Queries.Storerooms
 
             if (!string.IsNullOrEmpty(this.StoreroomName))
             {
-                return await context.Storerooms.Where(x => x.StoreroomName.Contains(this.StoreroomName)).ToListAsync();
+                return await context.Storerooms.Include(x=>x.HotelLinens).Where(x => x.StoreroomName.Contains(this.StoreroomName)).ToListAsync();
             }
             
             return await context.Storerooms.ToListAsync();

@@ -1,5 +1,7 @@
 ﻿using HotelLinenManagement.ApplicationServices.API.Domain.Requests;
 using HotelLinenManagement.ApplicationServices.API.Domain.Requests.Storerooms;
+using HotelLinenManagement.ApplicationServices.API.Domain.Responses;
+using HotelLinenManagement.ApplicationServices.API.Domain.Responses.Storerooms;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -9,65 +11,70 @@ namespace HotelLinenManagement.Controllers
     [ApiController]
     [Route("[controller]")]
 
-    public class StoreroomsController : ControllerBase
+    public class StoreroomsController : ApiControllerBase
     {
-        private readonly IMediator mediator;
-
-        public StoreroomsController(IMediator mediator)
+        public StoreroomsController(IMediator mediator) : base(mediator)
         {
-            this.mediator = mediator;
         }
 
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetAllStorerooms([FromQuery] GetAllStoreroomsRequest request)
+        public  Task<IActionResult> GetAllStorerooms([FromQuery] GetAllStoreroomsRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            //var response = await this.mediator.Send(request);
+            //return this.Ok(response);
+            return this.HandleRequest<GetAllStoreroomsRequest, GetAllStoreroomsResponse>(request);
         }
 
         [HttpGet]
         [Route("{storeroomId}")]
-        public async Task<IActionResult> GetById([FromRoute] int storeroomId)
+        public Task<IActionResult> GetById([FromRoute] int storeroomId)
         {
 
             var request = new GetStoreroomByIdRequest()
             {
                 StoreroomId = storeroomId
             };
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            //var response = await this.mediator.Send(request);
+            //return this.Ok(response);
+            return this.HandleRequest<GetStoreroomByIdRequest, GetStoreroomByIdResponse>(request);
 
         }
 
         [HttpPost]
         [Route("")]
-        public async Task<IActionResult> AddStoreroom([FromQuery] AddStoreroomRequest request)
+        public Task<IActionResult> AddStoreroom([FromQuery] AddStoreroomRequest request)
         {
+            return this.HandleRequest<AddStoreroomRequest, AddStoreroomResponse>(request);
+
             //Miejsce w którym dowiadujemy sie czy reqest jest prawidłowy czy nie i mozemy tu rózne akcje podejmowac
-            if (!this.ModelState.IsValid)
-            {
-                return this.BadRequest("BAD_REQUEST_Jeb się Psie");
-            }
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            //if (!this.ModelState.IsValid)
+            //{
+            //    return this.BadRequest("BAD_REQUEST_Jeb się Psie");
+            //}
+            //var response = await this.mediator.Send(request);
+            //return this.Ok(response);
         }
 
         [HttpPut]
         [Route("")]
-        public async Task<IActionResult> PutStoreroomById([FromQuery] PutStoreroomsByIdRequest request)
+        public  Task<IActionResult> PutStoreroomById([FromQuery] PutStoreroomsByIdRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            //var response = await this.mediator.Send(request);
+            //return this.Ok(response);
+            return this.HandleRequest<PutStoreroomsByIdRequest, PutStoreroomsByIdResponse>(request);
+
         }
 
         [HttpDelete]
         [Route("")]
-        public async Task<IActionResult> DeleteStoreroomById([FromQuery] DeleteStoreroomsByIdRequest request)
+        public Task<IActionResult> DeleteStoreroomById([FromQuery] DeleteStoreroomsByIdRequest request)
         {
 
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            //var response = await this.mediator.Send(request);
+            //return this.Ok(response);
+            return this.HandleRequest<DeleteStoreroomsByIdRequest, DeleteStoreroomsByIdResponse>(request);
+
         }
     }
 }

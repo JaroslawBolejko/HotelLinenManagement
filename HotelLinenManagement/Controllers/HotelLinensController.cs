@@ -1,5 +1,7 @@
 ﻿using HotelLinenManagement.ApplicationServices.API.Domain.Requests;
 using HotelLinenManagement.ApplicationServices.API.Domain.Requests.HotelLinens;
+using HotelLinenManagement.ApplicationServices.API.Domain.Responses;
+using HotelLinenManagement.ApplicationServices.API.Domain.Responses.HotelLinens;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -9,63 +11,60 @@ namespace HotelLinenManagement.Controllers
     [ApiController]
     [Route("[controller]")]
 
-    public class HotelLinensController : ControllerBase
+    public class HotelLinensController : ApiControllerBase
     {
-        private readonly IMediator mediator;
 
-        public HotelLinensController(IMediator mediator)
+        public HotelLinensController(IMediator mediator) : base(mediator)
         {
-            this.mediator = mediator;
         }
+
 
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetAllHotelLinnens([FromQuery] GetAllHotelLinensRequest request)
+        public  Task<IActionResult> GetAllHotelLinnens([FromQuery] GetAllHotelLinensRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            
+            return this.HandleRequest<GetAllHotelLinensRequest, GetAllHotelLinensResponse>(request);
+
         }
-       
+
         [HttpGet]
         [Route("{hotelLinenId}")]
-        public async Task<IActionResult> GetById([FromRoute] int hotelLinenId)
+        public  Task<IActionResult> GetById([FromRoute] int hotelLinenId)
         {
 
             var request = new GetHotelLinenByIdRequest()
             {
                 HotelLinenId = hotelLinenId
             };
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+
+            return this.HandleRequest<GetHotelLinenByIdRequest, GetHotelLinenByIdResponse>(request);
 
         }
 
         [HttpPost]
         [Route("")]
-        public async Task<IActionResult> AddHotelLinen([FromQuery] AddHotelLinenRequest request)
+        public Task<IActionResult> AddHotelLinen([FromQuery] AddHotelLinenRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<AddHotelLinenRequest, AddHotelLinenResponse>(request);
+
         }
 
         [HttpPut]
         [Route("")]
-        public async Task<IActionResult>PutHotelLinenById([FromQuery] PutHotelLinensByIdRequest request)
+        public  Task<IActionResult> PutHotelLinenById([FromQuery] PutHotelLinensByIdRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<PutHotelLinensByIdRequest, PutHotelLinensByIdResponse>(request);
+
         }
 
         [HttpDelete]
-        [Route("hotelLinenId")]
-        public async Task<IActionResult> DeleteHotelLinenById([FromRoute] int hotelLinenId)
+        [Route("")]
+        public Task<IActionResult> DeleteHotelLinenById([FromQuery] DeleteHotelLinenByIdRequest request)
         {
-            var request = new DeleteHotelLinenByIdRequest
-            {
-                HotelLinenId = hotelLinenId
-            };
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+           
+            return this.HandleRequest<DeleteHotelLinenByIdRequest, DeleteHotelLinenByIdResponse>(request);
+
         }
 
     }

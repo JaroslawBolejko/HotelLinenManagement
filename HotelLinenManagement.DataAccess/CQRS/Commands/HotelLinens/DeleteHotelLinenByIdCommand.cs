@@ -1,13 +1,14 @@
-﻿using System.Threading.Tasks;
+﻿using HotelLinenManagement.DataAccess.Entities;
+using System.Threading.Tasks;
 
 namespace HotelLinenManagement.DataAccess.CQRS.Commands.HotelLinens
 {
-    public class DeleteHotelLinenByIdCommand : CommandBase<int, int>
+    public class DeleteHotelLinenByIdCommand : CommandBase<HotelLinen, HotelLinen>
     {
-        public override async Task<int> Execute(HotelLinenWarehouseContext context)
+        public override async Task<HotelLinen> Execute(HotelLinenWarehouseContext context)
         {
-            var entity = await context.HotelLinens.FindAsync(Parameter);
-            context.HotelLinens.Remove(entity);
+            
+            context.HotelLinens.Remove(this.Parameter);
             await context.SaveChangesAsync();
             return this.Parameter;
         }
