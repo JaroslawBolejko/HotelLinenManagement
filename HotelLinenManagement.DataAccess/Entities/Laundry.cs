@@ -15,7 +15,7 @@ namespace HotelLinenManagement.DataAccess.Entities
         [MaxLength(250)]
         public string Name { get; set; }
         [Required]
-        [MaxLength(250)]
+        [StringLength(12)]
         public string TaxNumber { get; set; }
         [Required]
         public DateTime ReciptDate { get; set; }

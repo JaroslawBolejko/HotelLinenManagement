@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using HotelLinenManagement.ApplicationServices.API.Domain.Requests;
+using HotelLinenManagement.ApplicationServices.API.Domain.Requests.Invoices;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses.Invoices;
 using HotelLinenManagement.DataAccess.CQRS;
 using HotelLinenManagement.DataAccess.CQRS.Commands.Invoices;

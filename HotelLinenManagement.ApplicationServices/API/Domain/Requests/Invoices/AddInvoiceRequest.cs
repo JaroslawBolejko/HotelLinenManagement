@@ -2,7 +2,7 @@
 using MediatR;
 using System;
 
-namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests
+namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.Invoices
 {
     public class AddInvoiceRequest : IRequest<AddInvoiceResponse>
     {

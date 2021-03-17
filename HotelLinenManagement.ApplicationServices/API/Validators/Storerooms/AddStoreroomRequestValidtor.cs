@@ -8,8 +8,9 @@ namespace HotelLinenManagement.ApplicationServices.API.Validators
         public AddStoreroomRequestValidtor()
         {
             //withmessage pozwala na wpisanie własnego komunikatu ale dla mnie komunikat domyślny jest bardziej szczegółowy
-            this.RuleFor(x => x.RoomNumber).InclusiveBetween(0, 10000).WithMessage("WRONG_NUMBER_RANGE");
-            this.RuleFor(x => x.StoreroomName).Length(1, 250);
+            this.RuleFor(x => x.RoomNumber).InclusiveBetween(0, 10000).NotNull().WithMessage("WRONG_NUMBER_RANGE");
+            this.RuleFor(x => x.StoreroomName).MaximumLength(250);
+            
         }
     }
 }

@@ -9,5 +9,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.Users
         public string LastName { get; set; }
         public string Position { get; set; }
         public string Workplace { get; set; }
+        public string Permission { get; set; }
+
     }
 }

@@ -7,6 +7,8 @@
         public string LastName { get; set; }
         public string Position { get; set; }
         public string Workplace { get; set; }
+        public string Permission { get; set; }
+
 
     }
 }

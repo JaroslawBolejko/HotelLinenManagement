@@ -22,5 +22,10 @@ namespace HotelLinenManagement.DataAccess.Entities
         [Required]
         [MaxLength(250)]
         public string Workplace { get; set; }
+        [Required]
+        [MaxLength(250)]
+        public string Permission { get; set; }
+
+
     }
 }

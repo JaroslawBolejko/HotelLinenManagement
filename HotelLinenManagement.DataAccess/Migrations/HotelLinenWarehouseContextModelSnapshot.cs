@@ -46,7 +46,8 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
                     b.Property<string>("DocumentName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<int>("DocumentNumber")
                         .HasColumnType("int");
@@ -88,7 +89,8 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
                     b.Property<string>("DocumentName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<int>("DocumentNumber")
                         .HasColumnType("int");
@@ -247,8 +249,8 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
                     b.Property<string>("TaxNumber")
                         .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
 
                     b.HasKey("Id");
 
@@ -294,7 +296,8 @@ namespace HotelLinenManagement.DataAccess.Migrations
 
                     b.Property<string>("DocumentName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<int>("DocumentNumber")
                         .HasColumnType("int");
@@ -329,13 +332,6 @@ namespace HotelLinenManagement.DataAccess.Migrations
                     b.Property<int?>("HotelId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("IssueDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("ReciptDate")
-                        .HasMaxLength(250)
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("RoomNumber")
                         .HasColumnType("int");
 
@@ -363,6 +359,11 @@ namespace HotelLinenManagement.DataAccess.Migrations
                         .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Permission")
                         .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");

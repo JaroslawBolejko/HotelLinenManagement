@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using HotelLinenManagement.ApplicationServices.API.Domain.Models;
-using HotelLinenManagement.ApplicationServices.API.Domain.Requests;
 using HotelLinenManagement.ApplicationServices.API.Domain.Requests.Invoices;
 
 namespace HotelLinenManagement.ApplicationServices.API.Mappings

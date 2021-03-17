@@ -1,5 +1,4 @@
-﻿using HotelLinenManagement.ApplicationServices.API.Domain.Requests;
-using HotelLinenManagement.ApplicationServices.API.Domain.Requests.Invoices;
+﻿using HotelLinenManagement.ApplicationServices.API.Domain.Requests.Invoices;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;

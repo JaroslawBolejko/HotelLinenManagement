@@ -1,10 +1,5 @@
 ﻿using HotelLinenManagement.ApplicationServices.API.Domain.Responses.Users;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.Users
 {
@@ -15,6 +10,8 @@ namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.Users
         public string LastName { get; set; }
         public string Position { get; set; }
         public string Workplace { get; set; }
+        public string Permission { get; set; }
+
 
     }
 }
