@@ -1,4 +1,4 @@
-﻿using HotelLinenManagement.ApplicationServices.API.Domain.Responses;
+﻿using HotelLinenManagement.ApplicationServices.API.Domain.Responses.Invoices;
 using MediatR;
 
 namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.Invoices

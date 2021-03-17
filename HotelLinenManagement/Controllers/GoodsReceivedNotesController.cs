@@ -1,4 +1,5 @@
 ﻿using HotelLinenManagement.ApplicationServices.API.Domain.Requests.GoodsRecivedNotes;
+using HotelLinenManagement.ApplicationServices.API.Domain.Responses.GoodsRecivedNotes;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -7,59 +8,50 @@ namespace HotelLinenManagement.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class GoodsReceivedNotesController : ControllerBase
+    public class GoodsReceivedNotesController : ApiControllerBase
     {
-        private readonly IMediator mediator;
-
-        public GoodsReceivedNotesController(IMediator mediator)
+        public GoodsReceivedNotesController(IMediator mediator) : base(mediator)
         {
-            this.mediator = mediator;
         }
 
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetAllGoodsRecivedNotes([FromQuery] GetAllGoodsRecivedNotesRequest request)
+        public Task<IActionResult> GetAllGoodsRecivedNotes([FromQuery] GetAllGoodsRecivedNotesRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<GetAllGoodsRecivedNotesRequest, GetAllGoodsRecivedNotesResponse>(request);
         }
+
         [HttpGet]
         [Route("{goodsReceivedNoteById}")]
-        public async Task<IActionResult> GetById([FromRoute] int goodsReceivedNoteById)
+        public Task<IActionResult> GetById([FromRoute] int goodsReceivedNoteById)
         {
 
             var request = new GetGoodsReceivedNoteByIdRequest()
             {
                 Id = goodsReceivedNoteById
             };
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
-
+            return this.HandleRequest<GetGoodsReceivedNoteByIdRequest, GetGoodsReceivedNoteByIdResponse>(request);
         }
 
         [HttpPost]
         [Route("")]
-        public async Task<IActionResult> AddGoodsReceivedNote([FromQuery] AddGoodsReceivedNoteRequest request)
+        public Task<IActionResult> AddGoodsReceivedNote([FromQuery] AddGoodsReceivedNoteRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<AddGoodsReceivedNoteRequest, AddGoodsReceivedNoteResponse>(request);
         }
 
         [HttpPut]
         [Route("")]
-        public async Task<IActionResult> PutGoodsReceivedNotesById([FromQuery] PutGoodsReceivedNotesByIdRequest request)
+        public Task<IActionResult> PutGoodsReceivedNotesById([FromQuery] PutGoodsReceivedNotesByIdRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<PutGoodsReceivedNotesByIdRequest, PutGoodsReceivedNotesByIdResponse>(request);
         }
 
         [HttpDelete]
         [Route("")]
-        public async Task<IActionResult> DeleteGoodsReceivedNotesById([FromQuery] DeleteGoodsReceivedNotesByIdRequest request)
+        public Task<IActionResult> DeleteGoodsReceivedNotesById([FromQuery] DeleteGoodsReceivedNotesByIdRequest request)
         {
-
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<DeleteGoodsReceivedNotesByIdRequest, DeleteGoodsReceivedNotesByIdResponse>(request);
         }
 
 

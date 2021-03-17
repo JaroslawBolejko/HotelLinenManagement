@@ -1,4 +1,5 @@
 ﻿using HotelLinenManagement.ApplicationServices.API.Domain.Requests.LiquidationDocuments;
+using HotelLinenManagement.ApplicationServices.API.Domain.Responses.LiquidationDocuments;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -8,60 +9,50 @@ namespace HotelLinenManagement.Controllers
     [ApiController]
     [Route("[controller]")]
 
-    public class LiquidationDocumentsController : ControllerBase
+    public class LiquidationDocumentsController : ApiControllerBase
     {
-        private readonly IMediator mediator;
-
-        public LiquidationDocumentsController(IMediator mediator)
+        public LiquidationDocumentsController(IMediator mediator) : base(mediator)
         {
-            this.mediator = mediator;
         }
 
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetAllLiquidationDocuments([FromQuery] GetAllLiquidationsDocumentsRequest request)
+        public Task<IActionResult> GetAllLiquidationDocuments([FromQuery] GetAllLiquidationsDocumentsRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<GetAllLiquidationsDocumentsRequest, GetAllLiquidationDocumentsResponse>(request);
         }
 
         [HttpGet]
         [Route("{liquidationDocumentId}")]
-        public async Task<IActionResult> GetById([FromRoute] int liquidationDocumentId)
+        public  Task<IActionResult> GetById([FromRoute] int liquidationDocumentId)
         {
 
             var request = new GetLiquidationDocumentByIdRequest()
             {
-               Id = liquidationDocumentId
+                Id = liquidationDocumentId
             };
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
-
+            return this.HandleRequest<GetLiquidationDocumentByIdRequest, GetLiquidationDocumentByIdResponse>(request);
         }
 
         [HttpPost]
         [Route("")]
-        public async Task<IActionResult> AddLiquidationDocument([FromQuery] AddLiquidationDocumentRequest request)
+        public Task<IActionResult> AddLiquidationDocument([FromQuery] AddLiquidationDocumentRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<AddLiquidationDocumentRequest, AddLiquidationDocumentResponse>(request);
         }
 
         [HttpPut]
         [Route("")]
-        public async Task<IActionResult> PutLiquidationDocumentById([FromQuery] PutLiquidationDocumentByIdRequest request)
+        public Task<IActionResult> PutLiquidationDocumentById([FromQuery] PutLiquidationDocumentByIdRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<PutLiquidationDocumentByIdRequest, PutLiquidationDocumentByIdResponse>(request);
         }
 
         [HttpDelete]
         [Route("")]
-        public async Task<IActionResult> DeleteLiquidationDocumentById([FromQuery] DeleteLiquidationDocumentByIdRequest request)
+        public Task<IActionResult> DeleteLiquidationDocumentById([FromQuery] DeleteLiquidationDocumentByIdRequest request)
         {
-
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<DeleteLiquidationDocumentByIdRequest, DeleteLiquidationDocumentByIdResponse>(request);
         }
 
     }

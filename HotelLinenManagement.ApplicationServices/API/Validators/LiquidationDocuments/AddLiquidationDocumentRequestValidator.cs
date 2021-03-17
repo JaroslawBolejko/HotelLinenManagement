@@ -7,7 +7,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Validators.Users
     {
         public AddLiquidationDocumentRequestValidtor()
         {
-            this.RuleFor(x => x.LiquidationDocName).NotNull().NotEmpty().MaximumLength(100);
+            this.RuleFor(x => x.LiquidationDocName).MaximumLength(100);
             this.RuleFor(x => x.LiquidationDocNumber).NotNull().NotEmpty();
             this.RuleFor(x => x.LiquidationDocDate).NotNull().NotEmpty();
 

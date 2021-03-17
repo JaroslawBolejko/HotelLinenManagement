@@ -7,7 +7,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Validators.LinenType
     {
         public AddLinenTypeRequestValidator()
         {
-            this.RuleFor(x => x.LinenTypeName).NotNull().NotEmpty().MaximumLength(250);
+            this.RuleFor(x => x.LinenTypeName).NotNull().NotEmpty().Length(5,250);
         }
     }
 }

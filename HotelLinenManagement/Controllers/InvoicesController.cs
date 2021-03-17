@@ -1,4 +1,5 @@
 ﻿using HotelLinenManagement.ApplicationServices.API.Domain.Requests.Invoices;
+using HotelLinenManagement.ApplicationServices.API.Domain.Responses.Invoices;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -8,57 +9,50 @@ namespace HotelLinenManagement.Controllers
     [ApiController]
     [Route("[controller]")]
 
-    public class InvoicesController : ControllerBase
+    public class InvoicesController : ApiControllerBase
     {
-        private readonly IMediator mediator;
-
-        public InvoicesController(IMediator mediator)
+        public InvoicesController(IMediator mediator) : base(mediator)
         {
-            this.mediator = mediator;
         }
+
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetAllInvoices([FromQuery] GetAllInvoicesRequest request)
+        public  Task<IActionResult> GetAllInvoices([FromQuery] GetAllInvoicesRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<GetAllInvoicesRequest, GetAllInvoicesResponse>(request);
         }
+
         [HttpGet]
         [Route("{invoiceId}")]
-        public async Task<IActionResult> GetById([FromRoute] int invoiceId)
+        public Task<IActionResult> GetById([FromRoute] int invoiceId)
         {
 
             var request = new GetInvoiceByIdRequest()
             {
                 Id = invoiceId
             };
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
-
+            return this.HandleRequest<GetInvoiceByIdRequest, GetInvoiceByIdResponse>(request);
         }
+
         [HttpPost]
         [Route("")]
-        public async Task<IActionResult> AddInvoice([FromQuery] AddInvoiceRequest request)
+        public Task<IActionResult> AddInvoice([FromQuery] AddInvoiceRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<AddInvoiceRequest, AddInvoiceResponse>(request);
         }
 
         [HttpPut]
         [Route("")]
-        public async Task<IActionResult> PutInvoiceById([FromQuery] PutInvoiceByIdRequest request)
+        public Task<IActionResult> PutInvoiceById([FromQuery] PutInvoiceByIdRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<PutInvoiceByIdRequest, PutInvoiceByIdResponse>(request);
         }
 
         [HttpDelete]
         [Route("")]
-        public async Task<IActionResult> DeleteInvoiceById([FromQuery] DeleteInvoiceByIdRequest request)
+        public Task<IActionResult> DeleteInvoiceById([FromQuery] DeleteInvoiceByIdRequest request)
         {
-
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<DeleteInvoiceByIdRequest, DeleteInvoiceByIdResponse>(request);
         }
 
     }

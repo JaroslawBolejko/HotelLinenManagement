@@ -7,6 +7,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Domain.Models
         public int Id { get; set; }
         public string LinenName { get; set; }
         public int LinenAmount { get; set; }
+        public string LinenTypeName { get; set; }
         public string Size { get; set; }
         public string Color { get; set; }
         public string Description { get; set; }

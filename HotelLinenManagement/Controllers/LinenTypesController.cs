@@ -1,5 +1,7 @@
 ﻿using HotelLinenManagement.ApplicationServices.API.Domain.Requests;
 using HotelLinenManagement.ApplicationServices.API.Domain.Requests.LinenTypes;
+using HotelLinenManagement.ApplicationServices.API.Domain.Responses;
+using HotelLinenManagement.ApplicationServices.API.Domain.Responses.LinenTypes;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -9,59 +11,50 @@ namespace HotelLinenManagement.Controllers
     [ApiController]
     [Route("[controller]")]
 
-    public class LinenTypesController : ControllerBase
+    public class LinenTypesController : ApiControllerBase
     {
-        private readonly IMediator mediator;
-
-        public LinenTypesController(IMediator mediator)
+        public LinenTypesController(IMediator mediator) : base(mediator)
         {
-            this.mediator = mediator;
         }
+
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetAllLinenTypes([FromQuery] GetAllLinenTypesRequest request)
+        public Task<IActionResult> GetAllLinenTypes([FromQuery] GetAllLinenTypesRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<GetAllLinenTypesRequest, GetAllLinenTypesResponse>(request);
         }
 
         [HttpGet]
         [Route("{linenTypeId}")]
-        public async Task<IActionResult> GetById([FromRoute] int linenTypeId)
+        public Task<IActionResult> GetById([FromRoute] int linenTypeId)
         {
 
             var request = new GetLinenTypeByIdRequest()
             {
                 Id = linenTypeId
             };
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
-
+            return this.HandleRequest<GetLinenTypeByIdRequest, GetLinenTypeByIdResponse>(request);
         }
 
         [HttpPost]
         [Route("")]
-        public async Task<IActionResult> AddLinenType([FromQuery] AddLinenTypeRequest request)
+        public Task<IActionResult> AddLinenType([FromQuery] AddLinenTypeRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<AddLinenTypeRequest, AddLinenTypeResponse>(request);
         }
 
         [HttpPut]
         [Route("")]
-        public async Task<IActionResult> PutLinenTypeById([FromQuery] PutLinenTypeByIdRequest request)
+        public Task<IActionResult> PutLinenTypeById([FromQuery] PutLinenTypeByIdRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<PutLinenTypeByIdRequest, PutLinenTypeByIdResponse>(request);
         }
 
         [HttpDelete]
         [Route("")]
-        public async Task<IActionResult> DeleteUserById([FromQuery] DeleteLinenTypeByIdRequest request)
+        public Task<IActionResult> DeleteUserById([FromQuery] DeleteLinenTypeByIdRequest request)
         {
-
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<DeleteLinenTypeByIdRequest, DeleteLinenTypeByIdResponse>(request);
         }
     }
 }

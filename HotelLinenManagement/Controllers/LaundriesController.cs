@@ -1,4 +1,5 @@
 ﻿using HotelLinenManagement.ApplicationServices.API.Domain.Requests.Laundries;
+using HotelLinenManagement.ApplicationServices.API.Domain.Responses.Laundries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -8,58 +9,49 @@ namespace HotelLinenManagement.Controllers
     [ApiController]
     [Route("[controller]")]
 
-    public class LaundriesController : ControllerBase
+    public class LaundriesController : ApiControllerBase
     {
-        private readonly IMediator mediator;
-
-        public LaundriesController(IMediator mediator)
+        public LaundriesController(IMediator mediator) : base(mediator)
         {
-            this.mediator = mediator;
         }
+
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetAllLaundries([FromQuery] GetAllLaundriesRequest request)
+        public Task<IActionResult> GetAllLaundries([FromQuery] GetAllLaundriesRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<GetAllLaundriesRequest, GetAllLaundriesResponse>(request);
         }
 
         [HttpGet]
         [Route("{laundryId}")]
-        public async Task<IActionResult> GetById([FromRoute] int laundryId)
+        public Task<IActionResult> GetById([FromRoute] int laundryId)
         {
-
             var request = new GetLaundryByIdRequest()
             {
                 Id = laundryId
             };
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
-
+            return this.HandleRequest<GetLaundryByIdRequest, GetLaundryByIdResponse>(request);
         }
+
         [HttpPost]
         [Route("")]
-        public async Task<IActionResult> AddLaundry([FromQuery] AddLaundryRequest request)
+        public Task<IActionResult> AddLaundry([FromQuery] AddLaundryRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<AddLaundryRequest, AddLaundryResponse>(request);
         }
 
         [HttpPut]
         [Route("")]
-        public async Task<IActionResult> PutLaundryById([FromQuery] PutLaundryByIdRequest request)
+        public Task<IActionResult> PutLaundryById([FromQuery] PutLaundryByIdRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<PutLaundryByIdRequest, PutLaundryByIdResponse>(request);
         }
 
         [HttpDelete]
         [Route("")]
-        public async Task<IActionResult> DeleteLaundryById([FromQuery] DeleteLaundryByIdRequest request)
+        public Task<IActionResult> DeleteLaundryById([FromQuery] DeleteLaundryByIdRequest request)
         {
-
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<DeleteLaundryByIdRequest, DeleteLaundryByIdResponse>(request);
         }
 
     }
