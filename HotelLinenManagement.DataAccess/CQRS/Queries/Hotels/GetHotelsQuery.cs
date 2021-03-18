@@ -15,7 +15,10 @@ namespace HotelLinenManagement.DataAccess.CQRS.Queries.Hotels
 
             if (!string.IsNullOrEmpty(this.HotelName))
             {
-                return await context.Hotels.Where(x => x.HotelName.Contains(this.HotelName)).ToListAsync();
+                var result = await context.Hotels.Where(x => x.HotelName.Contains(this.HotelName)).ToListAsync();
+                if (result.Count == 0)
+                    return null;
+                return result;
             }
 
             return await context.Hotels.ToListAsync();

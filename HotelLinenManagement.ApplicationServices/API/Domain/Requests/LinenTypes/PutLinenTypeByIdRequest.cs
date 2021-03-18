@@ -5,7 +5,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.LinenType
 {
     public class PutLinenTypeByIdRequest : IRequest<PutLinenTypeByIdResponse>
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string LinenTypeName { get; set; }
     }
 }

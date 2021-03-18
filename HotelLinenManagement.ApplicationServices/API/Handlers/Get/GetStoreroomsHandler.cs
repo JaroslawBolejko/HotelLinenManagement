@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using HotelLinenManagement.ApplicationServices.API.Domain;
+using HotelLinenManagement.ApplicationServices.API.Domain.ErrorHandling;
 using HotelLinenManagement.ApplicationServices.API.Domain.Requests;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses;
 using HotelLinenManagement.DataAccess.CQRS;
@@ -31,6 +33,15 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
                 StoreroomName = request.StoreroomName
             };
             var storerooms = await this.queryExecutor.Execute(query);
+           
+            if (storerooms == null)
+            {
+                return new GetAllStoreroomsResponse()
+                {
+                    Error = new ErrorModel(ErrorType.NotFound)
+                };
+            }
+
             var mappedStoreroom = this.mapper.Map<List<Domain.Models.Storeroom>>(storerooms);
 
             var response = new GetAllStoreroomsResponse()

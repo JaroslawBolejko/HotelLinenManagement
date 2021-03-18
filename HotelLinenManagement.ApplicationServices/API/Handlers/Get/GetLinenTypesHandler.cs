@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using HotelLinenManagement.ApplicationServices.API.Domain;
+using HotelLinenManagement.ApplicationServices.API.Domain.ErrorHandling;
 using HotelLinenManagement.ApplicationServices.API.Domain.Requests.LinenTypes;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses.LinenTypes;
 using HotelLinenManagement.DataAccess.CQRS;
@@ -28,8 +30,17 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
             {
                 LinenTypeName = request.LinenTypeName
             };
-
             var linenTypes = await this.queryExecutor.Execute(query);
+
+
+            if (linenTypes == null)
+            {
+                return new GetAllLinenTypesResponse()
+                {
+                    Error = new ErrorModel(ErrorType.NotFound)
+                };
+            }
+
             var mappedLinenType = this.mapper.Map<List<Domain.Models.LinenType>>(linenTypes);
 
             var response = new GetAllLinenTypesResponse()

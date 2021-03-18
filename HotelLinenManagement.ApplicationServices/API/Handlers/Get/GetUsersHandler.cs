@@ -33,7 +33,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
             };
             var user = await this.queryExecutor.Execute(query);
             
-            if(user == null)
+            if(user== null)
             {
                 return new GetAllUsersResponse()
                 {

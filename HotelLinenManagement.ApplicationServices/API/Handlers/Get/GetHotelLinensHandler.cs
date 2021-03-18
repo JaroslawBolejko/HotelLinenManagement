@@ -33,7 +33,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
                 StoreroomId = request.StoreroomId
             };
             var hotelLinens = await this.queryExecutor.Execute(query);
-            
+
             if (hotelLinens == null)
             {
                 return new GetAllHotelLinensResponse()

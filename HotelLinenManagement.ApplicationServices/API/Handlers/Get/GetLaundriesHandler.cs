@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using HotelLinenManagement.ApplicationServices.API.Domain;
+using HotelLinenManagement.ApplicationServices.API.Domain.ErrorHandling;
 using HotelLinenManagement.ApplicationServices.API.Domain.Requests.Laundries;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses.Laundries;
 using HotelLinenManagement.DataAccess.CQRS;
@@ -29,6 +31,14 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
                 TaxNumber = request.TaxNumber
             };
             var laundries = await this.queryExecutor.Execute(query);
+
+            if (laundries == null)
+            {
+                return new GetAllLaundriesResponse()
+                {
+                    Error = new ErrorModel(ErrorType.NotFound)
+                };
+            }
             var mappedLaundry = this.mapper.Map<List<Domain.Models.Laundry>>(laundries);
 
 

@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using HotelLinenManagement.ApplicationServices.API.Domain;
+using HotelLinenManagement.ApplicationServices.API.Domain.ErrorHandling;
 using HotelLinenManagement.ApplicationServices.API.Domain.Requests.LiquidationDocuments;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses.LiquidationDocuments;
 using HotelLinenManagement.DataAccess.CQRS;
@@ -27,8 +29,16 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers.Get
             {
                 LiquidationDocNumber = request.LiquidationDocNumber
             };
-
             var liquidationDoc = await this.queryExecutor.Execute(query);
+
+            if (liquidationDoc == null)
+            {
+                return new GetAllLiquidationDocumentsResponse()
+                {
+                    Error = new ErrorModel(ErrorType.NotFound)
+                };
+            }
+
             var mapppedLiquidationDoc = this.mapper.Map<List<Domain.Models.LiquidationDocument>>(liquidationDoc);
 
             var response = new GetAllLiquidationDocumentsResponse

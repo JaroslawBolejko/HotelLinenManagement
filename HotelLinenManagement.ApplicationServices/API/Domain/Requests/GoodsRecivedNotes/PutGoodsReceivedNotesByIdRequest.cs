@@ -6,7 +6,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.GoodsReci
 {
     public class PutGoodsReceivedNotesByIdRequest : IRequest<PutGoodsReceivedNotesByIdResponse>
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string GoodsReceivedNoteName { get; set; }
         public int GoodsReceivedNoteNumber { get; set; }
         public DateTime GoodsReceivedNoteDate { get; set; }

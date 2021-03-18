@@ -11,15 +11,14 @@ namespace HotelLinenManagement.DataAccess.CQRS.Queries.GoodsIssuedNotes
         public int? GoodsIssuedNoteNumber { get; set; }
         public override async Task<List<GoodsIssuedNote>> Execute(HotelLinenWarehouseContext context)
         {
-
-
             if (GoodsIssuedNoteNumber != null)
             {
-                return await context.GoodsIssuedNotes.Where(x => x.DocumentNumber == this.GoodsIssuedNoteNumber).ToListAsync();
+                var result = await context.GoodsIssuedNotes.Where(x => x.DocumentNumber == this.GoodsIssuedNoteNumber).ToListAsync();
+                if (result.Count == 0)
+                    return null;
+                return result;
             }
-
             return await context.GoodsIssuedNotes.ToListAsync();
-
         }
     }
 }

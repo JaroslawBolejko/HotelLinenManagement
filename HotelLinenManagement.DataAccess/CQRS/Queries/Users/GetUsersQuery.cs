@@ -15,15 +15,27 @@ namespace HotelLinenManagement.DataAccess.CQRS.Queries.Users
 
         public override async Task<List<User>> Execute(HotelLinenWarehouseContext context)
         {
-            if (!string.IsNullOrEmpty(LastName))
+            if (!string.IsNullOrEmpty(this.LastName) && string.IsNullOrEmpty(this.Workplace))
             {
-                return await context.Users.Where(x => x.LastName.Contains(this.LastName)).ToListAsync();
+                var result = await context.Users.Where(x => x.LastName.Contains(this.LastName)).ToListAsync();
+                if (result.Count == 0)
+                    return null;
+                else return result;
             }
-            else if (!string.IsNullOrEmpty(Workplace))
+            else if (string.IsNullOrEmpty(this.LastName) && !string.IsNullOrEmpty(this.Workplace))
             {
-                return await context.Users.Where(x => x.Workplace.Contains(this.Workplace)).ToListAsync();
+               var result = await context.Users.Where(x => x.Workplace.Contains(this.Workplace)).ToListAsync();
+                if (result.Count == 0)
+                    return null;
+                else return result;
             }
-            return await context.Users.ToListAsync();
+            //else if (!string.IsNullOrEmpty(LastName) && !string.IsNullOrEmpty(Workplace))
+          
+            //{
+            //    return await context.Users.Where(x=>x.LastName.Contains(this.LastName) && Workplace.
+            //        Contains(this.Workplace)).ToListAsync();
+            //}
+           return await context.Users.ToListAsync();
 
         }
     }

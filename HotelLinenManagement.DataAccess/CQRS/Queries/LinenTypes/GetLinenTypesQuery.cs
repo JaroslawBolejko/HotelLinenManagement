@@ -15,11 +15,12 @@ namespace HotelLinenManagement.DataAccess.CQRS.Queries.LinenTypes
 
             if (!string.IsNullOrEmpty(this.LinenTypeName))
             {
-                return await context.LinenTypes.Where(x => x.LinenTypeName.Contains(this.LinenTypeName)).ToListAsync();
+                var result = await context.LinenTypes.Where(x => x.LinenTypeName.Contains(this.LinenTypeName)).ToListAsync();
+                if (result.Count == 0)
+                    return null;
+                return result;
             }
-
             return await context.LinenTypes.ToListAsync();
-
         }
     }
 }

@@ -14,7 +14,10 @@ namespace HotelLinenManagement.DataAccess.CQRS.Queries.GoodsReceivedNotes
 
             if (GoodsReceivedNoteNumber != null)
             {
-                return await context.GoodsReceivedNotes.Where(x => x.DocumentNumber == this.GoodsReceivedNoteNumber).ToListAsync();
+                var result = await context.GoodsReceivedNotes.Where(x => x.DocumentNumber == this.GoodsReceivedNoteNumber).ToListAsync();
+                if (result.Count == 0)
+                    return null;
+                return result;
             }
 
             return await context.GoodsReceivedNotes.ToListAsync();

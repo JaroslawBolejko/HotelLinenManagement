@@ -15,7 +15,10 @@ namespace HotelLinenManagement.DataAccess.CQRS.Queries.Laundries
 
             if (!string.IsNullOrEmpty(this.TaxNumber))
             {
-                return await context.Laundries.Where(x => x.TaxNumber.Contains(this.TaxNumber)).ToListAsync();
+                var result = await context.Laundries.Where(x => x.TaxNumber.Contains(this.TaxNumber)).ToListAsync();
+                if (result.Count == 0)
+                    return null;
+                return result;
             }
 
             return await context.Laundries.ToListAsync();

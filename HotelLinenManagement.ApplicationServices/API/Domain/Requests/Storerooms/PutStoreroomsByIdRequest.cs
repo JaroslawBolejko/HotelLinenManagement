@@ -5,7 +5,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.Storeroom
 {
     public class PutStoreroomsByIdRequest : IRequest<PutStoreroomsByIdResponse>
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public int RoomNumber { get; set; }
         public string StoreroomName { get; set; }
     }

@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
+using HotelLinenManagement.ApplicationServices.API.Domain;
+using HotelLinenManagement.ApplicationServices.API.Domain.ErrorHandling;
 using HotelLinenManagement.ApplicationServices.API.Domain.Requests.Storerooms;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses.Storerooms;
 using HotelLinenManagement.DataAccess.CQRS;
 using HotelLinenManagement.DataAccess.CQRS.Commands.Storerooms;
+using HotelLinenManagement.DataAccess.CQRS.Queries.Storerooms;
 using HotelLinenManagement.DataAccess.Entities;
 using MediatR;
 using System.Threading;
@@ -13,16 +16,32 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers.Add
     public class PutStoreroomsByIdHandler : IRequestHandler<PutStoreroomsByIdRequest, PutStoreroomsByIdResponse>
     {
         private readonly ICommandExecutor commandExecutor;
+        private readonly IQueryExecutor queryExecutor;
         private readonly IMapper mapper;
 
-        public PutStoreroomsByIdHandler(ICommandExecutor commandExecutor, IMapper mapper)
+        public PutStoreroomsByIdHandler(ICommandExecutor commandExecutor,IQueryExecutor queryExecutor, IMapper mapper)
         {
             this.commandExecutor = commandExecutor;
+            this.queryExecutor = queryExecutor;
             this.mapper = mapper;
         }
 
         public async Task<PutStoreroomsByIdResponse> Handle(PutStoreroomsByIdRequest request, CancellationToken cancellationToken)
         {
+            var query = new GetStoreroomQuery()
+            {
+                Id = request.Id
+            };
+
+            var id = await queryExecutor.Execute(query);
+
+            if (id == null)
+            {
+                return new PutStoreroomsByIdResponse()
+                {
+                    Error = new ErrorModel(ErrorType.NotFound)
+                };
+            }
             var storeroom = this.mapper.Map<Storeroom>(request);
             var command = new PutStoreroomsByIdCommand()
             {

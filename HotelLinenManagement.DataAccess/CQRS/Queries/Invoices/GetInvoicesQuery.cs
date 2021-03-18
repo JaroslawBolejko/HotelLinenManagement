@@ -13,14 +13,20 @@ namespace HotelLinenManagement.DataAccess.CQRS.Queries.Invoices
 
         public override async Task<List<Invoice>> Execute(HotelLinenWarehouseContext context)
         {
-            if (LaundryId != null)
+            if (LaundryId != null && HotelId == null)
             {
-                return await context.Invoices.Where(x => x.LaundryId == this.LaundryId).ToListAsync();
+                var result = await context.Invoices.Where(x => x.LaundryId == this.LaundryId).ToListAsync();
+                if (result.Count == 0)
+                    return null;
+                return result;
             }
 
-            else if (HotelId != null)
+            else if (LaundryId == null && HotelId != null)
             {
-                return await context.Invoices.Where(x => x.HotelId == this.HotelId).ToListAsync();
+                var result = await context.Invoices.Where(x => x.HotelId == this.HotelId).ToListAsync();
+                if (result.Count == 0)
+                    return null;
+                return result;
             }
 
             return await context.Invoices.ToListAsync();

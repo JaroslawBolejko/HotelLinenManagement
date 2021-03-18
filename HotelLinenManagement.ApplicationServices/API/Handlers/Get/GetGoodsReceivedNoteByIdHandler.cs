@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using HotelLinenManagement.ApplicationServices.API.Domain;
+using HotelLinenManagement.ApplicationServices.API.Domain.ErrorHandling;
 using HotelLinenManagement.ApplicationServices.API.Domain.Requests.GoodsRecivedNotes;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses.GoodsRecivedNotes;
 using HotelLinenManagement.DataAccess.CQRS;
@@ -29,6 +31,15 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
                 Id = request.Id
             };
             var goodsReceivedNote = await this.queryExecutor.Execute(query);
+
+            if (goodsReceivedNote == null)
+            {
+                return new GetGoodsReceivedNoteByIdResponse()
+                {
+                    Error = new ErrorModel(ErrorType.NotFound)
+                };
+            }
+
             var mappedGoodsReceivedNote = this.mapper.Map<Domain.Models.GoodsReceivedNote>(goodsReceivedNote);
             var response = new GetGoodsReceivedNoteByIdResponse()
             {

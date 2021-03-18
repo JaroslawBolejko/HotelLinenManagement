@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using HotelLinenManagement.ApplicationServices.API.Domain;
+using HotelLinenManagement.ApplicationServices.API.Domain.ErrorHandling;
 using HotelLinenManagement.ApplicationServices.API.Domain.Requests.Invoices;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses.Invoices;
 using HotelLinenManagement.DataAccess.CQRS;
@@ -29,6 +31,15 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
                 Id = request.Id
             };
             var invoice = await this.queryExecutor.Execute(query);
+
+            if (invoice == null)
+            {
+                return new GetInvoiceByIdResponse()
+                {
+                    Error = new ErrorModel(ErrorType.NotFound)
+                };
+            }
+
             var mappedInvoice = this.mapper.Map<Domain.Models.Invoice>(invoice);
             var response = new GetInvoiceByIdResponse()
             {

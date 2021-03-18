@@ -12,10 +12,13 @@ namespace HotelLinenManagement.DataAccess.CQRS.Queries.LiquidationDocuments
         public override async Task<List<LiquidationDocument>> Execute(HotelLinenWarehouseContext context)
         {
 
-           
+
             if (LiquidationDocNumber != null)
             {
-                return await context.LiquidationDocuments.Where(x => x.DocumentNumber == this.LiquidationDocNumber).ToListAsync();
+                var result = await context.LiquidationDocuments.Where(x => x.DocumentNumber == this.LiquidationDocNumber).ToListAsync();
+                if (result.Count == 0)
+                    return null;
+                return result;
             }
 
             return await context.LiquidationDocuments.ToListAsync();

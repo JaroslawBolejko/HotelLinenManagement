@@ -6,7 +6,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.Invoices
 {
     public class PutInvoiceByIdRequest : IRequest<PutInvoiceByIdResponse>
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public DateTime PaymentDate { get; set; }
         public string Description { get; set; }
         public decimal InvoiceTotal { get; set; }
