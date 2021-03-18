@@ -17,7 +17,7 @@ namespace HotelLinenManagement.Controllers
         {
             this.mediator = mediator;
         }
-        protected async Task<IActionResult> HandleRequest<TRequest,TResponse>(TRequest request)
+        protected async Task<IActionResult> HandleRequest<TRequest, TResponse>(TRequest request)
             where TRequest : IRequest<TResponse>
             where TResponse : ErrorResponseBase
         {
@@ -25,13 +25,12 @@ namespace HotelLinenManagement.Controllers
             {
                 return this.BadRequest(
                          this.ModelState
-                         .Where(x=>x.Value.Errors.Any())
+                         .Where(x => x.Value.Errors.Any())
                          //tu wyciągamy te wartości naszych błędów do potestowania!
-
-                         .Select(x=> new { property = x.Key, errors = x.Value.Errors }));
+                         .Select(x => new { property = x.Key, errors = x.Value.Errors }));
             }
             var response = await this.mediator.Send(request);
-            if(response.Error != null)
+            if (response.Error != null)
             {
                 return this.ErrorResopnse(response.Error);
             }
@@ -69,7 +68,7 @@ namespace HotelLinenManagement.Controllers
                     return HttpStatusCode.TooManyRequests;
                 default:
                     return HttpStatusCode.BadRequest;
-                }
+            }
         }
     }
 }
