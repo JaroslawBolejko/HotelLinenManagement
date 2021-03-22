@@ -5,6 +5,6 @@ namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.Users
 {
     public class DeleteUserByIdRequest : IRequest<DeleteUserByIdResponse>
     {
-        public int UserId { get; set; }
+        public int Id { get; set; }
     }
 }

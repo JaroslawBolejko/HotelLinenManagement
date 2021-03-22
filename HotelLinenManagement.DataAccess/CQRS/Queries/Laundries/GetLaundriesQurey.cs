@@ -20,7 +20,7 @@ namespace HotelLinenManagement.DataAccess.CQRS.Queries.Laundries
                     return null;
                 return result;
             }
-
+//toak samo jak przy Liqidation Document konflikt
             return await context.Laundries.ToListAsync();
         }
     }

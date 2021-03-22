@@ -30,7 +30,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers.Delete
         {
             var query = new GetUserQuery()
             {
-                Id = request.UserId
+                Id = request.Id
             };
             var id = await queryExecutor.Execute(query);
 

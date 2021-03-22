@@ -7,6 +7,7 @@ namespace HotelLinenManagement.DataAccess.CQRS.Commands.Laundries
     {
         public override async Task<Laundry> Execute(HotelLinenWarehouseContext context)
         {
+            context.ChangeTracker.Clear();
             context.Laundries.Remove(this.Parameter);
             await context.SaveChangesAsync();
             return this.Parameter;

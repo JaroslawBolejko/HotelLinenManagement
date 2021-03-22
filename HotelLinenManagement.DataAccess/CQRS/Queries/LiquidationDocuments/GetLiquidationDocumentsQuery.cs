@@ -13,12 +13,13 @@ namespace HotelLinenManagement.DataAccess.CQRS.Queries.LiquidationDocuments
         {
 
 
-            if (LiquidationDocNumber != null)
+            if (this.LiquidationDocNumber != null)
             {
                 var result = await context.LiquidationDocuments.Where(x => x.DocumentNumber == this.LiquidationDocNumber).ToListAsync();
                 if (result.Count == 0)
-                    return null;
+                   return null;
                 return result;
+
             }
 
             return await context.LiquidationDocuments.ToListAsync();

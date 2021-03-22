@@ -8,6 +8,10 @@ namespace HotelLinenManagement.DataAccess.Entities
         [Required]
         [MaxLength(250)]
         public string HotelName { get; set; }
+        [Required]
+        [StringLength(12)]
+        public string TaxNumber { get; set; }
+      //Tu trzeba jeszcze pouzupełniać
 
         public List<Storeroom> Storerooms { get; set; }
         public List<GoodsReceivedNote> GoodsReceivedNotes { get; set; }

@@ -7,6 +7,7 @@ namespace HotelLinenManagement.DataAccess.CQRS.Commands.LiquidationDocuments
     {
         public override async Task<LiquidationDocument> Execute(HotelLinenWarehouseContext context)
         {
+            context.ChangeTracker.Clear();
             context.LiquidationDocuments.Update(this.Parameter);
             await context.SaveChangesAsync();
             return this.Parameter;

@@ -7,6 +7,7 @@ namespace HotelLinenManagement.DataAccess.CQRS.Commands.LinenTypes
     {
         public override async Task<LinenType> Execute(HotelLinenWarehouseContext context)
         {
+            context.ChangeTracker.Clear();
             context.LinenTypes.Remove(this.Parameter);
             await context.SaveChangesAsync();
             return this.Parameter;

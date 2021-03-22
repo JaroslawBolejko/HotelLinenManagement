@@ -9,6 +9,7 @@ namespace HotelLinenManagement.DataAccess.CQRS.Queries.Storerooms
     public class GetStoreroomsQuery : QueryBase<List<Storeroom>>
     {
         public string StoreroomName { get; set; }
+        public int? RoomNumber { get; set; }
 
         public override async Task<List<Storeroom>> Execute(HotelLinenWarehouseContext context)
         {
@@ -20,6 +21,13 @@ namespace HotelLinenManagement.DataAccess.CQRS.Queries.Storerooms
                 if (result.Count == 0)
                     return null;
                 return result;
+            }
+           else if (this.RoomNumber!=null)
+            {
+
+                if (context.Storerooms.Any(x => x.RoomNumber == this.RoomNumber))
+                    return null;
+
             }
 
             return await context.Storerooms.ToListAsync();

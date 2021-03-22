@@ -11,7 +11,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Validators.Invoices
             this.RuleFor(x => x.LaundryId).NotNull().NotEmpty();
             this.RuleFor(x => x.HotelId).NotNull().NotEmpty();
             this.RuleFor(x => x.PaymentDate).NotNull().NotEmpty().GreaterThanOrEqualTo(DateTime.Now);
-            this.RuleFor(x => x.DocumentDate).NotNull().NotEmpty().Equal(DateTime.Now);
+            this.RuleFor(x => x.DocumentDate).NotNull().NotEmpty();
             this.RuleFor(x => x.Description).NotNull().NotEmpty();
             this.RuleFor(x => x.InvoiceTotal).NotNull().NotEmpty();
             this.RuleFor(x => x.InvoiceTotal).NotNull().NotEmpty();

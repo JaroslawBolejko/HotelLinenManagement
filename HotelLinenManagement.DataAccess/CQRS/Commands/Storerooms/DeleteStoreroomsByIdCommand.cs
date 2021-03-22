@@ -7,6 +7,7 @@ namespace HotelLinenManagement.DataAccess.CQRS.Commands.Storerooms
     {
         public override async Task<Storeroom> Execute(HotelLinenWarehouseContext context)
         {
+            context.ChangeTracker.Clear();
             context.Storerooms.Remove(this.Parameter);
             await context.SaveChangesAsync();
             return this.Parameter;

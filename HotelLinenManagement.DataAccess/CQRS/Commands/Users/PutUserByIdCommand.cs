@@ -7,6 +7,7 @@ namespace HotelLinenManagement.DataAccess.CQRS.Commands.Users
     {
         public override async Task<User> Execute(HotelLinenWarehouseContext context)
         {
+            context.ChangeTracker.Clear();
             context.Users.Update(this.Parameter);
             await context.SaveChangesAsync();
             return this.Parameter;

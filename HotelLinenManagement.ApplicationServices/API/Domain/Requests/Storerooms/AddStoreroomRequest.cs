@@ -6,6 +6,6 @@ namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.Storeroom
     public class AddStoreroomRequest : IRequest<AddStoreroomResponse>
     {
         public string StoreroomName{ get; set; }
-        public int RoomNumber { get; set; }
+        public int? RoomNumber { get; set; }
     }
 }

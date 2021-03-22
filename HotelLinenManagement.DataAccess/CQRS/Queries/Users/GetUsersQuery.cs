@@ -12,6 +12,9 @@ namespace HotelLinenManagement.DataAccess.CQRS.Queries.Users
     {
         public string LastName { get; set; }
         public string Workplace { get; set; }
+        public string FirstName { get; set; }
+        public string Position { get; set; }
+        public string Permission { get; set; }
 
         public override async Task<List<User>> Execute(HotelLinenWarehouseContext context)
         {
@@ -24,19 +27,28 @@ namespace HotelLinenManagement.DataAccess.CQRS.Queries.Users
             }
             else if (string.IsNullOrEmpty(this.LastName) && !string.IsNullOrEmpty(this.Workplace))
             {
-               var result = await context.Users.Where(x => x.Workplace.Contains(this.Workplace)).ToListAsync();
+                var result = await context.Users.Where(x => x.Workplace.Contains(this.Workplace)).ToListAsync();
                 if (result.Count == 0)
                     return null;
                 else return result;
             }
+            //Posprawdzać inne waunki!
             //else if (!string.IsNullOrEmpty(LastName) && !string.IsNullOrEmpty(Workplace))
-          
+
             //{
             //    return await context.Users.Where(x=>x.LastName.Contains(this.LastName) && Workplace.
             //        Contains(this.Workplace)).ToListAsync();
             //}
-           return await context.Users.ToListAsync();
-
+            else if (!string.IsNullOrEmpty(this.FirstName) && !string.IsNullOrEmpty(this.LastName) && !string.IsNullOrEmpty(this.Position)
+                && !string.IsNullOrEmpty(this.Workplace) && !string.IsNullOrEmpty(this.Permission))
+            {
+              
+                if (context.Users.Any(x => x.FirstName == this.FirstName && x.LastName == this.LastName
+                   && x.Position == this.Position && x.Workplace == this.Workplace && x.Permission== this.Permission))
+                    return null;
+            }
+                return await context.Users.ToListAsync();
+            
         }
     }
 }

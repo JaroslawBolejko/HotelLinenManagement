@@ -9,7 +9,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Mappings
         public UsersProfile()
         {
             this.CreateMap<DeleteUserByIdRequest, DataAccess.Entities.User>()
-                .ForMember(x => x.Id, y => y.MapFrom(z => z.UserId));
+                .ForMember(x => x.Id, y => y.MapFrom(z => z.Id));
             
             this.CreateMap<PutUserByIdRequest, DataAccess.Entities.User>()
                 .ForMember(x => x.FirstName, y => y.MapFrom(z => z.FirstName))

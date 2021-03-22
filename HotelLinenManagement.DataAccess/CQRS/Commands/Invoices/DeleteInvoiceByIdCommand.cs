@@ -7,6 +7,7 @@ namespace HotelLinenManagement.DataAccess.CQRS.Commands.Invoices
     {
         public override async Task<Invoice> Execute(HotelLinenWarehouseContext context)
         {
+            context.ChangeTracker.Clear();
             context.Invoices.Remove(this.Parameter);
             await context.SaveChangesAsync();
             return this.Parameter;

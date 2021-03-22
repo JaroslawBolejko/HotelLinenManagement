@@ -66,6 +66,8 @@ namespace HotelLinenManagement.Controllers
                     return HttpStatusCode.RequestEntityTooLarge;
                 case ErrorType.TooManyRequests:
                     return HttpStatusCode.TooManyRequests;
+                case ErrorType.Conflict:
+                    return HttpStatusCode.Conflict;
                 default:
                     return HttpStatusCode.BadRequest;
             }
