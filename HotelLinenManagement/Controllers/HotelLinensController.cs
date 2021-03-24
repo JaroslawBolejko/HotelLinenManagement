@@ -15,9 +15,11 @@ namespace HotelLinenManagement.Controllers
     public class HotelLinensController : ApiControllerBase
     {
 
-        public HotelLinensController(IMediator mediator, ILogger<HotelLinensController> logger) : base(mediator)
+        public HotelLinensController(IMediator mediator, ILogger<HotelLinensController> logger) : base(mediator,logger)
         {
             logger.LogInformation("We are in HotelLinens");
+           // logger.LogError("An Error Occured");
+           
         }
 
 

@@ -2,6 +2,7 @@
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses.LiquidationDocuments;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
 namespace HotelLinenManagement.Controllers
@@ -11,8 +12,10 @@ namespace HotelLinenManagement.Controllers
 
     public class LiquidationDocumentsController : ApiControllerBase
     {
-        public LiquidationDocumentsController(IMediator mediator) : base(mediator)
+
+        public LiquidationDocumentsController(IMediator mediator, ILogger<LiquidationDocumentsController> logger) : base(mediator,logger)
         {
+            logger.LogInformation("We are in Liquidation Documents ");
         }
 
         [HttpGet]

@@ -2,6 +2,7 @@
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses.Laundries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
 namespace HotelLinenManagement.Controllers
@@ -11,8 +12,9 @@ namespace HotelLinenManagement.Controllers
 
     public class LaundriesController : ApiControllerBase
     {
-        public LaundriesController(IMediator mediator) : base(mediator)
+        public LaundriesController(IMediator mediator, ILogger<LaundriesController> logger) : base(mediator,logger)
         {
+            logger.LogInformation("We are in Laundries");
         }
 
         [HttpGet]

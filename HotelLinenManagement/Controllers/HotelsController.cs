@@ -1,9 +1,8 @@
-﻿using HotelLinenManagement.ApplicationServices.API.Domain.Requests;
-using HotelLinenManagement.ApplicationServices.API.Domain.Requests.Hotels;
-using HotelLinenManagement.ApplicationServices.API.Domain.Responses;
+﻿using HotelLinenManagement.ApplicationServices.API.Domain.Requests.Hotels;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses.Hotels;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
 namespace HotelLinenManagement.Controllers
@@ -13,8 +12,9 @@ namespace HotelLinenManagement.Controllers
 
     public class HotelsController : ApiControllerBase
     {
-        public HotelsController(IMediator mediator) : base(mediator)
+        public HotelsController(IMediator mediator, ILogger<HotelsController> logger) : base(mediator,logger)
         {
+            logger.LogInformation("We are in Hotels");
         }
 
         [HttpGet]

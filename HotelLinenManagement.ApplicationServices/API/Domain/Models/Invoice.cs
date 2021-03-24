@@ -13,7 +13,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Domain.Models
         public string Id { get; set; }
         public DateTime PaymentDate { get; set; }
         public string Description { get; set; }
-        public decimal InvoiceTotal { get; set; }
+        public double InvoiceTotal { get; set; }
 
         public int HotelId { get; set; }
         public int LaundryId { get; set; }

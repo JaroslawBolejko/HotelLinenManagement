@@ -2,6 +2,7 @@
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses.GoodsRecivedNotes;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
 namespace HotelLinenManagement.Controllers
@@ -10,8 +11,9 @@ namespace HotelLinenManagement.Controllers
     [Route("[controller]")]
     public class GoodsReceivedNotesController : ApiControllerBase
     {
-        public GoodsReceivedNotesController(IMediator mediator) : base(mediator)
+        public GoodsReceivedNotesController(IMediator mediator, ILogger<GoodsReceivedNotesController> logger) : base(mediator,logger)
         {
+            logger.LogInformation("We are in GoodsReceivedNotes");
         }
 
         [HttpGet]

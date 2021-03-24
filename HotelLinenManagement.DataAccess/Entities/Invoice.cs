@@ -17,7 +17,7 @@ namespace HotelLinenManagement.DataAccess.Entities
         [Required]
         public string Description { get; set; }
         [Required]
-        public decimal InvoiceTotal { get; set; }
+        public double InvoiceTotal { get; set; }
         [Required]
         [MaxLength(250)]
         public string DocumentName { get; set; }

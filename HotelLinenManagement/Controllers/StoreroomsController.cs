@@ -4,6 +4,7 @@ using HotelLinenManagement.ApplicationServices.API.Domain.Responses;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses.Storerooms;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
 namespace HotelLinenManagement.Controllers
@@ -13,8 +14,9 @@ namespace HotelLinenManagement.Controllers
 
     public class StoreroomsController : ApiControllerBase
     {
-        public StoreroomsController(IMediator mediator) : base(mediator)
+        public StoreroomsController(IMediator mediator, ILogger<StoreroomsController> logger) : base(mediator,logger)
         {
+            logger.LogInformation("We are in Storerooms");
         }
 
         [HttpGet]

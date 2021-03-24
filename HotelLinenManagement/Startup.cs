@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using HotelLinenManagement.ApplicationServices.API.Validators;
 using Microsoft.AspNetCore.Mvc;
+using HotelLinenManagement.ApplicationServices.Components.GetGusDataAPIByTaxNumber;
 
 namespace HotelLinenManagement
 {
@@ -28,13 +29,14 @@ namespace HotelLinenManagement
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
             services.AddMvcCore()
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<AddStoreroomRequestValidator>());
             services.Configure<ApiBehaviorOptions>(options =>
             {
                 options.SuppressModelStateInvalidFilter = true;
             });
-
+            services.AddTransient<IGUSDataConnector, GUSDataConnector>();
             services.AddTransient<IQueryExecutor, QueryExecutor>();
 
             services.AddTransient<ICommandExecutor, CommandExecutor>();

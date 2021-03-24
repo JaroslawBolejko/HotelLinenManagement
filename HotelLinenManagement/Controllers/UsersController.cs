@@ -2,6 +2,7 @@
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses.Users;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
 namespace HotelLinenManagement.Controllers
@@ -13,8 +14,9 @@ namespace HotelLinenManagement.Controllers
     {
 
 
-        public UsersController(IMediator mediator) : base(mediator)
+        public UsersController(IMediator mediator, ILogger<UsersController> logger) : base(mediator,logger)
         {
+            logger.LogInformation("We are in Users");
         }
 
         [HttpGet]
@@ -41,6 +43,7 @@ namespace HotelLinenManagement.Controllers
         [Route("")]
         public Task<IActionResult> AddUser([FromQuery] AddUserRequest request)
         {
+            
             return this.HandleRequest<AddUserRequest, AddUserResponse>(request);
         }
 

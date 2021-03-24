@@ -2,6 +2,7 @@
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses.Invoices;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
 namespace HotelLinenManagement.Controllers
@@ -11,8 +12,9 @@ namespace HotelLinenManagement.Controllers
 
     public class InvoicesController : ApiControllerBase
     {
-        public InvoicesController(IMediator mediator) : base(mediator)
+        public InvoicesController(IMediator mediator, ILogger<InvoicesController> logger) : base(mediator,logger)
         {
+            logger.LogInformation("We are in Invoices");
         }
 
         [HttpGet]

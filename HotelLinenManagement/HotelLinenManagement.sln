@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelLinenManagement", "Hot
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelLinenManagement.DataAccess", "..\HotelLinenManagement.DataAccess\HotelLinenManagement.DataAccess.csproj", "{6CEFFBA2-7A63-49E0-808B-FA2BBE2AA17D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelLinenManagement.ApplicationServices", "..\HotelLinenManagement.ApplicationServices\HotelLinenManagement.ApplicationServices.csproj", "{622733AA-3DD1-4184-B0F9-B6D3ADFFF7C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelLinenManagement.ApplicationServices", "..\HotelLinenManagement.ApplicationServices\HotelLinenManagement.ApplicationServices.csproj", "{622733AA-3DD1-4184-B0F9-B6D3ADFFF7C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

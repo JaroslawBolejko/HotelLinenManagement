@@ -2,6 +2,7 @@
 using HotelLinenManagement.ApplicationServices.API.Domain.ErrorHandling;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
 using System.Net;
@@ -12,10 +13,12 @@ namespace HotelLinenManagement.Controllers
     public abstract class ApiControllerBase : ControllerBase
     {
         private readonly IMediator mediator;
+        private readonly ILogger logger;
 
-        protected ApiControllerBase(IMediator mediator)
+        protected ApiControllerBase(IMediator mediator, ILogger logger)
         {
             this.mediator = mediator;
+            this.logger = logger;
         }
         protected async Task<IActionResult> HandleRequest<TRequest, TResponse>(TRequest request)
             where TRequest : IRequest<TResponse>
@@ -26,12 +29,12 @@ namespace HotelLinenManagement.Controllers
                 return this.BadRequest(
                          this.ModelState
                          .Where(x => x.Value.Errors.Any())
-                         //tu wyciągamy te wartości naszych błędów do potestowania!
                          .Select(x => new { property = x.Key, errors = x.Value.Errors }));
             }
             var response = await this.mediator.Send(request);
             if (response.Error != null)
             {
+                logger.LogError("An error Occured");
                 return this.ErrorResopnse(response.Error);
             }
 

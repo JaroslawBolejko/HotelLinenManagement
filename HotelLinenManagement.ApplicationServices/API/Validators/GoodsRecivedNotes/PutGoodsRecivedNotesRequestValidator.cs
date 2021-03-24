@@ -8,7 +8,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Validators.GoodsRecivedNo
         public PutGoodsRecivedNotesRequestValidator()
         {
             this.RuleFor(x => x.Id).NotNull().NotEmpty();
-            this.RuleFor(x => x.GoodsReceivedNoteName).MaximumLength(100);
+            this.RuleFor(x => x.GoodsReceivedNoteName).MaximumLength(20);
             this.RuleFor(x => x.GoodsReceivedNoteNumber).NotNull().NotEmpty();
             this.RuleFor(x => x.GoodsReceivedNoteDate).NotNull().NotEmpty();
         }

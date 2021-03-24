@@ -30,7 +30,7 @@ namespace HotelLinenManagement.DataAccess.CQRS.Queries.Storerooms
 
             }
 
-            return await context.Storerooms.ToListAsync();
+            return await context.Storerooms.Include(x => x.HotelLinens).ToListAsync();
 
         }
     }

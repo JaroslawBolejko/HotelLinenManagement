@@ -79,6 +79,18 @@
             "RestSharp": {
               "target": "Package",
               "version": "[106.11.7, )"
+            },
+            "System.ServiceModel.Http": {
+              "target": "Package",
+              "version": "[4.8.1, )"
+            },
+            "System.ServiceModel.Primitives": {
+              "target": "Package",
+              "version": "[4.8.1, )"
+            },
+            "WcfCoreMtomEncoder": {
+              "target": "Package",
+              "version": "[0.1.16, )"
             }
           },
           "imports": [

@@ -1,9 +1,8 @@
-﻿using HotelLinenManagement.ApplicationServices.API.Domain.Requests;
-using HotelLinenManagement.ApplicationServices.API.Domain.Requests.LinenTypes;
-using HotelLinenManagement.ApplicationServices.API.Domain.Responses;
+﻿using HotelLinenManagement.ApplicationServices.API.Domain.Requests.LinenTypes;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses.LinenTypes;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
 namespace HotelLinenManagement.Controllers
@@ -13,8 +12,9 @@ namespace HotelLinenManagement.Controllers
 
     public class LinenTypesController : ApiControllerBase
     {
-        public LinenTypesController(IMediator mediator) : base(mediator)
+        public LinenTypesController(IMediator mediator, ILogger<LinenTypesController> logger) : base(mediator,logger)
         {
+            logger.LogInformation("We are in Linen Types");
         }
 
         [HttpGet]

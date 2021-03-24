@@ -216,8 +216,8 @@ namespace HotelLinenManagement.DataAccess.Migrations
                     b.Property<int>("HotelId")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("InvoiceTotal")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("InvoiceTotal")
+                        .HasColumnType("float");
 
                     b.Property<int>("LaundryId")
                         .HasColumnType("int");
