@@ -45,15 +45,15 @@ namespace HotelLinenManagement.DataAccess.CQRS.Queries.Users
             //}
 
             //  --->uzupełnić o username case<--
-            //else if (!string.IsNullOrEmpty(this.Username))
-            //{
+            else if (!string.IsNullOrEmpty(this.Username))
+            {
 
-            //    if (context.Users.Any(x => x.Username == this.Username))
-            //        return null;
+                if (context.Users.Any(x => x.Username == this.Username))
+                    return null;
 
-            //}
+            }
 
-          //  return await context.Users.ToListAsync();
+            //  return await context.Users.ToListAsync();
 
 
             else if (!string.IsNullOrEmpty(this.FirstName) && !string.IsNullOrEmpty(this.LastName) && !string.IsNullOrEmpty(this.Position)
