@@ -14,9 +14,6 @@ using Microsoft.OpenApi.Models;
 using HotelLinenManagement.ApplicationServices.API.Validators;
 using Microsoft.AspNetCore.Mvc;
 using HotelLinenManagement.ApplicationServices.Components.GetGusDataAPIByTaxNumber;
-using Microsoft.AspNetCore.Authentication;
-using HotelLinenManagement.Authentication;
-using HotelLinenManagement.ApplicationServices.Components.PassworHasher;
 
 namespace HotelLinenManagement
 {
@@ -32,8 +29,7 @@ namespace HotelLinenManagement
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuthentication("BasicAuthentication")
-                .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
+            
             services.AddMvcCore()
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<AddStoreroomRequestValidator>());
             services.Configure<ApiBehaviorOptions>(options =>
@@ -41,8 +37,7 @@ namespace HotelLinenManagement
                 options.SuppressModelStateInvalidFilter = true;
             });
             services.AddTransient<IGUSDataConnector, GUSDataConnector>();
-            services.AddTransient<IPasswordHasher, PasswordHasher>();
-                        services.AddTransient<IQueryExecutor, QueryExecutor>();
+            services.AddTransient<IQueryExecutor, QueryExecutor>();
 
             services.AddTransient<ICommandExecutor, CommandExecutor>();
 
@@ -72,8 +67,9 @@ namespace HotelLinenManagement
             }
 
             app.UseHttpsRedirection();
+
             app.UseRouting();
-            app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
