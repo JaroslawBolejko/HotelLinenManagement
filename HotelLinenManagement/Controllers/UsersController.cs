@@ -1,12 +1,14 @@
 ﻿using HotelLinenManagement.ApplicationServices.API.Domain.Requests.Users;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses.Users;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
 namespace HotelLinenManagement.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
 
@@ -14,11 +16,12 @@ namespace HotelLinenManagement.Controllers
     {
 
 
-        public UsersController(IMediator mediator, ILogger<UsersController> logger) : base(mediator,logger)
+        public UsersController(IMediator mediator, ILogger<UsersController> logger) : base(mediator, logger)
         {
             logger.LogInformation("We are in Users");
         }
 
+        //  [AllowAnonymous]
         [HttpGet]
         [Route("")]
         public Task<IActionResult> GetAllUsers([FromQuery] GetAllUsersRequest request)
@@ -27,23 +30,25 @@ namespace HotelLinenManagement.Controllers
         }
 
         [HttpGet]
-        [Route("{userId}")]
-        public Task<IActionResult> GetById([FromRoute] int userId)
+        [Route("{username}")]
+        public Task<IActionResult> GetById([FromRoute] string username)
         {
 
             var request = new GetUserByIdRequest()
             {
-                UserId = userId
+                Username = username
             };
             return this.HandleRequest<GetUserByIdRequest, GetUserByIdResponse>(request);
 
+
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [Route("")]
         public Task<IActionResult> AddUser([FromQuery] AddUserRequest request)
         {
-            
+
             return this.HandleRequest<AddUserRequest, AddUserResponse>(request);
         }
 

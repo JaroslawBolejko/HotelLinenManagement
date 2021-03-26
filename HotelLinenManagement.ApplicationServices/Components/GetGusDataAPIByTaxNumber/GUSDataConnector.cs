@@ -1,11 +1,7 @@
 ﻿using GusDataApi;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
-using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using WcfCoreMtomEncoder;
@@ -15,8 +11,8 @@ namespace HotelLinenManagement.ApplicationServices.Components.GetGusDataAPIByTax
     public class GUSDataConnector : IGUSDataConnector
     {
         public UslugaBIRzewnPublClient uslugaBIRzewn;
-        static string AdresUslugi = "https://wyszukiwarkaregon.stat.gov.pl/wsBIR/UslugaBIRzewnPubl.svc";
-        string sid;
+        readonly static string AdresUslugi = "https://wyszukiwarkaregon.stat.gov.pl/wsBIR/UslugaBIRzewnPubl.svc";
+        readonly string sid;
 
         public GUSDataConnector()
         {
@@ -47,8 +43,10 @@ namespace HotelLinenManagement.ApplicationServices.Components.GetGusDataAPIByTax
             httpRequest.Headers.Add("sid", sid);
             OperationContext.Current.OutgoingMessageProperties[HttpRequestMessageProperty.Name] = httpRequest;
 
-            var parametrSzukajKontrahenta = new ParametryWyszukiwania();
-            parametrSzukajKontrahenta.Nip = nip;
+            var parametrSzukajKontrahenta = new ParametryWyszukiwania
+            {
+                Nip = nip
+            };
 
             var response = await uslugaBIRzewn.DaneSzukajPodmiotyAsync(parametrSzukajKontrahenta);
 

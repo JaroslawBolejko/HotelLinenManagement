@@ -29,7 +29,8 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
         {
             var query = new GetUserQuery()
             {
-                Id = request.UserId
+                //Id = request.UserId,
+                Username = request.Username
             };
             var user = await this.queryExecutor.Execute(query);
 

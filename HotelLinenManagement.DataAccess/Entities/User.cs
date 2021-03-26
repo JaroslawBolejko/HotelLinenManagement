@@ -25,6 +25,17 @@ namespace HotelLinenManagement.DataAccess.Entities
         [Required]
         [MaxLength(250)]
         public string Permission { get; set; }
+        [Required]
+        [MaxLength(50)]
+        public string Password { get; set; }
+        [Required]
+        [MaxLength(50)]
+        public string Username { get; set; }
+        [Required]
+        [MaxLength(50)]
+        public string Email { get; set; }
+        [Required]
+        public string Salt { get; set; }
 
 
     }

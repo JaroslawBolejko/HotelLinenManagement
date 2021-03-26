@@ -3,6 +3,7 @@ using HotelLinenManagement.ApplicationServices.API.Domain;
 using HotelLinenManagement.ApplicationServices.API.Domain.ErrorHandling;
 using HotelLinenManagement.ApplicationServices.API.Domain.Requests.Users;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses.Users;
+using HotelLinenManagement.ApplicationServices.Components.PassworHasher;
 using HotelLinenManagement.DataAccess.CQRS;
 using HotelLinenManagement.DataAccess.CQRS.Commands.Users;
 using HotelLinenManagement.DataAccess.CQRS.Queries.Users;
@@ -18,23 +19,27 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers.Add
         private readonly IMapper mapper;
         private readonly IQueryExecutor queryExecutor;
         private readonly ICommandExecutor commandExecutor;
+        private readonly IPasswordHasher passwordHasher;
 
-        public AddUserHandler(IMapper mapper, IQueryExecutor queryExecutor, ICommandExecutor commandExecutor)
+        public AddUserHandler(IMapper mapper, IQueryExecutor queryExecutor, ICommandExecutor commandExecutor, IPasswordHasher passwordHasher)
         {
             this.mapper = mapper;
             this.queryExecutor = queryExecutor;
             this.commandExecutor = commandExecutor;
+            this.passwordHasher = passwordHasher;
         }
 
         public async Task<AddUserResponse> Handle(AddUserRequest request, CancellationToken cancellationToken)
         {
             var query = new GetUsersQuery()
             {
-                FirstName = request.FirstName,
-                LastName = request.LastName,
-                Position = request.Position,
-                Workplace = request.Workplace,
-                Permission = request.Permission
+                //FirstName = request.FirstName,
+                //LastName = request.LastName,
+                //Position = request.Position,
+                //Workplace = request.Workplace,
+                //Permission = request.Permission,
+                Username= request.Username,
+                Password = request.Password
 
             };
             var userNotExist = await queryExecutor.Execute(query);
@@ -46,11 +51,15 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers.Add
                     Error = new ErrorModel(ErrorType.Conflict)
                 };
             }
+            var auth = passwordHasher.Hash(request.Password);
+            request.Password = auth[0];
+            request.Salt = auth[1];
             var user = this.mapper.Map<User>(request);
             var command = new AddUserCommand()
             {
                 Parameter = user
             };
+           
             var userformDb = await this.commandExecutor.Execute(command);
 
             return new AddUserResponse()

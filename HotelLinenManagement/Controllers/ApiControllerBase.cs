@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
 using System.Net;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace HotelLinenManagement.Controllers
@@ -31,10 +32,14 @@ namespace HotelLinenManagement.Controllers
                          .Where(x => x.Value.Errors.Any())
                          .Select(x => new { property = x.Key, errors = x.Value.Errors }));
             }
+
+            var username = this.User.FindFirstValue(ClaimTypes.Name);
+
             var response = await this.mediator.Send(request);
             if (response.Error != null)
             {
-                logger.LogError("An error Occured");
+                //Logowanie błedów w dobym miejscu, poprawić żeby pojawiałe się uszczegółowiony błąd
+                logger.LogError("An error Occured ");
                 return this.ErrorResopnse(response.Error);
             }
 
