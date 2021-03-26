@@ -39,19 +39,6 @@ namespace HotelLinenManagement.DataAccess.CQRS.Queries.Users
             //    return await context.Users.Where(x=>x.LastName.Contains(this.LastName) && Workplace.
             //        Contains(this.Workplace)).ToListAsync();
             //}
-
-            //  --->uzupełnić o username case<--
-            //else if (!string.IsNullOrEmpty(this.Username))
-            //{
-
-            //    if (context.Users.Any(x => x.Username == this.Username))
-            //        return null;
-
-            //}
-
-          //  return await context.Users.ToListAsync();
-
-
             else if (!string.IsNullOrEmpty(this.FirstName) && !string.IsNullOrEmpty(this.LastName) && !string.IsNullOrEmpty(this.Position)
                 && !string.IsNullOrEmpty(this.Workplace) && !string.IsNullOrEmpty(this.Permission))
             {
