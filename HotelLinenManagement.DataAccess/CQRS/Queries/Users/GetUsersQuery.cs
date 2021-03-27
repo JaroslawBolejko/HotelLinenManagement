@@ -15,6 +15,10 @@ namespace HotelLinenManagement.DataAccess.CQRS.Queries.Users
         public string FirstName { get; set; }
         public string Position { get; set; }
         public string Permission { get; set; }
+        public string Password { get; set; }
+        public string Username { get; set; }
+        public string Email { get; set; }
+
 
         public override async Task<List<User>> Execute(HotelLinenWarehouseContext context)
         {
@@ -39,16 +43,29 @@ namespace HotelLinenManagement.DataAccess.CQRS.Queries.Users
             //    return await context.Users.Where(x=>x.LastName.Contains(this.LastName) && Workplace.
             //        Contains(this.Workplace)).ToListAsync();
             //}
+
+            //  --->uzupełnić o username case<--
+            //else if (!string.IsNullOrEmpty(this.Username))
+            //{
+
+            //    if (context.Users.Any(x => x.Username == this.Username))
+            //        return null;
+
+            //}
+
+          //  return await context.Users.ToListAsync();
+
+
             else if (!string.IsNullOrEmpty(this.FirstName) && !string.IsNullOrEmpty(this.LastName) && !string.IsNullOrEmpty(this.Position)
                 && !string.IsNullOrEmpty(this.Workplace) && !string.IsNullOrEmpty(this.Permission))
             {
-              
+
                 if (context.Users.Any(x => x.FirstName == this.FirstName && x.LastName == this.LastName
-                   && x.Position == this.Position && x.Workplace == this.Workplace && x.Permission== this.Permission))
+                   && x.Position == this.Position && x.Workplace == this.Workplace && x.Permission == this.Permission))
                     return null;
             }
-                return await context.Users.ToListAsync();
-            
+            return await context.Users.ToListAsync();
+
         }
     }
 }
