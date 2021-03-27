@@ -8,8 +8,7 @@
         public string Position { get; set; }
         public string Workplace { get; set; }
         public string Permission { get; set; }
-        public string Username { get; set; }
-        public string Email { get; set; }
+
 
     }
 }
