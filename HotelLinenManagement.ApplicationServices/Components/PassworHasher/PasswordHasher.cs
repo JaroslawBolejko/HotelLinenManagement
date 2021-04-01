@@ -9,6 +9,7 @@ namespace HotelLinenManagement.ApplicationServices.Components.PassworHasher
     public class PasswordHasher : IPasswordHasher
     {
         public string[] Hash(string password)
+
         {
             byte[] salt = new byte[128 / 8];
 
@@ -18,7 +19,7 @@ namespace HotelLinenManagement.ApplicationServices.Components.PassworHasher
             }
 
             string saltString = "";
-            salt.ToList().ForEach(x => saltString += x.ToString() + ";");
+            salt.ToList().ForEach(x => saltString += x.ToString() + "|");
 
             var base64Code = Encoding.UTF8.GetBytes(saltString);
             string hashedSalt = Convert.ToBase64String(base64Code);
@@ -31,8 +32,9 @@ namespace HotelLinenManagement.ApplicationServices.Components.PassworHasher
                 iterationCount: 10000,
                 numBytesRequested: 256 / 8));
 
-            string[] response = { hashed,hashedSalt};
+            string[] response = { hashed, hashedSalt };
             return response;
+
         }
 
         public string HashToCheck(string password, string hashedSalt)
@@ -40,9 +42,13 @@ namespace HotelLinenManagement.ApplicationServices.Components.PassworHasher
             var base64Encode = Convert.FromBase64String(hashedSalt);
             var encodedSalt = Encoding.UTF8.GetString(base64Encode);
 
-            var saltString = encodedSalt.Split(";");
+            var saltString = encodedSalt.Split("|");
+            if (saltString.Length != 17)
+            {
+                throw new ("hashed Salt bad format");
+            }
             byte[] salt = new byte[16];
-            for (int i = 0; i <16; i++)
+            for (int i = 0; i < 16; i++)
             {
                 salt[i] = Byte.Parse(saltString.ElementAt(i));
             }

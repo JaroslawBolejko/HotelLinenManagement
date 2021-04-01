@@ -34,7 +34,6 @@ namespace HotelLinenManagement.DataAccess.Entities
         [Required]
         [MaxLength(50)]
         public string Email { get; set; }
-        [Required]
         public string Salt { get; set; }
 
 

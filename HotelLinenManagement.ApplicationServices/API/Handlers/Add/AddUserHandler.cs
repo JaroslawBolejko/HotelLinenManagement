@@ -51,9 +51,11 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers.Add
                     Error = new ErrorModel(ErrorType.Conflict)
                 };
             }
+
             var auth = passwordHasher.Hash(request.Password);
             request.Password = auth[0];
             request.Salt = auth[1];
+
             var user = this.mapper.Map<User>(request);
             var command = new AddUserCommand()
             {

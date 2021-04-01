@@ -11,6 +11,7 @@ namespace HotelLinenManagement.DataAccess.CQRS.Queries.Users
         public string Username { get; set; }
 
 
+
         public override async Task<User> Execute(HotelLinenWarehouseContext context)
         {
             if(this.Id!=null  && string.IsNullOrEmpty(this.Username))
