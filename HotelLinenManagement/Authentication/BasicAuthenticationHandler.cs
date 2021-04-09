@@ -1,12 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Security.Claims;
-using System.Text;
-using System.Text.Encodings.Web;
-using System.Threading.Tasks;
-using HotelLinenManagement.ApplicationServices.API.Domain;
-using HotelLinenManagement.ApplicationServices.Components.PassworHasher;
+﻿using HotelLinenManagement.ApplicationServices.Components.PassworHasher;
 using HotelLinenManagement.DataAccess.CQRS;
 using HotelLinenManagement.DataAccess.CQRS.Queries.Users;
 using HotelLinenManagement.DataAccess.Entities;
@@ -15,6 +7,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using System;
+using System.Net.Http.Headers;
+using System.Security.Claims;
+using System.Text;
+using System.Text.Encodings.Web;
+using System.Threading.Tasks;
 
 namespace HotelLinenManagement.Authentication
 {
@@ -50,36 +48,7 @@ namespace HotelLinenManagement.Authentication
                 return AuthenticateResult.Fail("Missing Authorization Header");
             }
 
-            if (!Request.Headers.ContainsKey("Role"))
-            {
-                return AuthenticateResult.Fail("Missing Authorization Role");
-            }
-
-            var role = (AppRole)Enum.Parse(typeof(AppRole),
-                Request.Headers.Where(x => x.Key == "role").Select(x => x.Value).FirstOrDefault());
-
-            if (role == AppRole.AdminHotel || role == AppRole.UserHotel || role == AppRole.UserLaundry)
-            {
-                return await UserAuthorization(role);
-            }
-
-            //else if (role == AppRole.UserHotel)
-            //{
-            //    return await UserHotelAuthorization(role);
-            //}
-
-            //else if (role == AppRole.UserLaundry)
-            //{
-            //    return await UserLuandryAuthorization(role);
-            //}
-            else
-            {
-                return AuthenticateResult.Fail("Missing Authorization");
-            }
-        }
-
-        private async Task<AuthenticateResult> UserAuthorization(AppRole role)
-        {
+            
             User user = null;
 
             try
@@ -112,9 +81,9 @@ namespace HotelLinenManagement.Authentication
             }
 
             var claims = new[] {
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.Username),
-                new Claim(ClaimTypes.Role, role.ToString()),
+               // new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+              //  new Claim(ClaimTypes.Name, user.Username),
+                new Claim(ClaimTypes.Role, user.Permission)
             };
             var identity = new ClaimsIdentity(claims, Scheme.Name);
             var principal = new ClaimsPrincipal(identity);

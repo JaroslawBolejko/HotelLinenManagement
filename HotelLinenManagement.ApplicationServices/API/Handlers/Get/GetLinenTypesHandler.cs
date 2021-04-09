@@ -26,7 +26,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
 
         public async Task<GetAllLinenTypesResponse> Handle(GetAllLinenTypesRequest request, CancellationToken cancellationToken)
         {
-            if (request.AuthenticationRole == AppRole.UserLaundry)
+            if (request.AuthenticationRole == "UserLaundry")
             {
                 return new GetAllLinenTypesResponse
                 {
