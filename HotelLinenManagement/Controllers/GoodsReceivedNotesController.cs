@@ -1,12 +1,14 @@
 ﻿using HotelLinenManagement.ApplicationServices.API.Domain.Requests.GoodsRecivedNotes;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses.GoodsRecivedNotes;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
 namespace HotelLinenManagement.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class GoodsReceivedNotesController : ApiControllerBase

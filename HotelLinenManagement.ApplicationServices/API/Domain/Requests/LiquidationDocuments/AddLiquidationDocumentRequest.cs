@@ -4,7 +4,7 @@ using System;
 
 namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.LiquidationDocuments
 {
-    public class AddLiquidationDocumentRequest :IRequest<AddLiquidationDocumentResponse>
+    public class AddLiquidationDocumentRequest : RequestBase, IRequest<AddLiquidationDocumentResponse>
     {
         public string LiquidationDocName { get; set; }
         public int LiquidationDocNumber { get; set; }

@@ -28,6 +28,14 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers.Add
 
         public async Task<AddHotelResponse> Handle(AddHotelRequest request, CancellationToken cancellationToken)
         {
+            if (request.AuthenticationRole == "UserLaundry")
+            {
+                return new AddHotelResponse
+                {
+                    Error = new ErrorModel(ErrorType.Unauthorized)
+                };
+            }
+
             var query = new GetHotelsQuery()
             {
                 TaxNumber = request.TaxNumber

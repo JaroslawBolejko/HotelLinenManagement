@@ -3,7 +3,7 @@ using MediatR;
 
 namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.Hotels
 {
-    public class GetAllHotelsRequest : IRequest<GetAllHotelsResponse>
+    public class GetAllHotelsRequest : RequestBase, IRequest<GetAllHotelsResponse>
     {
         public string HotelName { get; set; }
         public string TaxNumber { get; set; }

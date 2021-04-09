@@ -1,15 +1,16 @@
 ﻿using HotelLinenManagement.ApplicationServices.API.Domain.Requests.Hotels;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses.Hotels;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
 namespace HotelLinenManagement.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
-
     public class HotelsController : ApiControllerBase
     {
         public HotelsController(IMediator mediator, ILogger<HotelsController> logger) : base(mediator,logger)

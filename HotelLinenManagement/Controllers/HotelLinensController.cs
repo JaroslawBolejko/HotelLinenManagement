@@ -3,25 +3,24 @@ using HotelLinenManagement.ApplicationServices.API.Domain.Requests.HotelLinens;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses.HotelLinens;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
 namespace HotelLinenManagement.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
-
     public class HotelLinensController : ApiControllerBase
     {
 
         public HotelLinensController(IMediator mediator, ILogger<HotelLinensController> logger) : base(mediator,logger)
         {
             logger.LogInformation("We are in HotelLinens");
-           // logger.LogError("An Error Occured");
            
         }
-
 
         [HttpGet]
         [Route("")]

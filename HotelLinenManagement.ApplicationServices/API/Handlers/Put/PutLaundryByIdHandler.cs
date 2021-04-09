@@ -28,6 +28,14 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers.Add
 
         public async Task<PutLaundryByIdResponse> Handle(PutLaundryByIdRequest request, CancellationToken cancellationToken)
         {
+            //Na razie wszyscy użytkownicy, pózniej tylko hotel, chyba że pralnia sama siebie bedzie mogła zaktualizowac
+            //if (request.AuthenticationRole != "UserLaundry")
+            //{
+            //    return new PutLaundryByIdResponse
+            //    {
+            //        Error = new ErrorModel(ErrorType.Unauthorized)
+            //    };
+            //}
             var query = new GetLaundryQuery()
             {
                 Id = request.Id

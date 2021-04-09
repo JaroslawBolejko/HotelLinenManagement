@@ -3,10 +3,17 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HotelLinenManagement.DataAccess.Entities
 {
-    public class User :EntityBase
+
+    public enum Role
     {
-      
-        public List <Storeroom> Storerooms { get; set; }
+        AdminHotel,
+        UserHotel,
+        UserLaundry
+
+    }
+    public class User : EntityBase
+    {
+        public List<Storeroom> Storerooms { get; set; }
         public List<GoodsReceivedNote> GoodsReceivedNotes { get; set; }
         public List<GoodsIssuedNote> GoodsIssuedNotes { get; set; }
         public List<LiquidationDocument> LiquidationDocuments { get; set; }
@@ -23,8 +30,7 @@ namespace HotelLinenManagement.DataAccess.Entities
         [MaxLength(250)]
         public string Workplace { get; set; }
         [Required]
-        [MaxLength(250)]
-        public string Permission { get; set; }
+        public Role Permission { get; set; }
         [Required]
         [MaxLength(50)]
         public string Password { get; set; }

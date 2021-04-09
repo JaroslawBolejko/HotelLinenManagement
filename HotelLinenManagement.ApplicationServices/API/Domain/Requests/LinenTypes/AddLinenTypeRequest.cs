@@ -3,7 +3,7 @@ using MediatR;
 
 namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.LinenTypes
 {
-    public class AddLinenTypeRequest : IRequest<AddLinenTypeResponse>
+    public class AddLinenTypeRequest : RequestBase, IRequest<AddLinenTypeResponse>
     {
         public string LinenTypeName { get; set; }
     }

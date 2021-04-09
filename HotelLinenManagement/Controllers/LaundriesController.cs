@@ -1,18 +1,19 @@
 ﻿using HotelLinenManagement.ApplicationServices.API.Domain.Requests.Laundries;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses.Laundries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
 namespace HotelLinenManagement.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
-
     public class LaundriesController : ApiControllerBase
     {
-        public LaundriesController(IMediator mediator, ILogger<LaundriesController> logger) : base(mediator,logger)
+        public LaundriesController(IMediator mediator, ILogger<LaundriesController> logger) : base(mediator, logger)
         {
             logger.LogInformation("We are in Laundries");
         }

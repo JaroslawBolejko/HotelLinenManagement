@@ -4,7 +4,7 @@ using System;
 
 namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.Laundries
 {
-    public class AddLaundryRequest : IRequest<AddLaundryResponse>
+    public class AddLaundryRequest : RequestBase, IRequest<AddLaundryResponse>
     {
         public string Name { get; set; }
         public string TaxNumber { get; set; }

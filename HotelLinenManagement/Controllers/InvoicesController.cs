@@ -1,15 +1,16 @@
 ﻿using HotelLinenManagement.ApplicationServices.API.Domain.Requests.Invoices;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses.Invoices;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
 namespace HotelLinenManagement.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
-
     public class InvoicesController : ApiControllerBase
     {
         public InvoicesController(IMediator mediator, ILogger<InvoicesController> logger) : base(mediator,logger)

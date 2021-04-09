@@ -26,6 +26,14 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
 
         public async Task<GetLinenTypeByIdResponse> Handle(GetLinenTypeByIdRequest request, CancellationToken cancellationToken)
         {
+            if (request.AuthenticationRole == "UserLaundry")
+            {
+                return new GetLinenTypeByIdResponse
+                {
+                    Error = new ErrorModel(ErrorType.Unauthorized)
+                };
+            }
+
             var query = new GetLinenTypeQuery()
             {
                 Id = request.Id

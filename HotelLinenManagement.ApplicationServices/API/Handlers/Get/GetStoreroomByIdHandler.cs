@@ -27,6 +27,8 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
 
         public async Task<GetStoreroomByIdResponse> Handle(GetStoreroomByIdRequest request, CancellationToken cancellationToken)
         {
+            // Tu wyciągnąć żeby Pralnia mogła np po ID brudnej bielizny (enum?)
+
             var query = new GetStoreroomQuery()
             {
                 Id = request.StoreroomId

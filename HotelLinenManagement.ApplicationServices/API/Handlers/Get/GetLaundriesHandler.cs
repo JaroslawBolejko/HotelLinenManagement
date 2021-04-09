@@ -26,6 +26,14 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
 
         public async Task<GetAllLaundriesResponse> Handle(GetAllLaundriesRequest request, CancellationToken cancellationToken)
         {
+            if (request.AuthenticationRole != "UserLaundry")
+            {
+                return new GetAllLaundriesResponse
+                {
+                    Error = new ErrorModel(ErrorType.Unauthorized)
+                };
+            }
+
             var query = new GetLaundriesQuery()
             {
                 TaxNumber = request.TaxNumber

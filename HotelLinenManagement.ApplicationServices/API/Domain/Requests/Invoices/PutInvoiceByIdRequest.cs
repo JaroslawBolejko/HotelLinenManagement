@@ -4,7 +4,7 @@ using System;
 
 namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.Invoices
 {
-    public class PutInvoiceByIdRequest : IRequest<PutInvoiceByIdResponse>
+    public class PutInvoiceByIdRequest : RequestBase, IRequest<PutInvoiceByIdResponse>
     {
         public int Id { get; set; }
         public DateTime PaymentDate { get; set; }

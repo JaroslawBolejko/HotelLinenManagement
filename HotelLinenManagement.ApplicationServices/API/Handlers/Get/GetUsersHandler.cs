@@ -26,6 +26,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
 
         public async Task<GetAllUsersResponse> Handle(GetAllUsersRequest request, CancellationToken cancellationToken)
         {
+
             var query = new GetUsersQuery()
             {
                 LastName = request.LastName,

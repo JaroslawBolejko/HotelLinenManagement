@@ -3,7 +3,7 @@ using MediatR;
 
 namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.Laundries
 {
-    public class GetLaundryByIdRequest : IRequest<GetLaundryByIdResponse>
+    public class GetLaundryByIdRequest : RequestBase, IRequest<GetLaundryByIdResponse>
     {
         public int Id { get; set; }
     }

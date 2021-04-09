@@ -31,7 +31,15 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
 
         public async Task<GetAllHotelsResponse> Handle(GetAllHotelsRequest request, CancellationToken cancellationToken)
         {
-          var daneZGUS = await this.gUSDataConnector.szukajPodmioty<RootDaneSzukajPodmioty>("5261009959");
+            if (request.AuthenticationRole != "UserLaundry")
+            {
+                return new GetAllHotelsResponse
+                {
+                    Error = new ErrorModel(ErrorType.Unauthorized)
+                };
+            }
+
+            var daneZGUS = await this.gUSDataConnector.szukajPodmioty<RootDaneSzukajPodmioty>("5261009959");
             var query = new GetHotelsQuery()
             {
                 HotelName = request.HotelName

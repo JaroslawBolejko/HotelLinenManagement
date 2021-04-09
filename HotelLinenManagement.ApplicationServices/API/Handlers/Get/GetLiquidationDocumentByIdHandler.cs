@@ -24,6 +24,14 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers.Get
 
         public async Task<GetLiquidationDocumentByIdResponse> Handle(GetLiquidationDocumentByIdRequest request, CancellationToken cancellationToken)
         {
+            if (request.AuthenticationRole == "UserLaundry")
+            {
+                return new GetLiquidationDocumentByIdResponse
+                {
+                    Error = new ErrorModel(ErrorType.Unauthorized)
+                };
+            }
+
             var query = new GetLiquidationDocumentQuery()
             {
                 Id = request.Id

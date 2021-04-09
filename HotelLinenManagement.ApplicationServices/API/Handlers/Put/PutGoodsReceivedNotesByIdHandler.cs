@@ -28,6 +28,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers.Add
 
         public async Task<PutGoodsReceivedNotesByIdResponse> Handle(PutGoodsReceivedNotesByIdRequest request, CancellationToken cancellationToken)
         {
+            
             var query = new GetGoodsReceivedNoteQuery()
             {
                 Id = request.Id

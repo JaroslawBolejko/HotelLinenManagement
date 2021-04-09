@@ -3,12 +3,14 @@ using HotelLinenManagement.ApplicationServices.API.Domain.Requests.Storerooms;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses.Storerooms;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
 namespace HotelLinenManagement.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
 

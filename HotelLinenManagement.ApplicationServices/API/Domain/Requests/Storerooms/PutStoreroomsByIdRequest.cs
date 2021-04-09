@@ -3,7 +3,7 @@ using MediatR;
 
 namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.Storerooms
 {
-    public class PutStoreroomsByIdRequest : IRequest<PutStoreroomsByIdResponse>
+    public class PutStoreroomsByIdRequest :RequestBase, IRequest<PutStoreroomsByIdResponse>
     {
         public int Id { get; set; }
         public int RoomNumber { get; set; }

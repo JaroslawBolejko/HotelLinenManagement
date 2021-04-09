@@ -57,11 +57,11 @@ namespace HotelLinenManagement.DataAccess.CQRS.Queries.Users
 
 
             else if (!string.IsNullOrEmpty(this.FirstName) && !string.IsNullOrEmpty(this.LastName) && !string.IsNullOrEmpty(this.Position)
-                && !string.IsNullOrEmpty(this.Workplace) && !string.IsNullOrEmpty(this.Permission))
+                && !string.IsNullOrEmpty(this.Workplace))
             {
 
                 if (context.Users.Any(x => x.FirstName == this.FirstName && x.LastName == this.LastName
-                   && x.Position == this.Position && x.Workplace == this.Workplace && x.Permission == this.Permission))
+                   && x.Position == this.Position && x.Workplace == this.Workplace))
                     return null;
             }
             return await context.Users.ToListAsync();

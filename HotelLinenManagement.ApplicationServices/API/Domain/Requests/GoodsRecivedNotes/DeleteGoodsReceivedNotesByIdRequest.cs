@@ -3,7 +3,7 @@ using MediatR;
 
 namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.GoodsRecivedNotes
 {
-    public class DeleteGoodsReceivedNotesByIdRequest : IRequest<DeleteGoodsReceivedNotesByIdResponse>
+    public class DeleteGoodsReceivedNotesByIdRequest : RequestBase, IRequest<DeleteGoodsReceivedNotesByIdResponse>
     {
         public int Id { get; set; }
     }

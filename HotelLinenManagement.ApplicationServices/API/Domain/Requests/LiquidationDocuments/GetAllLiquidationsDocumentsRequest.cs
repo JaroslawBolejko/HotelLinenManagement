@@ -3,7 +3,7 @@ using MediatR;
 
 namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.LiquidationDocuments
 {
-    public class GetAllLiquidationsDocumentsRequest : IRequest<GetAllLiquidationDocumentsResponse>
+    public class GetAllLiquidationsDocumentsRequest : RequestBase, IRequest<GetAllLiquidationDocumentsResponse>
     {
         public int? LiquidationDocNumber { get; set; }
 

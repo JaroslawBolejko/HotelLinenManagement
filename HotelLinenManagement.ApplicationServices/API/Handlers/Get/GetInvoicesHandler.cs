@@ -26,6 +26,14 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
 
         public async Task<GetAllInvoicesResponse> Handle(GetAllInvoicesRequest request, CancellationToken cancellationToken)
         {
+            //if (request.AuthenticationRole != "UserLaundry")
+            //{
+            //    return new GetAllInvoicesResponse
+            //    {
+            //        Error = new ErrorModel(ErrorType.Unauthorized)
+            //    };
+            //}
+
             var query = new GetInvoicesQuery()
             {
                 HotelId = request.HotelId,

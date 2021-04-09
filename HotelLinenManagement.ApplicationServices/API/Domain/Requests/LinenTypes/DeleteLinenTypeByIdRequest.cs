@@ -3,7 +3,7 @@ using MediatR;
 
 namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.LinenTypes
 {
-    public class DeleteLinenTypeByIdRequest : IRequest<DeleteLinenTypeByIdResponse>
+    public class DeleteLinenTypeByIdRequest : RequestBase, IRequest<DeleteLinenTypeByIdResponse>
     {
         public int Id { get; set; }
     }

@@ -33,13 +33,13 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers.Add
         {
             var query = new GetUsersQuery()
             {
-                //FirstName = request.FirstName,
-                //LastName = request.LastName,
-                //Position = request.Position,
-                //Workplace = request.Workplace,
+                FirstName = request.FirstName,
+                LastName = request.LastName,
+                Position = request.Position,
+                Workplace = request.Workplace,
                 //Permission = request.Permission,
-                Username = request.Username,
-                Password = request.Password
+              //  Username = request.Username,
+             //   Password = request.Password
 
             };
             var userNotExist = await queryExecutor.Execute(query);

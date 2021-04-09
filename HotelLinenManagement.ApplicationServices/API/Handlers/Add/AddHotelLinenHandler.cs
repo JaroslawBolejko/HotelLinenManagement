@@ -5,7 +5,6 @@ using HotelLinenManagement.ApplicationServices.API.Domain.Requests.HotelLinens;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses.HotelLinens;
 using HotelLinenManagement.DataAccess.CQRS;
 using HotelLinenManagement.DataAccess.CQRS.Commands.HotelLinens;
-using HotelLinenManagement.DataAccess.CQRS.Queries.HotelLinens;
 using HotelLinenManagement.DataAccess.Entities;
 using MediatR;
 using System.Threading;
@@ -28,19 +27,15 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers.Add
 
         public async Task<AddHotelLinenResponse> Handle(AddHotelLinenRequest request, CancellationToken cancellationToken)
         {
-            //Tu chyba nie będę potrzebować sprawdzać konfliktu..
-            //var query = new GetHotelLinensQuery()
-            //{
-            //};
-            //var addNewResource = await queryExecutor.Execute(query);
+            
+            if (request.AuthenticationRole == "UserLaundry")
+            {
+                return new AddHotelLinenResponse
+                {
+                    Error = new ErrorModel(ErrorType.Unauthorized)
+                };
+            }
 
-            //if (addNewResource == null)
-            //{
-            //    return new AddHotelLinenResponse()
-            //    {
-            //        Error = new ErrorModel(ErrorType.Conflict)
-            //    };
-            //}
             var hotelLinen = this.mapper.Map<HotelLinen>(request);
             var command = new AddHotelLinenCommand() { Parameter = hotelLinen };
             var hotelLinenFromDb = await this.commandExecutor.Execute(command);

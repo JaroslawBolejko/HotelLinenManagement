@@ -28,6 +28,14 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers.Add
 
         public async Task<PutInvoiceByIdResponse> Handle(PutInvoiceByIdRequest request, CancellationToken cancellationToken)
         {
+            if (request.AuthenticationRole == "UserHotel")
+            {
+                return new PutInvoiceByIdResponse
+                {
+                    Error = new ErrorModel(ErrorType.Unauthorized)
+                };
+            }
+
             var query = new GetInvoiceQuery()
             {
                 Id = request.Id

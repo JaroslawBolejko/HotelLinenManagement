@@ -1,19 +1,20 @@
 ﻿using HotelLinenManagement.ApplicationServices.API.Domain.Requests.LiquidationDocuments;
 using HotelLinenManagement.ApplicationServices.API.Domain.Responses.LiquidationDocuments;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
 namespace HotelLinenManagement.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
-
     public class LiquidationDocumentsController : ApiControllerBase
     {
 
-        public LiquidationDocumentsController(IMediator mediator, ILogger<LiquidationDocumentsController> logger) : base(mediator,logger)
+        public LiquidationDocumentsController(IMediator mediator, ILogger<LiquidationDocumentsController> logger) : base(mediator, logger)
         {
             logger.LogInformation("We are in Liquidation Documents ");
         }
@@ -27,7 +28,7 @@ namespace HotelLinenManagement.Controllers
 
         [HttpGet]
         [Route("{liquidationDocumentId}")]
-        public  Task<IActionResult> GetById([FromRoute] int liquidationDocumentId)
+        public Task<IActionResult> GetById([FromRoute] int liquidationDocumentId)
         {
 
             var request = new GetLiquidationDocumentByIdRequest()

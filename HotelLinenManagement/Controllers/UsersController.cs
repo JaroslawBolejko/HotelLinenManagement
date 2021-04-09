@@ -21,7 +21,6 @@ namespace HotelLinenManagement.Controllers
             logger.LogInformation("We are in Users");
         }
 
-        //  [AllowAnonymous]
         [HttpGet]
         [Route("")]
         public Task<IActionResult> GetAllUsers([FromQuery] GetAllUsersRequest request)
@@ -58,7 +57,7 @@ namespace HotelLinenManagement.Controllers
         {
             return this.HandleRequest<PutUserByIdRequest, PutUserByIdResponse>(request);
         }
-
+        
         [HttpDelete]
         [Route("")]
         public Task<IActionResult> DeleteUserById([FromQuery] DeleteUserByIdRequest request)

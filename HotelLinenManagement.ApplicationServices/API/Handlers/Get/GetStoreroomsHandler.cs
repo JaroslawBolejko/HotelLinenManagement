@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace HotelLinenManagement.ApplicationServices.API.Handlers
 {
-    public class GetStoreroomsHandler : IRequestHandler<GetAllStoreroomsRequest, GetAllStoreroomsResponse>
+    public class GetStoreroomsHandler : RequestBase, IRequestHandler<GetAllStoreroomsRequest, GetAllStoreroomsResponse>
     {
         
         private readonly IMapper mapper;
@@ -28,6 +28,14 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
 
         public async Task<GetAllStoreroomsResponse> Handle(GetAllStoreroomsRequest request, CancellationToken cancellationToken)
         {
+            if (request.AuthenticationRole == "UserLaundry")
+            {
+                return new GetAllStoreroomsResponse
+                {
+                    Error = new ErrorModel(ErrorType.Unauthorized)
+                };
+            }
+
             var query = new GetStoreroomsQuery()
             {
                 StoreroomName = request.StoreroomName

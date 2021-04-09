@@ -15,6 +15,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers.Delete
 {
     public class DeleteLinenTypeByIdHandler : IRequestHandler<DeleteLinenTypeByIdRequest, DeleteLinenTypeByIdResponse>
     {
+
         private readonly IMapper mapper;
         private readonly IQueryExecutor queryExecutor;
         private readonly ICommandExecutor commandExecutor;
@@ -28,6 +29,13 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers.Delete
 
         public async Task<DeleteLinenTypeByIdResponse> Handle(DeleteLinenTypeByIdRequest request, CancellationToken cancellationToken)
         {
+            if (request.AuthenticationRole == "UserLaundry")
+            {
+                return new DeleteLinenTypeByIdResponse
+                {
+                    Error = new ErrorModel(ErrorType.Unauthorized)
+                };
+            }
             var query = new GetLinenTypeQuery()
             {
                 Id = request.Id

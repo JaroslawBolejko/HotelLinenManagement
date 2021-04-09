@@ -28,6 +28,14 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers.Delete
 
         public async Task<DeleteInvoiceByIdResponse> Handle(DeleteInvoiceByIdRequest request, CancellationToken cancellationToken)
         {
+            if (request.AuthenticationRole == "UserHotel")
+            {
+                return new DeleteInvoiceByIdResponse
+                {
+                    Error = new ErrorModel(ErrorType.Unauthorized)
+                };
+            }
+
             var query = new GetInvoiceQuery()
             {
                 Id = request.Id

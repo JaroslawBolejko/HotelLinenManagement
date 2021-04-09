@@ -4,7 +4,7 @@ using System;
 
 namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.GoodsRecivedNotes
 {
-    public class PutGoodsReceivedNotesByIdRequest : IRequest<PutGoodsReceivedNotesByIdResponse>
+    public class PutGoodsReceivedNotesByIdRequest : RequestBase, IRequest<PutGoodsReceivedNotesByIdResponse>
     {
         public int Id { get; set; }
         public string GoodsReceivedNoteName { get; set; }

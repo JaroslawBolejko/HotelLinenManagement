@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.Laundries
 {
-    public class PutLaundryByIdRequest : IRequest<PutLaundryByIdResponse>
+    public class PutLaundryByIdRequest : RequestBase, IRequest<PutLaundryByIdResponse>
     {
         public int Id { get; set; }
         public string Name { get; set; }

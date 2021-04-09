@@ -4,7 +4,7 @@ using System;
 
 namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.Invoices
 {
-    public class AddInvoiceRequest : IRequest<AddInvoiceResponse>
+    public class AddInvoiceRequest : RequestBase, IRequest<AddInvoiceResponse>
     {
         public DateTime PaymentDate { get; set; }
         public string Description { get; set; }

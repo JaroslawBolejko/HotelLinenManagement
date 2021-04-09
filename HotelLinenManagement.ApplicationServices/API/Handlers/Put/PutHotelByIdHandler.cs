@@ -28,6 +28,13 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers.Add
 
         public async Task<PutHotelByIdResponse> Handle(PutHotelByIdRequest request, CancellationToken cancellationToken)
         {
+            if (request.AuthenticationRole != "AdminHotel")
+            {
+                return new PutHotelByIdResponse
+                {
+                    Error = new ErrorModel(ErrorType.Unauthorized)
+                };
+            }
             var query = new GetHotelQuery()
             {
                 Id = request.Id

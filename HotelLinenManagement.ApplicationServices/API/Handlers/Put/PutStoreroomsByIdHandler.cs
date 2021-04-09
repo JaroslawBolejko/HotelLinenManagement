@@ -28,6 +28,13 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers.Add
 
         public async Task<PutStoreroomsByIdResponse> Handle(PutStoreroomsByIdRequest request, CancellationToken cancellationToken)
         {
+            if (request.AuthenticationRole == "UserLaundry" || request.AuthenticationRole == "UserHotel")
+            {
+                return new PutStoreroomsByIdResponse
+                {
+                    Error = new ErrorModel(ErrorType.Unauthorized)
+                };
+            }
             var query = new GetStoreroomQuery()
             {
                 Id = request.Id

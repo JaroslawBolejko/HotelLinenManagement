@@ -28,6 +28,14 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers.Add
 
         public async Task<PutLiquidationDocumentByIdResponse> Handle(PutLiquidationDocumentByIdRequest request, CancellationToken cancellationToken)
         {
+            if (request.AuthenticationRole != "AdminHotel")
+            {
+                return new PutLiquidationDocumentByIdResponse
+                {
+                    Error = new ErrorModel(ErrorType.Unauthorized)
+                };
+            }
+
             var query = new GetLiquidationDocumentQuery()
             {
                 Id = request.Id

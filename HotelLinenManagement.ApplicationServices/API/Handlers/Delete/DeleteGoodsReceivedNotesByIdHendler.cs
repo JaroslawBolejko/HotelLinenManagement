@@ -29,6 +29,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers.Delete
 
         public async Task<DeleteGoodsReceivedNotesByIdResponse> Handle(DeleteGoodsReceivedNotesByIdRequest request, CancellationToken cancellationToken)
         {
+           
             var query = new GetGoodsReceivedNoteQuery()
             {
                 Id = request.Id
