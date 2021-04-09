@@ -3,7 +3,7 @@ using MediatR;
 
 namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.Users
 {
-    public class PutUserByIdRequest : IRequest<PutUserByIdResponse>
+    public class PutUserByIdRequest : RequestBase, IRequest<PutUserByIdResponse>
     {
         public int Id { get; set; }
         public string FirstName { get; set; }

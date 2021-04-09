@@ -38,7 +38,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers.Add
                 //Position = request.Position,
                 //Workplace = request.Workplace,
                 //Permission = request.Permission,
-                Username= request.Username,
+                Username = request.Username,
                 Password = request.Password
 
             };
@@ -61,7 +61,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers.Add
             {
                 Parameter = user
             };
-           
+
             var userformDb = await this.commandExecutor.Execute(command);
 
             return new AddUserResponse()

@@ -45,7 +45,7 @@ namespace HotelLinenManagement.ApplicationServices.Components.PassworHasher
             var saltString = encodedSalt.Split("|");
             if (saltString.Length != 17)
             {
-                throw new ("hashed Salt bad format");
+                throw new("hashed Salt bad format");
             }
             byte[] salt = new byte[16];
             for (int i = 0; i < 16; i++)

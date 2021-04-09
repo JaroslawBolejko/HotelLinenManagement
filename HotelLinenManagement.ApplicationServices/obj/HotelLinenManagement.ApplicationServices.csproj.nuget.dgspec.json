@@ -56,10 +56,6 @@
               "target": "Package",
               "version": "[8.1.1, )"
             },
-            "BCrypt.Net-Next": {
-              "target": "Package",
-              "version": "[4.0.2, )"
-            },
             "FluentValidation.AspNetCore": {
               "target": "Package",
               "version": "[9.5.2, )"

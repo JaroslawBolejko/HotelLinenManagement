@@ -1,12 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Bh0L5zgwrZIShegjggj+/wA0tQjqQ8ano95eGo0eG4dknguGyrSukNaMd0cdKLn2HMilrmx4cKHm38l4zH8ijQ==",
+  "dgSpecHash": "pgEo8XesMVHD4d7arzoFJxM7oZLsRkJIoDWbUSwAit1OugjL8C5FLjZjhyHtsTxjB2UJysVxpQtNTDfyH5nGoA==",
   "success": true,
   "projectFilePath": "C:\\Users\\user\\Documents\\GitHub\\HotelLinenManagement\\HotelLinenManagement.ApplicationServices\\HotelLinenManagement.ApplicationServices.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\bcrypt.net-next\\4.0.2\\bcrypt.net-next.4.0.2.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\fluentvalidation\\9.5.2\\fluentvalidation.9.5.2.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\fluentvalidation.aspnetcore\\9.5.2\\fluentvalidation.aspnetcore.9.5.2.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\9.5.2\\fluentvalidation.dependencyinjectionextensions.9.5.2.nupkg.sha512",

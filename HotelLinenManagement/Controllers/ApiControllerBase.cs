@@ -33,7 +33,12 @@ namespace HotelLinenManagement.Controllers
                          .Select(x => new { property = x.Key, errors = x.Value.Errors }));
             }
 
-            var username = this.User.FindFirstValue(ClaimTypes.Name);
+            if (User.Claims.FirstOrDefault() != null)
+            {
+                (request as RequestBase).AuthenticationName = this.User.FindFirstValue(ClaimTypes.Name);
+                (request as RequestBase).AuthenticationRole = (AppRole)Enum.Parse(typeof(AppRole), this.User.FindFirstValue(ClaimTypes.Role));
+                (request as RequestBase).AuthenticationId = Int32.Parse(this.User.FindFirstValue(ClaimTypes.NameIdentifier));
+            }
 
             var response = await this.mediator.Send(request);
             if (response.Error != null)
