@@ -3,7 +3,7 @@ using MediatR;
 
 namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.Users
 {
-    public  class AddUserRequest : RequestBase, IRequest<AddUserResponse>
+    public class AddUserRequest : RequestBase, IRequest<AddUserResponse>
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -13,7 +13,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Domain.Requests.Users
         public string Password { get; set; }
         public string Username { get; set; }
         public string Email { get; set; }
-        
+
         public string Salt { get; set; }
 
     }

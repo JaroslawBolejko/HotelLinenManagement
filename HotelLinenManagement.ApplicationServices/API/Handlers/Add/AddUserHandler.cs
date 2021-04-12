@@ -38,8 +38,8 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers.Add
                 Position = request.Position,
                 Workplace = request.Workplace,
                 //Permission = request.Permission,
-              //  Username = request.Username,
-             //   Password = request.Password
+                //  Username = request.Username,
+                //   Password = request.Password
 
             };
             var userNotExist = await queryExecutor.Execute(query);
@@ -55,6 +55,11 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers.Add
             var auth = passwordHasher.Hash(request.Password);
             request.Password = auth[0];
             request.Salt = auth[1];
+
+            if (request.Workplace == "Hotel")
+                request.Permission = "UserHotel";
+            else
+            request.Permission = "UserLaundry";
 
             var user = this.mapper.Map<User>(request);
             var command = new AddUserCommand()

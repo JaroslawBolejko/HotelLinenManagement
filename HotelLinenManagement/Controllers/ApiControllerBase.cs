@@ -35,7 +35,7 @@ namespace HotelLinenManagement.Controllers
       //      var username = this.User.FindFirstValue(ClaimTypes.Name);
             if (User.Claims.FirstOrDefault() != null)
             //{
-            //    (request as RequestBase).AuthenticationName = this.User.FindFirstValue(ClaimTypes.Name);
+                   (request as RequestBase).AuthenticationName = this.User.FindFirstValue(ClaimTypes.Name);
             //    //(request as RequestBase).AuthenticationRole = (AppRole)Enum.Parse(typeof(AppRole), this.User.FindFirstValue(ClaimTypes.Role));
              (request as RequestBase).AuthenticationRole =  this.User.FindFirstValue(ClaimTypes.Role);
             //    (request as RequestBase).AuthenticationId = Int32.Parse(this.User.FindFirstValue(ClaimTypes.NameIdentifier));

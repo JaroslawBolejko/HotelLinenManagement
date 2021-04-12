@@ -28,17 +28,26 @@ namespace HotelLinenManagement.Controllers
             return this.HandleRequest<GetAllUsersRequest, GetAllUsersResponse>(request);
         }
 
+        //[HttpGet]
+        //[Route("{username}")]
+        //public Task<IActionResult> GetById([FromRoute] string username)
+        //{
+
+        //    var request = new GetUserByIdRequest()
+        //    {
+        //        Username = username
+        //    };
+        //    return this.HandleRequest<GetUserByIdRequest, GetUserByIdResponse>(request);
+
+
+        //}
+
         [HttpGet]
-        [Route("{username}")]
-        public Task<IActionResult> GetById([FromRoute] string username)
+        [Route("{Me}")]
+        public Task<IActionResult> GetMe([FromRoute] GetMeRequest request)
         {
 
-            var request = new GetUserByIdRequest()
-            {
-                Username = username
-            };
-            return this.HandleRequest<GetUserByIdRequest, GetUserByIdResponse>(request);
-
+            return this.HandleRequest<GetMeRequest, GetMeResponse>(request);
 
         }
 
@@ -57,7 +66,7 @@ namespace HotelLinenManagement.Controllers
         {
             return this.HandleRequest<PutUserByIdRequest, PutUserByIdResponse>(request);
         }
-        
+
         [HttpDelete]
         [Route("")]
         public Task<IActionResult> DeleteUserById([FromQuery] DeleteUserByIdRequest request)

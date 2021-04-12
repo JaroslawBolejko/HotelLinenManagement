@@ -3,7 +3,16 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HotelLinenManagement.DataAccess.Entities
 {
-
+    //public enum PlaceOfWork
+    //{
+    //    Hotel,
+    //    Laundry
+    //}
+    //public enum WorkPosition
+    //{
+    //    Manager,
+    //    Employee
+    //}
     public enum Role
     {
         AdminHotel,
