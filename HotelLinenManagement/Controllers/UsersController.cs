@@ -27,7 +27,7 @@ namespace HotelLinenManagement.Controllers
         {
             return this.HandleRequest<GetAllUsersRequest, GetAllUsersResponse>(request);
         }
-
+                           //Przerobić spowrotem na Id jezeli bedzie  potrzebny, jak nie to wywalic.
         //[HttpGet]
         //[Route("{username}")]
         //public Task<IActionResult> GetById([FromRoute] string username)

@@ -8,7 +8,7 @@ namespace HotelLinenManagement.DataAccess
         public HotelLinenWarehouseContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<HotelLinenWarehouseContext>();
-            optionsBuilder.UseSqlServer("Data Source=DELL;Initial Catalog=HotelLinenWarehouse;Integrated Security=True");
+            optionsBuilder.UseSqlServer("Server=tcp:hotellinen.database.windows.net,1433;Initial Catalog=HotelLinenWarehauseStorage;Persist Security Info=False;User ID=jarokm;Password=Kravmaga85;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             
             return new HotelLinenWarehouseContext(optionsBuilder.Options);
         }

@@ -11,6 +11,12 @@ namespace HotelLinenManagement.DataAccess.Entities
         [Required]
         [StringLength(12)]
         public string TaxNumber { get; set; }
+        public string City { get; set; }
+        public string Street { get; set; }
+        public string StreetNumber { get; set; }
+        public string ZipCode { get; set; }
+        public string TelefonNumber { get; set; }
+        
       //Tu trzeba jeszcze pouzupełniać
 
         public List<Storeroom> Storerooms { get; set; }

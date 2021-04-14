@@ -22,7 +22,7 @@ namespace HotelLinenManagement.DataAccess.CQRS.Queries.Storerooms
                     return null;
                 return result;
             }
-           else if (this.RoomNumber!=null)
+            else if (this.RoomNumber != null)
             {
 
                 if (context.Storerooms.Any(x => x.RoomNumber == this.RoomNumber))

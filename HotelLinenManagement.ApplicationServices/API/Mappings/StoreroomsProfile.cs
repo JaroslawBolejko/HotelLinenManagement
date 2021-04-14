@@ -30,7 +30,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Mappings
                 .ForMember(x => x.LinenName, y => y.MapFrom(z => z.HotelLinens
                 != null ? z.HotelLinens.Select(x => x.LinenName) : new List<string>()))
                 .ForMember(x => x.LinenAmount, y => y.MapFrom(z => z.HotelLinens
-                != null ? z.HotelLinens.Select(x=>x.LinenAmount) : new List<int>()));
+                != null ? z.HotelLinens.Select(x => x.LinenAmount) : new List<int>()));
             // .ForMember(x => x.ReciptDate, y => y.MapFrom(z => z.ReciptDate))
             // .ForMember(x => x.IssueDate, y => y.MapFrom(z => z.IssueDate))
             //  .ForMember(x => x.HotelLinens, y => y.MapFrom(z => z.HotelLinens));

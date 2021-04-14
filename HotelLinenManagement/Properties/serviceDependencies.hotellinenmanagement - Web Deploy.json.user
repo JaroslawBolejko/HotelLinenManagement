@@ -1,0 +1,50 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "restored": false,
+      "restoreTime": "2021-04-13T19:49:03.8021631Z"
+    }
+  },
+  "parameters": {
+    "hotellinenmanagement.subscriptionId": {
+      "Name": "hotellinenmanagement.subscriptionId",
+      "Type": "subscription",
+      "Value": "6ad0bb14-4c23-43ea-8ab5-cbea5468f79d"
+    },
+    "mssql1.resourceGroupLocation": {
+      "Name": "mssql1.resourceGroupLocation",
+      "Type": "location",
+      "Value": "westeurope"
+    },
+    "mssql1.subscriptionId": {
+      "Name": "mssql1.subscriptionId",
+      "Type": "subscription",
+      "Value": "6ad0bb14-4c23-43ea-8ab5-cbea5468f79d"
+    },
+    "mssql1.resourceGroupName": {
+      "Name": "mssql1.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "HotelLinenManagement"
+    },
+    "hotellinenmanagement.resourceName": {
+      "Name": "hotellinenmanagement.resourceName",
+      "Type": null,
+      "Value": "hotellinenmanagement"
+    },
+    "hotellinenmanagement.resourceGroupLocation": {
+      "Name": "hotellinenmanagement.resourceGroupLocation",
+      "Type": null,
+      "Value": "westeurope"
+    },
+    "hotellinenmanagement.resourceGroupName": {
+      "Name": "hotellinenmanagement.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "HotelLinenManagement"
+    },
+    "subscriptionId": {
+      "Name": "subscriptionId",
+      "Type": "subscription",
+      "Value": "6ad0bb14-4c23-43ea-8ab5-cbea5468f79d"
+    }
+  }
+}

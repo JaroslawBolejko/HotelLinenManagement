@@ -27,7 +27,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers.Add
 
         public async Task<AddHotelLinenResponse> Handle(AddHotelLinenRequest request, CancellationToken cancellationToken)
         {
-            
+
             if (request.AuthenticationRole == "UserLaundry")
             {
                 return new AddHotelLinenResponse

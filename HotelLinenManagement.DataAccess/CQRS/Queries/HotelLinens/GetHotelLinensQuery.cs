@@ -31,7 +31,7 @@ namespace HotelLinenManagement.DataAccess.CQRS.Queries.HotelLinens
             }
             //Dopisać warunek co mabyć podam oba, We wszystkich Query gdzie jest taka potrzeba?
             return await context.HotelLinens.ToListAsync();
-           
+
         }
     }
 }

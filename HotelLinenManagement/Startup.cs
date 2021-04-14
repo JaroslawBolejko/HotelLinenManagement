@@ -46,7 +46,7 @@ namespace HotelLinenManagement
 
             services.AddTransient<ICommandExecutor, CommandExecutor>();
 
-            services.AddAutoMapper(typeof(HotelLinensProfile).Assembly);
+            services.AddAutoMapper(typeof(LiquidationDocumentsProfile).Assembly);
 
             services.AddMediatR(typeof(ResponseBase<>));
 

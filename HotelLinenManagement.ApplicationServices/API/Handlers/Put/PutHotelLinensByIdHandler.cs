@@ -19,7 +19,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers.Add
         private readonly IQueryExecutor queryExecutor;
         private readonly IMapper mapper;
 
-        public PutHotelLinensByIdHandler(ICommandExecutor commandExecutor,IQueryExecutor queryExecutor, IMapper mapper)
+        public PutHotelLinensByIdHandler(ICommandExecutor commandExecutor, IQueryExecutor queryExecutor, IMapper mapper)
         {
             this.commandExecutor = commandExecutor;
             this.queryExecutor = queryExecutor;
@@ -51,8 +51,8 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers.Add
             }
             var hotelLinen = this.mapper.Map<HotelLinen>(request);
             var command = new PutHotelLinensCommand()
-            { 
-                Parameter = hotelLinen 
+            {
+                Parameter = hotelLinen
             };
             var hotelLinenUpdated = await this.commandExecutor.Execute(command);
 

@@ -8,17 +8,17 @@ namespace HotelLinenManagement.DataAccess.Entities
         public int HotelId { get; set; }
         public Hotel Hotel { get; set; }
         [Required]
-        public int StoreroomId{get;set;}
+        public int StoreroomId { get; set; }
         public Storeroom Storeroom { get; set; }
-       
+
         public List<LinenType> LinienTypes { get; set; }
-       
+
         public List<Laundry> Laundries { get; set; }
 
         [Required]
         [MaxLength(250)]
         public string LinenName { get; set; }
-        
+
         [Required]
         public int LinenAmount { get; set; }
         [MaxLength(250)]

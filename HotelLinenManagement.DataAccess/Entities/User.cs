@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HotelLinenManagement.DataAccess.Entities
 {
-    //public enum PlaceOfWork
+    //public enum CompanyType
     //{
     //    Hotel,
     //    Laundry
@@ -22,6 +22,7 @@ namespace HotelLinenManagement.DataAccess.Entities
     }
     public class User : EntityBase
     {
+       
         public List<Storeroom> Storerooms { get; set; }
         public List<GoodsReceivedNote> GoodsReceivedNotes { get; set; }
         public List<GoodsIssuedNote> GoodsIssuedNotes { get; set; }
@@ -50,6 +51,7 @@ namespace HotelLinenManagement.DataAccess.Entities
         [MaxLength(50)]
         public string Email { get; set; }
         public string Salt { get; set; }
+        public string Test { get; set; }
 
 
     }

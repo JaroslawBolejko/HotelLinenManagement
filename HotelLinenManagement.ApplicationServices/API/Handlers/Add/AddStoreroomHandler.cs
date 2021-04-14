@@ -19,7 +19,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers.Add
         private readonly IQueryExecutor queryExecutor;
         private readonly IMapper mapper;
 
-        public AddStoreroomHandler(ICommandExecutor commandExecutor,IQueryExecutor queryExecutor, IMapper mapper)
+        public AddStoreroomHandler(ICommandExecutor commandExecutor, IQueryExecutor queryExecutor, IMapper mapper)
         {
             this.commandExecutor = commandExecutor;
             this.queryExecutor = queryExecutor;

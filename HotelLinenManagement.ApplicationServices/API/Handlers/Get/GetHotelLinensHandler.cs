@@ -18,9 +18,9 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
         private readonly IMapper mapper;
         private readonly IQueryExecutor queryExecutor;
 
-        public GetHotelLinensHandler(IMapper mapper,IQueryExecutor queryExecutor)
+        public GetHotelLinensHandler(IMapper mapper, IQueryExecutor queryExecutor)
         {
-          
+
             this.mapper = mapper;
             this.queryExecutor = queryExecutor;
         }
@@ -43,7 +43,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
             }
 
             var mappedHotelLinen = this.mapper.Map<List<Domain.Models.HotelLinen>>(hotelLinens);
-           
+
 
             var response = new GetAllHotelLinensResponse()
             {

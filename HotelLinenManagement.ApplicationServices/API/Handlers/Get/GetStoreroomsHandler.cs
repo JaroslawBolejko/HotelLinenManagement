@@ -15,13 +15,13 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
 {
     public class GetStoreroomsHandler : RequestBase, IRequestHandler<GetAllStoreroomsRequest, GetAllStoreroomsResponse>
     {
-        
+
         private readonly IMapper mapper;
         private readonly IQueryExecutor queryExecutor;
 
         public GetStoreroomsHandler(IMapper mapper, IQueryExecutor queryExecutor)
         {
-           
+
             this.mapper = mapper;
             this.queryExecutor = queryExecutor;
         }
@@ -41,7 +41,7 @@ namespace HotelLinenManagement.ApplicationServices.API.Handlers
                 StoreroomName = request.StoreroomName
             };
             var storerooms = await this.queryExecutor.Execute(query);
-           
+
             if (storerooms == null)
             {
                 return new GetAllStoreroomsResponse()
