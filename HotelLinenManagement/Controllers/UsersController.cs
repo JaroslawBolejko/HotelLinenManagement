@@ -43,10 +43,13 @@ namespace HotelLinenManagement.Controllers
         //}
 
         [HttpGet]
-        [Route("{Me}")]
-        public Task<IActionResult> GetMe([FromRoute] GetMeRequest request)
+        [Route("{me}")]
+        public Task<IActionResult> Get([FromRoute] string me)
         {
-
+            var request = new GetMeRequest()
+            {
+                Me = me
+            };
             return this.HandleRequest<GetMeRequest, GetMeResponse>(request);
 
         }

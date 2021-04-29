@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelLinenManagement.DataAc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelLinenManagement.ApplicationServices", "..\HotelLinenManagement.ApplicationServices\HotelLinenManagement.ApplicationServices.csproj", "{622733AA-3DD1-4184-B0F9-B6D3ADFFF7C2}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp", "..\ZKJ_BlazorApp-main\BlazorApp.csproj", "{457E557B-0DA2-42B4-821A-03CC23E080D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{622733AA-3DD1-4184-B0F9-B6D3ADFFF7C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{622733AA-3DD1-4184-B0F9-B6D3ADFFF7C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{622733AA-3DD1-4184-B0F9-B6D3ADFFF7C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{457E557B-0DA2-42B4-821A-03CC23E080D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{457E557B-0DA2-42B4-821A-03CC23E080D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{457E557B-0DA2-42B4-821A-03CC23E080D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{457E557B-0DA2-42B4-821A-03CC23E080D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

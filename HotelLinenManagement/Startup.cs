@@ -32,6 +32,17 @@ namespace HotelLinenManagement
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder
+                        .AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                    });
+            });
             services.AddAuthentication("BasicAuthentication")
                 .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
             services.AddMvcCore()
@@ -74,6 +85,7 @@ namespace HotelLinenManagement
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthentication();
+            app.UseCors();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
